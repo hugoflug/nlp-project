@@ -1,5 +1,6 @@
 
 def main():
+    #file not in git repo due to GitHub size restrictions
     dict_file = open("crosswikis-dict-preprocessed")
     matches = {} 
     for line in dict_file:
@@ -17,8 +18,6 @@ def main():
     query = input().strip()
     query_words = query.split(" ")
     annotate(matches, query_words, len(query_words) + 1)
-
-#index_length = len(query_words) + 1
 
 def annotate(matches, words, index_length):
     for length in reversed(range(1, index_length)):  
