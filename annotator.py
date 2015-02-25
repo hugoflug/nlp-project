@@ -29,6 +29,9 @@ def annotate(matches, words, index_length):
             try:
                 match = matches[potential_match]
                 print("{} -- {} ({})".format(potential_match, match[0][0], match[0][1]))
+                annotate(matches, words[:start_index], length + 1)
+                annotate(matches, words[start_index+length:], length + 1)
+                return
             except KeyError: pass
 
 main()
