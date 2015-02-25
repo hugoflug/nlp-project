@@ -2,7 +2,7 @@
 dict_file = open("crosswikis-dict-preprocessed")
 matches = {} 
 for line in dict_file:
-    match = line.split("\t")
+    match = line.strip("\n").split("\t")
     words = match[0]
     rest = match[1].split(" ")
     prob = float(rest[0])
@@ -19,7 +19,8 @@ for length in reversed(range(1, len(query_words) + 1)):
     for start_index in range(0, len(query_words) - length + 1):
         potential_match = query_words[start_index:start_index+length] 
         potential_match = " ".join(potential_match)
-        if matches[potential_match]:
-            print("matches:")
-            for m in matches[potential_match]:
-                print("match: ", m[0])
+
+        try:
+            match = matches[potential_match]
+            print("{} -- {} ({})".format(potential_match, match[0][0], match[0][1]))
+        except KeyError: pass
