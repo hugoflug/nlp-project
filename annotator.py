@@ -1,7 +1,7 @@
 
 def main():
     #file not in git repo due to GitHub size restrictions
-    dict_file = open("crosswikis-dict-preprocessed")
+    dict_file = open("crosswikis-dict-preprocessed-2")
     matches = {} 
     for line in dict_file:
         match = line.strip("\n").split("\t")
