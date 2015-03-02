@@ -2,16 +2,7 @@
 def main():
     #file not in git repo due to GitHub size restrictions
     dict_file = open("crosswikis-dict-preprocessed-2")
-    link_probs = {} 
-    for line in dict_file:
-        match = line.strip("\n").split("\t")
-        words = match[0]
-        rest = match[1].split(" ")
-        prob = float(rest[0])
-        entity = rest[1]
-        if not words in link_probs:
-            link_probs[words] = []
-        link_probs[words].append((entity, prob))
+    link_probs = get_link_probs(dict_file)
 
     print("enter query: ")
 
@@ -22,6 +13,19 @@ def main():
 
     for key, value in annotations.items():
         print("{} -- {} ({})".format(key, value[0], value[1]))
+
+def get_link_probs(file):
+    link_probs = {}
+    for line in file:
+        match = line.strip("\n").split("\t")
+        words = match[0]
+        rest = match[1].split(" ")
+        prob = float(rest[0])
+        entity = rest[1]
+        if not words in link_probs:
+            link_probs[words] = []
+        link_probs[words].append((entity, prob))
+    return link_probs
 
 def annotate(link_probs, words, index_length, annotations):
     """
