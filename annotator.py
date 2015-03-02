@@ -27,7 +27,7 @@ def annotate(link_probs, words, index_length, annotations):
     """
     annotates the words in 'words' using the link probabilities in 'link_probs'
     with maximum word length of an annotation being 'index_length' and outputs
-    the results as a dictionary in 'annotaitons'
+    the results as a dictionary in 'annotations'
     """
     for length in reversed(range(1, index_length)):  
         for start_index in range(0, len(words) - length + 1):
