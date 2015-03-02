@@ -17,9 +17,13 @@ def main():
 
     query = input().strip()
     query_words = query.split(" ")
-    annotate(matches, query_words, len(query_words) + 1)
+    annotations = {}
+    annotate(matches, query_words, len(query_words) + 1, annotations)
 
-def annotate(matches, words, index_length):
+    for key, value in annotations.items():
+        print("{} -- {} ({})".format(key, value[0], value[1]))
+
+def annotate(matches, words, index_length, annotations):
     for length in reversed(range(1, index_length)):  
         for start_index in range(0, len(words) - length + 1):
             potential_match = words[start_index:start_index+length] 
@@ -27,9 +31,9 @@ def annotate(matches, words, index_length):
 
             try:
                 match = matches[potential_match]
-                print("{} -- {} ({})".format(potential_match, match[0][0], match[0][1]))
-                annotate(matches, words[:start_index], length + 1)
-                annotate(matches, words[start_index+length:], length + 1)
+                annotations[potential_match] = (match[0][0], match[0][1])
+                annotate(matches, words[:start_index], length + 1, annotations)
+                annotate(matches, words[start_index+length:], length + 1, annotations)
                 return
             except KeyError: pass
 
