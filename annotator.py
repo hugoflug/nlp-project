@@ -31,19 +31,17 @@ def annotate(link_probs, words, index_length, annotations):
     """
     annotates the words in 'words' using the link probabilities in 'link_probs'
     with maximum word length of an annotation being 'index_length' and outputs
-    the results as a dictionary in 'annotations'
+    the results as a dictionary of (entity, probability) tuples in 'annotations'
     """
     for length in reversed(range(1, index_length)):  
         for start_index in range(0, len(words) - length + 1):
-            potential_match = words[start_index:start_index+length] 
-            potential_match = " ".join(potential_match)
+            potential_match = " ".join(words[start_index:start_index+length])
 
-            try:
-                match = link_probs[potential_match]
-                annotations[potential_match] = (match[0][0], match[0][1])
+            if potential_match in link_probs:
+                most_likely_match = link_probs[potential_match][0]
+                annotations[potential_match] = (most_likely_match[0], most_likely_match[1])
                 annotate(link_probs, words[:start_index], length + 1, annotations)
                 annotate(link_probs, words[start_index+length:], length + 1, annotations)
                 return
-            except KeyError: pass
 
 main()
