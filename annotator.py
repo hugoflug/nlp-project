@@ -9,7 +9,7 @@ def main():
     query = input().strip()
     query_words = query.split(" ")
     annotations = {}
-    annotate(link_probs, query_words, len(query_words) + 1, annotations)
+    annotate(link_probs, query_words, len(query_words), annotations)
 
     for key, value in annotations.items():
         print("{} -- {} ({})".format(key, value[0], value[1]))
@@ -33,15 +33,15 @@ def annotate(link_probs, words, index_length, annotations):
     with maximum word length of an annotation being 'index_length' and outputs
     the results as a dictionary of (entity, probability) tuples in 'annotations'
     """
-    for length in reversed(range(1, index_length)):  
+    for length in reversed(range(1, index_length + 1)):
         for start_index in range(0, len(words) - length + 1):
             potential_match = " ".join(words[start_index:start_index+length])
 
             if potential_match in link_probs:
                 most_likely_match = link_probs[potential_match][0]
                 annotations[potential_match] = (most_likely_match[0], most_likely_match[1])
-                annotate(link_probs, words[:start_index], length + 1, annotations)
-                annotate(link_probs, words[start_index+length:], length + 1, annotations)
+                annotate(link_probs, words[:start_index], length, annotations)
+                annotate(link_probs, words[start_index+length:], length, annotations)
                 return
 
 main()
