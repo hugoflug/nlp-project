@@ -44,4 +44,5 @@ def annotate(link_probs, words, index_length, annotations):
                 annotate(link_probs, words[start_index+length:], length, annotations)
                 return
 
-main()
+if __name__ == "__main__":
+    main()
