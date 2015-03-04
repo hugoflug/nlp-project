@@ -1,5 +1,6 @@
 from xml.dom.minidom import parse
 import xml.dom.minidom
+import sys
 
 import annotator
 
@@ -15,7 +16,7 @@ def main():
     dict_file = open("crosswikis-dict-preprocessed-2")
     link_probs = annotator.get_link_probs(dict_file)
 
-    verbose = True
+    verbose = True if len(sys.argv) > 1 and sys.argv[1] == "-v" else False
 
     tp = 0
     tn = 0
@@ -91,7 +92,11 @@ def main():
     print("fp: {}".format(fp))
     print("fn: {}".format(fn))
 
-    print("recall: {0:.4f}".format(tp/float(tp+fn)))
-    print("precision: {0:.4f}".format(tp/float(tp+fp)))       
+    recall = tp/float(tp+fn)
+    precision = tp/float(tp+fp)
+
+    print("recall: {0:.4f}".format(recall))
+    print("precision: {0:.4f}".format(precision)) 
+    print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))      
     
 main()
