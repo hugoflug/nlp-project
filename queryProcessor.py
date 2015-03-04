@@ -15,6 +15,8 @@ def main():
     dict_file = open("crosswikis-dict-preprocessed-2")
     link_probs = annotator.get_link_probs(dict_file)
 
+    verbose = True
+
     tp = 0
     tn = 0
     fp = 0
@@ -34,7 +36,6 @@ def main():
                 # Split query to array
                 queryArray = text.firstChild.nodeValue.split(" ")
                 
-                # TODO: Get Baseline annotations
                 baselineMatches = {}
                 annotator.annotate(link_probs, queryArray, len(queryArray), baselineMatches)
                 
@@ -47,18 +48,34 @@ def main():
                 
                 # TODO: Compare Baseline, Advanced & Gold standard
                 
-                # Print query and gold standard
-
                 gold_entities = set()
 
+                if verbose:
+                    print("QUERY: {}".format(text.firstChild.nodeValue))
+                    print("GOLD:")
                 for annotation in annotations:
                     if annotation.getAttribute("main") == "true" and annotation.getElementsByTagName("span").length > 0 and annotation.getElementsByTagName("target").length > 0:
                         span = annotation.getElementsByTagName("span")[0]
                         target = annotation.getElementsByTagName("target")[0]
+
                         substring = span.firstChild.nodeValue
 
+                        #extract wikipedia-ID from URL
                         entity = target.firstChild.nodeValue.split("/").pop()
+
+                        #add entity to set of gold entities
                         gold_entities.add(entity)
+
+                        if verbose:
+                            print("{}: {}".format(substring, entity))
+
+                if verbose: 
+                    print("OUR MATCHES:")
+
+                    for key, value in baselineMatches.items():
+                        print("{}: {} ({})".format(key, value[0], value[1]))
+
+                #TODO: Strict evaluation
 
                 for entity in gold_entities:
                     if entity in our_entities:
