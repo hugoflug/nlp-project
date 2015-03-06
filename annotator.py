@@ -6,7 +6,7 @@ def main():
 
     print("enter query: ")
 
-    query = input().strip()
+    query = raw_input().strip()
     query_words = query.split(" ")
     annotations = {}
     annotate(link_probs, query_words, len(query_words), annotations)
@@ -39,10 +39,11 @@ def annotate(link_probs, words, index_length, annotations):
 
             if potential_match in link_probs:
                 most_likely_match = link_probs[potential_match][0]
-                annotations[potential_match] = (most_likely_match[0], most_likely_match[1])
-                annotate(link_probs, words[:start_index], length, annotations)
-                annotate(link_probs, words[start_index+length:], length, annotations)
-                return
+                if most_likely_match[1] > 0.5:
+                    annotations[potential_match] = (most_likely_match[0], most_likely_match[1])
+                    annotate(link_probs, words[:start_index], length, annotations)
+                    annotate(link_probs, words[start_index+length:], length, annotations)
+                    return
 
 if __name__ == "__main__":
     main()
