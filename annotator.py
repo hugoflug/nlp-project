@@ -18,7 +18,7 @@ def get_link_probs(file):
     link_probs = {}
     for line in file:
         match = line.strip("\n").split("\t")
-        words = match[0]
+        words = match[0].lower()
         rest = match[1].split(" ")
         prob = float(rest[0])
         entity = rest[1]
@@ -33,9 +33,10 @@ def annotate(link_probs, words, index_length, annotations):
     with maximum word length of an annotation being 'index_length' and outputs
     the results as a dictionary of (entity, probability) tuples in 'annotations'
     """
+
     for length in reversed(range(1, index_length + 1)):
         for start_index in range(0, len(words) - length + 1):
-            potential_match = " ".join(words[start_index:start_index+length])
+            potential_match = " ".join(words[start_index:start_index+length]).lower()
 
             if potential_match in link_probs:
                 most_likely_match = link_probs[potential_match][0]

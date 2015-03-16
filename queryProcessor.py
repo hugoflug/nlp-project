@@ -7,7 +7,7 @@ import annotator
 def main():
     # read out query-set
     # Open XML document using minidom parser
-    DOMTree = xml.dom.minidom.parse("query-data-dev-set.xml")
+    DOMTree = xml.dom.minidom.parse("query-data-train-set.xml")
     collection = DOMTree.documentElement
 
     # Get all the sessions in the collection
