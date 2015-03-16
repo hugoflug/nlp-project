@@ -8,6 +8,7 @@ def main():
 
     query = raw_input().strip()
     query_words = query.split(" ")
+    query_words = [x.translate(string.maketrans("",""), string.punctuation).strip() for x in query_words]
     annotations = {}
     annotate(link_probs, query_words, len(query_words), annotations)
 
