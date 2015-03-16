@@ -13,7 +13,7 @@ def main():
     # Get all the sessions in the collection
     sessions = collection.getElementsByTagName("session")
 
-    dict_file = open("crosswikis-dict-preprocessed-2")
+    dict_file = open("crosswikis-dict-preprocessed-2", encoding="utf-8")
     link_probs = annotator.get_link_probs(dict_file)
 
     verbose = True if len(sys.argv) > 1 and sys.argv[1] == "-v" else False
