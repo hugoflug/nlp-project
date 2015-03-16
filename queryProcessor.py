@@ -40,16 +40,12 @@ def main():
                 baselineMatches = {}
                 annotator.annotate(link_probs, queryArray, len(queryArray), baselineMatches)
                 
-                our_entities = set()
-
-                for key, value in baselineMatches.items():
-                    our_entities.add(value[0])
+                gold_entities = set()
 
                 # TODO: Get advanced annotations
                 
                 # TODO: Compare Baseline, Advanced & Gold standard
-                
-                gold_entities = set()
+            
 
                 if verbose:
                     print("QUERY: {}".format(text.firstChild.nodeValue))
@@ -69,6 +65,11 @@ def main():
 
                         if verbose:
                             print("{}: {}".format(substring, entity))
+
+                our_entities = set()
+                if len(gold_entities) > 0:
+                    for key, value in baselineMatches.items():
+                        our_entities.add(value[0])
 
                 if verbose: 
                     print("OUR MATCHES:")
