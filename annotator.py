@@ -40,7 +40,7 @@ def annotate(link_probs, words, index_length, annotations):
 
             if potential_match in link_probs:
                 most_likely_match = link_probs[potential_match][0]
-                if most_likely_match[1] > 0.5:
+                if most_likely_match[1] > 0.7:
                     annotations[potential_match] = (most_likely_match[0], most_likely_match[1])
                     annotate(link_probs, words[:start_index], length, annotations)
                     annotate(link_probs, words[start_index+length:], length, annotations)
