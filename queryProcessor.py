@@ -3,22 +3,21 @@ import xml.dom.minidom
 import sys
 
 import annotator
+import tagme_annotator
 
-def main():
+def evaluate(annotator_func, test_set):
     # read out query-set
     # Open XML document using minidom parser
-    DOMTree = xml.dom.minidom.parse("query-data-train-set.xml")
+    DOMTree = xml.dom.minidom.parse(test_set)
     collection = DOMTree.documentElement
 
     # Get all the sessions in the collection
     sessions = collection.getElementsByTagName("session")
 
-    dict_file = open("crosswikis-dict-preprocessed-2", encoding="utf-8")
-    link_probs = annotator.get_link_probs(dict_file)
-
     verbose = True if len(sys.argv) > 1 and sys.argv[1] == "-v" else False
 
-    tp_strict = tp_relaxed = tn_strict = tn_relaxed = fp_strict = fp_relaxed = fn_strict = fn_relaxed = 0
+    tp_strict = tp_relaxed = tn_strict = tn_relaxed = 0
+    fp_strict = fp_relaxed = fn_strict = fn_relaxed = 0
 
     # Print detail of each session.
     for session in sessions:
@@ -32,30 +31,25 @@ def main():
                 annotations = query.getElementsByTagName("annotation")
                 
                 # Split query to array
-                queryArray = text.firstChild.nodeValue.split(" ")
-                
-                baselineMatches = {}
-                annotator.annotate(link_probs, queryArray, len(queryArray), baselineMatches)
+                query = text.firstChild.nodeValue                
+                baselineMatches = annotator_func(query)
                 
                 gold_entities = set()
-
-                # TODO: Get advanced annotations
-                
-                # TODO: Compare Baseline, Advanced & Gold standard
-            
-
                 if verbose:
                     print("QUERY: {}".format(text.firstChild.nodeValue))
                     print("GOLD:")
                 for annotation in annotations:
-                    if annotation.getAttribute("main") == "true" and annotation.getElementsByTagName("span").length > 0 and annotation.getElementsByTagName("target").length > 0:
+                    if annotation.getAttribute("main") == "true" and \
+                        annotation.getElementsByTagName("span").length > 0 and \
+                        annotation.getElementsByTagName("target").length > 0:
+
                         span = annotation.getElementsByTagName("span")[0]
                         target = annotation.getElementsByTagName("target")[0]
 
                         substring = span.firstChild.nodeValue
 
                         #extract wikipedia-ID from URL. (query identifier, wikipedia identifier)
-                        entity = (span.firstChild.nodeValue, target.firstChild.nodeValue.split("/").pop())
+                        entity = (substring, target.firstChild.nodeValue.split("/").pop())
 
                         #add entity to set of gold entities
                         gold_entities.add(entity)
@@ -66,7 +60,7 @@ def main():
                 our_entities = set()
                 if len(gold_entities) > 0:
                     for key, value in baselineMatches.items():
-                        our_entities.add((key, value[0]))
+                        our_entities.add((key, value))
 
                 if verbose: 
                     print("OUR MATCHES:")
@@ -121,5 +115,6 @@ def main():
     print("recall: {0:.4f}".format(recall))
     print("precision: {0:.4f}".format(precision)) 
     print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))   
-    
-main()
+
+annotator = annotator.Annotator(open("crosswikis-dict-preprocessed-2"))
+evaluate(annotator.annotate, "query-data-dev-set.xml")
