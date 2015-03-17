@@ -6,6 +6,13 @@ import annotator
 import tagme_annotator
 
 def evaluate(annotator_func, test_set):
+    """
+    evaluates how well the 'annotator_func' function annotates the given 'test_set'
+    and prints it to stdout (TODO: return an object with the info instead?)
+
+    'annotator_func' should take as input a query and return a dictionary with (substring, entity)
+    key, value pairs
+    """
     # read out query-set
     # Open XML document using minidom parser
     DOMTree = xml.dom.minidom.parse(test_set)
@@ -116,5 +123,24 @@ def evaluate(annotator_func, test_set):
     print("precision: {0:.4f}".format(precision)) 
     print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))   
 
-annotator = annotator.Annotator(open("crosswikis-dict-preprocessed-2"))
-evaluate(tagme_annotator.annotate, "query-data-dev-set.xml")
+def main():
+    print("\nOUR ANNOTATOR (DEV-SET):")
+    print("***********************\n")
+    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2"))
+    evaluate(annot.annotate, "query-data-dev-set.xml")
+
+    print("\nOUR ANNOTATOR (TRAIN-SET):")
+    print("***********************\n")
+    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2"))
+    evaluate(annot.annotate, "query-data-train-set.xml")
+
+    print("\nTAGME ANNOTATOR (DEV-SET):")
+    print("***********************\n")
+    evaluate(tagme_annotator.annotate, "query-data-dev-set.xml")
+
+    print("\nTAGME ANNOTATOR (TRAIN-SET):")
+    print("***********************\n")
+    evaluate(tagme_annotator.annotate, "query-data-train-set.xml")
+
+if __name__ == "__main__":
+    main()

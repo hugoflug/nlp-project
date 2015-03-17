@@ -14,10 +14,18 @@ def main():
         print("{} -- {} ({})".format(key, value))
 
 class Annotator:
-    def __init__(self, file):
-        self.link_probs = self.get_link_probs(file)
+    def __init__(self, lp_file):
+        """
+        'lp_file' is a file with link probabilities 
+        """
+        self.link_probs = self.get_link_probs(lp_file)
 
     def annotate(self, query):
+        """
+        annotates 'query' with entities
+        returns a dictionary with substrings as keys
+        and entity wikilinks as values
+        """
         query_words = query.split(" ")
 
         annotations = {}
