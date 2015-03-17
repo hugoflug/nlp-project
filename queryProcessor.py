@@ -117,4 +117,4 @@ def evaluate(annotator_func, test_set):
     print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))   
 
 annotator = annotator.Annotator(open("crosswikis-dict-preprocessed-2"))
-evaluate(annotator.annotate, "query-data-dev-set.xml")
+evaluate(tagme_annotator.annotate, "query-data-dev-set.xml")
