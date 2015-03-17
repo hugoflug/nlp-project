@@ -18,10 +18,7 @@ def main():
 
     verbose = True if len(sys.argv) > 1 and sys.argv[1] == "-v" else False
 
-    tp = 0
-    tn = 0
-    fp = 0
-    fn = 0
+    tp_strict = tp_relaxed = tn_strict = tn_relaxed = fp_strict = fp_relaxed = fn_strict = fn_relaxed = 0
 
     # Print detail of each session.
     for session in sessions:
@@ -57,8 +54,8 @@ def main():
 
                         substring = span.firstChild.nodeValue
 
-                        #extract wikipedia-ID from URL
-                        entity = target.firstChild.nodeValue.split("/").pop()
+                        #extract wikipedia-ID from URL. (query identifier, wikipedia identifier)
+                        entity = (span.firstChild.nodeValue, target.firstChild.nodeValue.split("/").pop())
 
                         #add entity to set of gold entities
                         gold_entities.add(entity)
@@ -69,35 +66,60 @@ def main():
                 our_entities = set()
                 if len(gold_entities) > 0:
                     for key, value in baselineMatches.items():
-                        our_entities.add(value[0])
+                        our_entities.add((key, value[0]))
 
                 if verbose: 
                     print("OUR MATCHES:")
 
                     for key, value in baselineMatches.items():
-                        print("{}: {} ({})".format(key, value[0], value[1]))
+                        print("{}: {} ({})".format(key, value))
 
-                #TODO: Strict evaluation
-
+                # Strict evaluation
                 for entity in gold_entities:
                     if entity in our_entities:
-                        tp += 1
-                    if entity not in our_entities:
-                        fn += 1
+                        tp_strict += 1
+                    else:
+                        fn_strict += 1
 
                 for entity in our_entities:
                     if entity not in gold_entities:
-                        fp += 1
+                        fp_strict += 1
 
-    print("tp: {}".format(tp))
-    print("fp: {}".format(fp))
-    print("fn: {}".format(fn))
+                #  Relaxed eval
+                for entity in gold_entities:
+                    if len([i for i, v in enumerate(our_entities) if v[1] == entity[1]]) > 0:
+                        tp_relaxed += 1
+                    else:
+                        fn_relaxed += 1
 
-    recall = tp/float(tp+fn)
-    precision = tp/float(tp+fp)
+                for entity in our_entities:
+                    if len([i for i, v in enumerate(gold_entities) if v[1] == entity[1]]) == 0:
+                        fp_relaxed += 1
+
+    print("RELAXED EVALUATION:")
+
+    print("tp: {}".format(tp_relaxed))
+    print("fp: {}".format(fp_relaxed))
+    print("fn: {}".format(fn_relaxed))
+
+    recall = tp_relaxed/float(tp_relaxed+fn_relaxed)
+    precision = tp_relaxed/float(tp_relaxed+fp_relaxed)
 
     print("recall: {0:.4f}".format(recall))
     print("precision: {0:.4f}".format(precision)) 
     print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))      
+
+    print("\nSTRICT EVALUATION:")
+
+    print("tp: {}".format(tp_strict))
+    print("fp: {}".format(fp_strict))
+    print("fn: {}".format(fn_strict))
+
+    recall = tp_strict/float(tp_strict+fn_strict)
+    precision = tp_strict/float(tp_strict+fp_strict)
+
+    print("recall: {0:.4f}".format(recall))
+    print("precision: {0:.4f}".format(precision)) 
+    print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))   
     
 main()
