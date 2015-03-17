@@ -3,6 +3,9 @@ import urllib.request
 import json
 
 def annotate(query):
+    """
+    Annotates 'query' using the TAGME API
+    """
     response = urllib.request.urlopen('http://tagme.di.unipi.it/tag?key=tagme-NLP-ETH-2015&lang=en&text=' + urllib.parse.quote(query))
     info = json.loads(response.read().decode())
 

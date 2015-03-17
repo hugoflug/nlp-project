@@ -15,8 +15,8 @@ def evaluate(annotator_func, test_set):
     """
     # read out query-set
     # Open XML document using minidom parser
-    DOMTree = xml.dom.minidom.parse(test_set)
-    collection = DOMTree.documentElement
+    domtree = xml.dom.minidom.parse(test_set)
+    collection = domtree.documentElement
 
     # Get all the sessions in the collection
     sessions = collection.getElementsByTagName("session")
@@ -28,8 +28,6 @@ def evaluate(annotator_func, test_set):
 
     # Print detail of each session.
     for session in sessions:
-        if session.hasAttribute("id"):
-
             queries = session.getElementsByTagName("query")
       
             for query in queries:
