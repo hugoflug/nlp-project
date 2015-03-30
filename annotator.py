@@ -1,7 +1,7 @@
 
 def main():
     #file not in git repo due to GitHub size restrictions
-    dict_file = open("crosswikis-dict-preprocessed-2", encoding="utf-8")
+    dict_file = open("crosswikis-dict-preprocessed-2")
     link_probs = get_link_probs(dict_file)
 
     print("enter query: ")
