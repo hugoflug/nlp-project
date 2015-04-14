@@ -1,0 +1,52 @@
+import json
+import urllib.request
+
+class tagme_similarity(object):
+    """ Utializes the TAGME web api to get pairwise entity similarities"""
+
+    cache = {}
+
+    """ Loads all pairwise similarities between the given entities for fast access later """
+    def load_similarities(self, entities):
+
+        def flush(buffer):
+
+            # Build URL
+            url = "http://tagme.di.unipi.it/rel?key=tagme-NLP-ETH-2015&lang=en"
+            for pair in buffer:
+                url += "&tt=" + pair[0] + "%20" + pair[1]
+            
+            response = urllib.request.urlopen(url)
+            res = json.loads(response.read().decode())["result"]
+
+            for i in range(len(buffer)):
+                self.cache[buffer[i]] = float(res[i]["rel"])
+
+            # Empty buffer
+            buffer = []
+
+            return
+
+        buffer = []
+
+        for e1 in entities:
+            for e2 in entities:
+                #if(e1==e2): continue
+
+                buffer.append((e1, e2))
+
+                # Check if flush is needed
+                if(len(buffer) == 100):
+                    flush(buffer)
+
+        if(len(buffer) > 0):
+            flush(buffer)
+
+    def sim(self, e1, e2):
+        return self.cache[(e1, e2)]
+
+if(__name__ == "__main__"):
+    tagme_sim = tagme_similarity()
+    test_entities = ["Neil_Armstrong", "IPhone", "War_on_Terror"]
+    tagme_sim.load_similarities(test_entities)
+    print(tagme_sim.sim("Neil_Armstrong", "War_on_Terror"))

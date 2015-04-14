@@ -7,7 +7,7 @@ class candidate_scorer(object):
 
         self.sim = sim
 
-    def score_candidates(candidates):
+    def score_candidates(self, candidates):
 
         # Replaces the link probabilities with the scores
 
