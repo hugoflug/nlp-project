@@ -2,10 +2,6 @@
 import numpy as np
 
 class ngram_mention_extractor(object):
-    """Extracts all n-grams"""
-
-    def __init__(self):
-        print("init")
 
     """ Returns all ngrams as a python list"""
     def get_mentions(self, query, n = 0):
@@ -18,7 +14,7 @@ class ngram_mention_extractor(object):
         mentions = []
         for length in reversed(range(1, n+1)):
             for start_index in range(0, len(words) - length + 1):
-                mentions.append([" ".join(words[start_index:start_index+length]).lower()])
+                mentions.append(" ".join(words[start_index:start_index+length]).lower())
                 
         return mentions
 
