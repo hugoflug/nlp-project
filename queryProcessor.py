@@ -124,12 +124,12 @@ def evaluate(annotator_func, test_set):
 def main():
     print("\nOUR ANNOTATOR (DEV-SET):")
     print("***********************\n")
-    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2"))
+    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
     evaluate(annot.annotate, "query-data-dev-set.xml")
 
     print("\nOUR ANNOTATOR (TRAIN-SET):")
     print("***********************\n")
-    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2"))
+    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
     evaluate(annot.annotate, "query-data-train-set.xml")
 
     print("\nTAGME ANNOTATOR (DEV-SET):")
