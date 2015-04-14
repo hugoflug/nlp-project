@@ -9,8 +9,8 @@ class tagme_similarity(object):
     """ Loads all pairwise similarities between the given entities for fast access later """
     def load_similarities(self, entities):
 
-        def flush(buffer):
-
+        def flush():
+            nonlocal buffer
             # Build URL
             url = "http://tagme.di.unipi.it/rel?key=tagme-NLP-ETH-2015&lang=en"
             for pair in buffer:
@@ -20,7 +20,10 @@ class tagme_similarity(object):
             res = json.loads(response.read().decode())["result"]
 
             for i in range(len(buffer)):
-                self.cache[buffer[i]] = float(res[i]["rel"])
+                if("rel" in res[i]):
+                    self.cache[buffer[i]] = float(res[i]["rel"])
+                else:
+                    self.cache[buffer[i]] = 0
 
             # Empty buffer
             buffer = []
@@ -37,10 +40,10 @@ class tagme_similarity(object):
 
                 # Check if flush is needed
                 if(len(buffer) == 100):
-                    flush(buffer)
+                    flush()
 
         if(len(buffer) > 0):
-            flush(buffer)
+            flush()
 
     def sim(self, e1, e2):
         return self.cache[(e1, e2)]

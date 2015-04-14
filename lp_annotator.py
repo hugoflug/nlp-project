@@ -17,7 +17,7 @@ class lp_annotator(object):
             entity = rest[1]
             if not words in link_probs:
                 link_probs[words] = []
-            link_probs[words].append((entity, prob))
+            link_probs[words].append([entity, prob])
         return link_probs
 
     def annotate(self, mentions):

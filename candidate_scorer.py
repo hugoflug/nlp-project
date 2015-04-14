@@ -22,7 +22,7 @@ class candidate_scorer(object):
                     
                     # Compute support/vote from this mention's candidates
                     for c2 in m2[1]:
-                        vote += sim(c[0], c2[0])*c2[1]
+                        vote += self.sim(c[0], c2[0])*c2[1]
                     vote /= len(m2[1])
 
                     score += vote
