@@ -7,7 +7,7 @@ class lp_annotator(object):
         self.link_probs = self.get_link_probs("crosswikis-dict-preprocessed-2")
 
     def get_link_probs(self, path):
-        file = open(path, encoding="utf-8")
+        file = open(path, encoding="utf8")
         link_probs = {}
         for line in file:
             match = line.strip("\n").split("\t")
@@ -24,6 +24,6 @@ class lp_annotator(object):
         annotations = []
         for m in mentions:
             if(m in self.link_probs):
-                annotations.append((m, self.link_probs[m]))
+                annotations.append([m, self.link_probs[m]])
 
         return annotations

@@ -3,32 +3,45 @@ from ngram_mention_extractor import ngram_mention_extractor
 from lp_annotator import lp_annotator
 from candidate_scorer import candidate_scorer
 from tagme_similarity import tagme_similarity
+from candidate_pruner import candidate_pruner
 
 def main():
 
-    print("enter query: ")
-    query = input().strip()
-    
-    # Step 1: Find mentions
-    mention_extractor = ngram_mention_extractor()
-    mentions = mention_extractor.get_mentions(query)
-
-    # Step 2: Find candidates for the mentions (annotate the mentions)
+    print("loading link probabilities...")
     annotator = lp_annotator()
-    candidates = annotator.annotate(mentions)
 
-    print_candidates(candidates)
+    while True:
 
-    # Step 3: Choose the best candidates
-    similarity = tagme_similarity()
-    similarity.load_similarities(get_all_entities(candidates))
+        print("enter query: ")
+        query = input().strip()
+    
+        # Step 1: Find mentions
+        mention_extractor = ngram_mention_extractor()
+        mentions = mention_extractor.get_mentions(query)
 
-    scorer = candidate_scorer(similarity.sim)
-    scorer.score_candidates(candidates)
+        # Step 2: Find candidates for the mentions (annotate the mentions)
+        candidates = annotator.annotate(mentions)
 
-    print_candidates(candidates)
+        print("\n ---- CANDIDATES FOR ALL MENTIONS -----\n")
+        #print_candidates(candidates)
 
-    # Step 4: Prune
+        # Step 3: Choose the best candidates
+        similarity = tagme_similarity()
+        similarity.load_similarities(get_all_entities(candidates))
+
+        scorer = candidate_scorer(similarity.sim)
+        scorer.score_candidates(candidates)
+        scorer.choose_candidates(candidates)
+
+        print(" ---- THE BEST CANDIDATES ------------\n")
+        print_candidates(candidates)
+
+        # Step 4: Prune
+        pruner = candidate_pruner()
+        pruner.prune(candidates, 0.3, similarity.sim)
+
+        print(" ---- AFTER PRUNING ENTITIES --------\n")
+        print_candidates(candidates)
 
 def print_candidates(candidates):
 
