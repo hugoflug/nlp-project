@@ -1,6 +1,4 @@
 
-import numpy as np
-
 class ngram_mention_extractor(object):
 
     """ Returns all ngrams as a python list"""

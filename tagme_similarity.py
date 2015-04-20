@@ -1,5 +1,6 @@
 import json
 import urllib.request
+import urllib.parse
 
 class tagme_similarity(object):
     """ Utializes the TAGME web api to get pairwise entity similarities"""
@@ -16,7 +17,8 @@ class tagme_similarity(object):
             # Build URL
             url = "http://tagme.di.unipi.it/rel?key=tagme-NLP-ETH-2015&lang=en"
             for pair in buffer:
-                url += "&tt=" + pair[0] + "%20" + pair[1]
+                tt = {"tt": pair[0] + " " + pair[1]}
+                url += "&" + urllib.parse.urlencode(tt) 
             
             response = urllib.request.urlopen(url)
             res = json.loads(response.read().decode())["result"]
