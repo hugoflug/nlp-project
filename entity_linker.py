@@ -4,6 +4,7 @@ from lp_annotator import lp_annotator
 from candidate_scorer import candidate_scorer
 from tagme_similarity import tagme_similarity
 from candidate_pruner import candidate_pruner
+from tagme_spotting import TagMeSpotter
 
 def main():
 
@@ -22,8 +23,8 @@ def main():
 def annotate(query, annotator = lp_annotator()):
 
     # Step 1: Find mentions
-    mention_extractor = ngram_mention_extractor()
-    mentions = mention_extractor.get_mentions(query)
+    tagme_spotter = TagMeSpotter()
+    mentions = tagme_spotter.spot(query)
 
     # Step 2: Find candidates for the mentions (annotate the mentions)
     candidates = annotator.annotate(mentions)
