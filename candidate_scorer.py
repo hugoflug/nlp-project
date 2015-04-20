@@ -1,5 +1,5 @@
 
-class candidate_scorer(object):
+class CandidateScorer(object):
     """ Score the entity candidates for each mention and chose the ones that score the best"""
 
     """ Initializes the candidate scorer with link probabilities (dict) and a similarity function"""
