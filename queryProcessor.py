@@ -5,6 +5,8 @@ import sys
 import annotator
 import tagme_annotator
 
+import entity_linker
+
 def evaluate(annotator_func, test_set):
     """
     evaluates how well the 'annotator_func' function annotates the given 'test_set'
@@ -41,7 +43,7 @@ def evaluate(annotator_func, test_set):
                 
                 gold_entities = set()
                 if verbose:
-                    print("QUERY: {}".format(text.firstChild.nodeValue))
+                    print("\nQUERY: {}".format(text.firstChild.nodeValue))
                     print("GOLD:")
                 for annotation in annotations:
                     if annotation.getAttribute("main") == "true" and \
@@ -71,7 +73,7 @@ def evaluate(annotator_func, test_set):
                     print("OUR MATCHES:")
 
                     for key, value in baselineMatches.items():
-                        print("{}: {} ({})".format(key, value))
+                        print("{}: {}".format(key, value))
 
                 # Strict evaluation
                 for entity in gold_entities:
@@ -131,6 +133,10 @@ def main():
     print("***********************\n")
     annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
     evaluate(annot.annotate, "query-data-train-set.xml")
+
+    #print("\nNEW ANNOTATOR (DEV-SET):")
+    #print("***********************\n")
+    #evaluate(entity_linker.annotate, "query-data-dev-set.xml")
 
     print("\nTAGME ANNOTATOR (DEV-SET):")
     print("***********************\n")

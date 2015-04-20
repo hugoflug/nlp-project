@@ -14,34 +14,46 @@ def main():
 
         print("enter query: ")
         query = input().strip()
-    
-        # Step 1: Find mentions
-        mention_extractor = ngram_mention_extractor()
-        mentions = mention_extractor.get_mentions(query)
 
-        # Step 2: Find candidates for the mentions (annotate the mentions)
-        candidates = annotator.annotate(mentions)
+        # Annotate
+        annotate(query, annotator)
 
-        print("\n ---- CANDIDATES FOR ALL MENTIONS -----\n")
-        #print_candidates(candidates)
 
-        # Step 3: Choose the best candidates
-        similarity = tagme_similarity()
-        similarity.load_similarities(get_all_entities(candidates))
+def annotate(query, annotator = lp_annotator()):
 
-        scorer = candidate_scorer(similarity.sim)
-        scorer.score_candidates(candidates)
-        scorer.choose_candidates(candidates)
+    # Step 1: Find mentions
+    mention_extractor = ngram_mention_extractor()
+    mentions = mention_extractor.get_mentions(query)
 
-        print(" ---- THE BEST CANDIDATES ------------\n")
-        print_candidates(candidates)
+    # Step 2: Find candidates for the mentions (annotate the mentions)
+    candidates = annotator.annotate(mentions)
 
-        # Step 4: Prune
-        pruner = candidate_pruner()
-        pruner.prune(candidates, 0.3, similarity.sim)
+    print("\n ---- CANDIDATES FOR ALL MENTIONS -----\n")
+    print_candidates(candidates)
 
-        print(" ---- AFTER PRUNING ENTITIES --------\n")
-        print_candidates(candidates)
+    # Step 3: Choose the best candidates
+    similarity = tagme_similarity()
+    similarity.load_similarities(get_all_entities(candidates))
+
+    scorer = candidate_scorer(similarity.sim)
+    scorer.score_candidates(candidates)
+    scorer.choose_candidates(candidates)
+
+    print(" ---- THE BEST CANDIDATES ------------\n")
+    print_candidates(candidates)
+
+    # Step 4: Prune
+    pruner = candidate_pruner()
+    pruner.prune(candidates, 0.3, similarity.sim)
+
+    print(" ---- AFTER PRUNING ENTITIES --------\n")
+    print_candidates(candidates)
+
+    dict = {}
+    for m in candidates:
+        dict[m[0]] = m[1][0]
+
+    return dict
 
 def print_candidates(candidates):
 

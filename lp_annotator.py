@@ -26,4 +26,12 @@ class lp_annotator(object):
             if(m in self.link_probs):
                 annotations.append([m, self.link_probs[m]])
 
+        # Prune so there is no overlappings
+        annotations_copy = annotations[:]
+        for m in annotations_copy:
+            for m2 in annotations_copy:
+                if(m == m2): continue
+                if(m[0] in m2[0] and m2[1] > m[1]): # if another is overlapping that has higher lp, remove this
+                    annotations.remove(m)
+
         return annotations

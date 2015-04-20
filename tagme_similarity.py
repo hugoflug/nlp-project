@@ -9,6 +9,8 @@ class tagme_similarity(object):
     """ Loads all pairwise similarities between the given entities for fast access later """
     def load_similarities(self, entities):
 
+        cache = {}
+
         def flush():
             nonlocal buffer
             # Build URL
@@ -39,7 +41,7 @@ class tagme_similarity(object):
                 buffer.append((e1, e2))
 
                 # Check if flush is needed
-                if(len(buffer) == 100):
+                if(len(buffer) == 80):
                     flush()
 
         if(len(buffer) > 0):
