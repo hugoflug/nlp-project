@@ -4,7 +4,7 @@ class CandidatePruner(object):
     """Pruns entities that should be considered as general conceps rather than entities"""
 
     def prune(self, linked_mentions, theta, sim):
-        if(len(linked_mentions) <= 1): return
+        if len(linked_mentions) <= 1: return
 
         mentions = linked_mentions[:]
        
@@ -17,6 +17,6 @@ class CandidatePruner(object):
 
             coherence /= len(mentions) -1
 
-            if(coherence + m[1][1]/2 < theta):
+            if coherence + m[1][1]/2 < theta:
                 linked_mentions.remove(m)
 

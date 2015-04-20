@@ -24,7 +24,7 @@ class TagMeSimilarity(object):
             res = json.loads(response.read().decode())["result"]
 
             for i in range(len(buffer)):
-                if("rel" in res[i]):
+                if "rel" in res[i]:
                     self.cache[buffer[i]] = float(res[i]["rel"])
                 else:
                     self.cache[buffer[i]] = 0
@@ -43,16 +43,16 @@ class TagMeSimilarity(object):
                 buffer.append((e1, e2))
 
                 # Check if flush is needed
-                if(len(buffer) == 80):
+                if len(buffer) == 80 :
                     flush()
 
-        if(len(buffer) > 0):
+        if len(buffer) > 0:
             flush()
 
     def sim(self, e1, e2):
         return self.cache[(e1, e2)]
 
-if(__name__ == "__main__"):
+if __name__ == "__main__":
     tagme_sim = tagme_similarity()
     test_entities = ["Neil_Armstrong", "IPhone", "War_on_Terror"]
     tagme_sim.load_similarities(test_entities)

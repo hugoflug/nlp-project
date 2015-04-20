@@ -14,7 +14,7 @@ class CandidateScorer(object):
                 score = 0
 
                 for m2 in candidates: # loop over all other mentions
-                    if(m2 == m): continue
+                    if m2 == m: continue
                     
                     vote = 0
                     

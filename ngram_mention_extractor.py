@@ -6,7 +6,7 @@ class ngram_mention_extractor(object):
 
         words = query.split(" ")
 
-        if(n == 0):
+        if n == 0:
             n = len(words)
 
         mentions = []

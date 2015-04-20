@@ -23,7 +23,7 @@ class LinkProbabilityAnnotator(object):
     def annotate(self, mentions):
         annotations = []
         for m in mentions:
-            if(m in self.link_probs):
+            if m in self.link_probs:
                 annotations.append([m, self.link_probs[m]])
 
         return annotations
