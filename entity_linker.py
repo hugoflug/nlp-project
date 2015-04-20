@@ -26,50 +26,52 @@ def annotate(query, annotator = PriorProbabilityAnnotator(), debug = False):
     mentions = tagme_spotter.spot(query)
 
     # Step 2: Find candidates for the mentions (annotate the mentions)
-    candidates = annotator.annotate(mentions)
+    annotator.annotate(mentions)
 
     if debug:
         print("\n ---- CANDIDATES FOR ALL MENTIONS -----\n")
-        print_candidates(candidates)
+        print_candidates(mentions)
 
     # Step 3: Choose the best candidates
     similarity = TagMeSimilarity()
-    similarity.load_similarities(get_all_entities(candidates))
+
+    similarity.load_similarities(get_all_entities(mentions))
 
     scorer = CandidateScorer(similarity.sim)
-    scorer.score_candidates(candidates)
-    scorer.choose_candidates(candidates)
+    scorer.score_candidates(mentions)
+    scorer.choose_candidates(mentions)
 
     if debug:
         print(" ---- THE BEST CANDIDATES ------------\n")
-        print_candidates(candidates)
+        print_candidates(mentions)
 
     # Step 4: Prune
     pruner = CandidatePruner()
-    pruner.prune(candidates, 0.3, similarity.sim)
+    pruner.prune(mentions, 0.3, similarity.sim)
 
     if debug:
         print(" ---- AFTER PRUNING ENTITIES --------\n")
-        print_candidates(candidates)
+        print_candidates(mentions)
 
     dict = {}
-    for m in candidates:
-        dict[m[0]] = m[1][0]
+    for m in mentions:
+        dict[m.substring] = m.candidate_entities[0].entity_id
 
     return dict
 
-def print_candidates(candidates):
+def get_all_entities(mentions):
+    all_entities = []
+    for m in mentions:
+        all_entities.extend(m.candidate_entities)
+    return all_entities
 
-    for c in candidates:
-        print(c[0])
-        print(str(c[1]) + "\n")
+def print_candidates(mentions):
+    for m in mentions:
+        print(m.substring + ":")
+        for c in m.candidate_entities:
+            print(str(c))
+        print()
 
-def get_all_entities(candidates):
-    entities = []
-    for m in candidates: # mentions
-        for e in m[1]:
-            entities.append(e[0])
-    return entities
 
 if __name__ == "__main__":
     main()

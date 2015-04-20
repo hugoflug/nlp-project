@@ -1,7 +1,7 @@
-
+from entity import Entity
 
 class PriorProbabilityAnnotator(object):
-    """Uses a dictionary of link probabilities to come up with candidates to mentions"""
+    """Uses a dictionary of prior probabilities to come up with candidates to mentions"""
 
     def __init__(self):
         self.prior_probs = self.get_prior_probs("crosswikis-dict-preprocessed-2")
@@ -17,13 +17,14 @@ class PriorProbabilityAnnotator(object):
             entity = rest[1]
             if not words in prior_probs:
                 prior_probs[words] = []
-            prior_probs[words].append([entity, prob])
+            prior_probs[words].append(Entity(entity, float(prob)))
         return prior_probs
 
     def annotate(self, mentions):
-        annotations = []
+        """
+        takes a list of Mention objects, fills in their candidate_entities list
+        with candidates
+        """
         for mention in mentions:
             if mention.substring in self.prior_probs:
-                annotations.append([mention.substring, self.prior_probs[mention.substring]])
-
-        return annotations
+                mention.candidate_entities = self.prior_probs[mention.substring]

@@ -6,34 +6,40 @@ class CandidateScorer(object):
     def __init__(self, sim):
 
         self.sim = sim
+        self.scores = {}
 
-    def score_candidates(self, candidates):
+    def score_candidates(self, mentions):
+        """
+        Takes a list of Mention objects and creates an internal dict with the scores of each candidate entity
+        """
 
-        for m in candidates: #loop over mentions
-            for c in m[1]: # loop over candidates for each mention
+        for m in mentions: #loop over mentions
+            for c in m.candidate_entities: # loop over candidates for each mention
                 score = 0
 
-                for m2 in candidates: # loop over all other mentions
+                for m2 in mentions: # loop over all other mentions
                     if m2 == m: continue
                     
                     vote = 0
                     
                     # Compute support/vote from this mention's candidates
-                    for c2 in m2[1]:
-                        vote += self.sim(c[0], c2[0])*c2[1]
-                    vote /= len(m2[1])
+                    for c2 in m2.candidate_entities:
+                        vote += self.sim(c.entity_id, c2.entity_id)*c2.prior_prob
+                    vote /= len(m2.candidate_entities)
 
                     score += vote
 
-                # Set score
-                c.append(score)
+                c.score = score
 
-    def choose_candidates(self, candidates, epsilon = 0.2):
+    def choose_candidates(self, mentions, epsilon = 0.2):
+        """
+        Takes a list of Mention objects and reduces the candidate_entities list to only one entity -- the best one
+        """
 
-        for m in candidates: #loop over mentions
+        for m in mentions: #loop over mentions
 
             # Choose among the candidates for the mention
-            max_score = max(m[1], key=lambda c: c[2])[2]
-            m[1] = filter(lambda c: max_score < c[2] + epsilon, m[1])
-            m[1] = max(m[1], key=lambda c: c[1])
+            max_score = max(m.candidate_entities, key=lambda c: c.score).score
+            m.candidate_entities = filter(lambda c: max_score < c.score + epsilon, m.candidate_entities)
+            m.candidate_entities = [max(m.candidate_entities, key=lambda c: c.prior_prob)]
         

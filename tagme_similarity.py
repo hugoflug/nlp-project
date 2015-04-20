@@ -7,8 +7,9 @@ class TagMeSimilarity(object):
 
     cache = {}
 
-    """ Loads all pairwise similarities between the given entities for fast access later """
     def load_similarities(self, entities):
+        """ Loads all pairwise similarities between the given entities for fast access later.
+            Takes a list of Entity objects """
 
         cache = {}
 
@@ -38,9 +39,7 @@ class TagMeSimilarity(object):
 
         for e1 in entities:
             for e2 in entities:
-                #if(e1==e2): continue
-
-                buffer.append((e1, e2))
+                buffer.append((e1.entity_id, e2.entity_id))
 
                 # Check if flush is needed
                 if len(buffer) == 80 :
