@@ -1,6 +1,6 @@
 
 from ngram_mention_extractor import ngram_mention_extractor
-from lp_annotator import lp_annotator
+from lp_annotator import LinkProbabilityAnnotator
 from candidate_scorer import CandidateScorer
 from tagme_similarity import TagMeSimilarity
 from candidate_pruner import CandidatePruner
@@ -9,7 +9,7 @@ from tagme_spotter import TagMeSpotter
 def main():
 
     print("loading link probabilities...")
-    annotator = lp_annotator()
+    annotator = LinkProbabilityAnnotator()
 
     while True:
 
@@ -20,7 +20,7 @@ def main():
         annotate(query, annotator, True)
 
 
-def annotate(query, annotator = lp_annotator(), debug = False):
+def annotate(query, annotator = LinkProbabilityAnnotator(), debug = False):
 
     # Step 1: Find mentions
     tagme_spotter = TagMeSpotter()

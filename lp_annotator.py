@@ -1,6 +1,6 @@
 
 
-class lp_annotator(object):
+class LinkProbabilityAnnotator(object):
     """Uses a dictionary of link probabilities to come up with candidates to mentions"""
 
     def __init__(self):
