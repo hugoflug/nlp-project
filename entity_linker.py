@@ -2,7 +2,7 @@
 from ngram_mention_extractor import ngram_mention_extractor
 from lp_annotator import lp_annotator
 from candidate_scorer import candidate_scorer
-from tagme_similarity import tagme_similarity
+from tagme_similarity import TagMeSimilarity
 from candidate_pruner import CandidatePruner
 from tagme_spotter import TagMeSpotter
 
@@ -33,7 +33,7 @@ def annotate(query, annotator = lp_annotator()):
     print_candidates(candidates)
 
     # Step 3: Choose the best candidates
-    similarity = tagme_similarity()
+    similarity = TagMeSimilarity()
     similarity.load_similarities(get_all_entities(candidates))
 
     scorer = candidate_scorer(similarity.sim)

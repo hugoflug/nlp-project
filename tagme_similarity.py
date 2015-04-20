@@ -2,7 +2,7 @@ import json
 import urllib.request
 import urllib.parse
 
-class tagme_similarity(object):
+class TagMeSimilarity(object):
     """ Utializes the TAGME web api to get pairwise entity similarities"""
 
     cache = {}
