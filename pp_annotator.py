@@ -27,6 +27,13 @@ class PriorProbabilityAnnotator(object):
         takes a list of Mention objects, fills in their candidate_entities list
         with candidates
         """
+        to_remove = []
+
         for mention in mentions:
             if mention.substring in self.prior_probs:
                 mention.candidate_entities = self.prior_probs[mention.substring]
+            else:
+                to_remove.append(mention)
+
+        for obj in to_remove:
+            mentions.remove(obj)
