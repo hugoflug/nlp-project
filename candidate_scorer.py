@@ -10,7 +10,7 @@ class CandidateScorer(object):
 
     def score_candidates(self, mentions):
         """
-        Takes a list of Mention objects and creates an internal dict with the scores of each candidate entity
+        Takes a list of Mention objects and sets the 'score' attribute of all candidate entities of each Mention
         """
 
         for m in mentions: #loop over mentions
