@@ -4,7 +4,7 @@ from lp_annotator import lp_annotator
 from candidate_scorer import candidate_scorer
 from tagme_similarity import tagme_similarity
 from candidate_pruner import CandidatePruner
-from tagme_spotting import TagMeSpotter
+from tagme_spotter import TagMeSpotter
 
 def main():
 
