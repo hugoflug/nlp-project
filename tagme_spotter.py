@@ -1,6 +1,7 @@
 import json
 import urllib.request
 import urllib.parse
+from mention import Mention
 
 class TagMeSpotter:
 
@@ -14,6 +15,6 @@ class TagMeSpotter:
 
         res = json.loads(response.read().decode()) #should have "result"??
         for spot_info in res["spots"]:
-            spots.append(spot_info["spot"])
+            spots.append(Mention(spot_info["spot"], spot_info["lp"]))
 
         return spots

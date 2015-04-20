@@ -22,8 +22,8 @@ class PriorProbabilityAnnotator(object):
 
     def annotate(self, mentions):
         annotations = []
-        for m in mentions:
-            if m in self.prior_probs:
-                annotations.append([m, self.prior_probs[m]])
+        for mention in mentions:
+            if mention.substring in self.prior_probs:
+                annotations.append([mention.substring, self.prior_probs[mention.substring]])
 
         return annotations
