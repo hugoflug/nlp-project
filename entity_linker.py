@@ -17,10 +17,10 @@ def main():
         query = input().strip()
 
         # Annotate
-        annotate(query, annotator)
+        annotate(query, annotator, True)
 
 
-def annotate(query, annotator = lp_annotator()):
+def annotate(query, annotator = lp_annotator(), debug = False):
 
     # Step 1: Find mentions
     tagme_spotter = TagMeSpotter()
@@ -29,8 +29,9 @@ def annotate(query, annotator = lp_annotator()):
     # Step 2: Find candidates for the mentions (annotate the mentions)
     candidates = annotator.annotate(mentions)
 
-    print("\n ---- CANDIDATES FOR ALL MENTIONS -----\n")
-    print_candidates(candidates)
+    if debug:
+        print("\n ---- CANDIDATES FOR ALL MENTIONS -----\n")
+        print_candidates(candidates)
 
     # Step 3: Choose the best candidates
     similarity = TagMeSimilarity()
@@ -40,15 +41,17 @@ def annotate(query, annotator = lp_annotator()):
     scorer.score_candidates(candidates)
     scorer.choose_candidates(candidates)
 
-    print(" ---- THE BEST CANDIDATES ------------\n")
-    print_candidates(candidates)
+    if debug:
+        print(" ---- THE BEST CANDIDATES ------------\n")
+        print_candidates(candidates)
 
     # Step 4: Prune
     pruner = CandidatePruner()
     pruner.prune(candidates, 0.3, similarity.sim)
 
-    print(" ---- AFTER PRUNING ENTITIES --------\n")
-    print_candidates(candidates)
+    if debug:
+        print(" ---- AFTER PRUNING ENTITIES --------\n")
+        print_candidates(candidates)
 
     dict = {}
     for m in candidates:
