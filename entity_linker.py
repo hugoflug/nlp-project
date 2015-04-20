@@ -3,7 +3,7 @@ from ngram_mention_extractor import ngram_mention_extractor
 from lp_annotator import lp_annotator
 from candidate_scorer import candidate_scorer
 from tagme_similarity import tagme_similarity
-from candidate_pruner import candidate_pruner
+from candidate_pruner import CandidatePruner
 from tagme_spotting import TagMeSpotter
 
 def main():
@@ -44,7 +44,7 @@ def annotate(query, annotator = lp_annotator()):
     print_candidates(candidates)
 
     # Step 4: Prune
-    pruner = candidate_pruner()
+    pruner = CandidatePruner()
     pruner.prune(candidates, 0.3, similarity.sim)
 
     print(" ---- AFTER PRUNING ENTITIES --------\n")

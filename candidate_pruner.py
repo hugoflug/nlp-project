@@ -1,6 +1,6 @@
 
 
-class candidate_pruner(object):
+class CandidatePruner(object):
     """Pruns entities that should be considered as general conceps rather than entities"""
 
     def prune(self, linked_mentions, theta, sim):
