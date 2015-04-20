@@ -1,7 +1,9 @@
 from entity import Entity
 
 class PriorProbabilityAnnotator(object):
-    """Uses a dictionary of prior probabilities to come up with candidates to mentions"""
+    """Uses a dictionary of prior probabilities to come up with candidates to mentions
+       Prior probability: The probability that a link with a given substring in wikipedia
+       links to a certain entity"""
 
     def __init__(self):
         self.prior_probs = self.get_prior_probs("crosswikis-dict-preprocessed-2")

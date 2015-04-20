@@ -9,7 +9,7 @@ class TagMeSimilarity(object):
 
     def load_similarities(self, entities):
         """ Loads all pairwise similarities between the given entities for fast access later.
-            Takes a list of Entity objects """
+            Takes a list of Entity objects. """
 
         cache = {}
 
