@@ -6,7 +6,7 @@ class PriorProbabilityAnnotator(object):
        links to a certain entity"""
 
     def __init__(self):
-        self.prior_probs = self.get_prior_probs("crosswikis-dict-preprocessed-2")
+        self.prior_probs = self.get_prior_probs("crosswiki-corrected-entities")
 
     def get_prior_probs(self, path):
         file = open(path, encoding="utf8")
@@ -15,8 +15,12 @@ class PriorProbabilityAnnotator(object):
             match = line.strip("\n").split("\t")
             words = match[0].lower()
             rest = match[1].split(" ")
-            prob = float(rest[0])
-            entity = rest[1]
+            prob = float(rest[1])
+
+            if prob < 0.01:
+                continue
+
+            entity = rest[0]
             if not words in prior_probs:
                 prior_probs[words] = []
             prior_probs[words].append(Entity(entity, float(prob)))
