@@ -47,7 +47,7 @@ def annotate(query, annotator = PriorProbabilityAnnotator(), debug = False):
 
     # Step 4: Prune
     pruner = CandidatePruner()
-    pruner.prune(mentions, 0.3, similarity.sim)
+    pruner.prune(mentions, 0.1, similarity.sim)
 
     if debug:
         print(" ---- AFTER PRUNING ENTITIES --------\n")
