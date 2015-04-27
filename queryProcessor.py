@@ -124,19 +124,19 @@ def evaluate(annotator_func, test_set):
     print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))   
 
 def main():
-    print("\nOUR ANNOTATOR (DEV-SET):")
-    print("***********************\n")
-    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
-    evaluate(annot.annotate, "query-data-dev-set.xml")
-
-    print("\nOUR ANNOTATOR (TRAIN-SET):")
-    print("***********************\n")
-    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
-    evaluate(annot.annotate, "query-data-train-set.xml")
-
-    #print("\nNEW ANNOTATOR (DEV-SET):")
+    #print("\nOUR ANNOTATOR (DEV-SET):")
     #print("***********************\n")
-    #evaluate(entity_linker.annotate, "query-data-dev-set.xml")
+    #annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
+    #evaluate(annot.annotate, "query-data-dev-set.xml")
+
+    #print("\nOUR ANNOTATOR (TRAIN-SET):")
+    #print("***********************\n")
+    #annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
+    #evaluate(annot.annotate, "query-data-train-set.xml")
+
+    print("\nNEW ANNOTATOR (DEV-SET):")
+    print("***********************\n")
+    evaluate(entity_linker.annotate, "query-data-dev-set.xml")
 
     print("\nTAGME ANNOTATOR (DEV-SET):")
     print("***********************\n")

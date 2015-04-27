@@ -20,6 +20,6 @@ class TagMeSpotter:
 
         res = json.loads(response.read().decode()) #should have "result"??
         for spot_info in res["spots"]:
-            spots.append(Mention(spot_info["spot"], float(spot_info["lp"])))
+            spots.append(Mention(spot_info["spot"].lower(), float(spot_info["lp"])))
 
         return spots

@@ -53,3 +53,5 @@ docs/_build/
 # PyBuilder
 target/
 crosswikis-dict-preprocessed
+entity-cooccurrence-counts-part-2
+entity-cooccurrence-counts-part-1
