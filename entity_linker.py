@@ -53,11 +53,11 @@ def annotate(query, annotator = PriorProbabilityAnnotator(), debug = False):
         print(" ---- AFTER PRUNING ENTITIES --------\n")
         print_candidates(mentions)
 
-    dict = {}
-    for m in mentions:
-        dict[m.substring] = m.candidate_entities[0].entity_id
+    #dict = {}
+    #for m in mentions:
+    #    dict[m.substring] = m.candidate_entities[0].entity_id
 
-    return dict
+    return mentions
 
 def get_all_entities(mentions):
     all_entities = []

@@ -30,7 +30,7 @@ class Annotator:
 
         annotations = {}
         self.annotate_with_lp(self.link_probs, query_words, len(query_words), annotations)
-        return annotations
+        return list(annotations)
 
     def get_link_probs(self, file):
         link_probs = {}

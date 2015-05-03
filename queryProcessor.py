@@ -2,6 +2,7 @@ from xml.dom.minidom import parse
 import xml.dom.minidom
 import sys
 
+from evaluator import Evaluator
 import annotator
 import tagme_annotator
 
@@ -124,27 +125,31 @@ def evaluate(annotator_func, test_set):
     print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))   
 
 def main():
+
+    # Create evaluator
+    evaluator = Evaluator()
+
     #print("\nOUR ANNOTATOR (DEV-SET):")
     #print("***********************\n")
     #annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
-    #evaluate(annot.annotate, "query-data-dev-set.xml")
+    #evaluator.evaluate(annot.annotate, "query-data-dev-set.xml")
 
     #print("\nOUR ANNOTATOR (TRAIN-SET):")
     #print("***********************\n")
     #annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
-    #evaluate(annot.annotate, "query-data-train-set.xml")
+    #evaluator.evaluate(annot.annotate, "query-data-train-set.xml")
 
-    print("\nNEW ANNOTATOR (DEV-SET):")
-    print("***********************\n")
-    evaluate(entity_linker.annotate, "query-data-dev-set.xml")
+    #print("\nNEW ANNOTATOR (DEV-SET):")
+    #print("***********************\n")
+    #evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml")
 
     print("\nTAGME ANNOTATOR (DEV-SET):")
     print("***********************\n")
-    evaluate(tagme_annotator.annotate, "query-data-dev-set.xml")
+    evaluator.evaluate(tagme_annotator.annotate, "query-data-dev-set.xml")
 
     print("\nTAGME ANNOTATOR (TRAIN-SET):")
     print("***********************\n")
-    evaluate(tagme_annotator.annotate, "query-data-train-set.xml")
+    evaluator.evaluate(tagme_annotator.annotate, "query-data-train-set.xml")
 
 if __name__ == "__main__":
     main()
