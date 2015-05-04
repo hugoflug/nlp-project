@@ -45,7 +45,7 @@ class Evaluator:
                         target = annotation.getElementsByTagName("target")[0]
 
                         entity = Entity(target.firstChild.nodeValue.split("/").pop())
-                        mention = Mention(span.firstChild.nodeValue, candidate_entities=[entity])
+                        mention = Mention(span.firstChild.nodeValue.lower(), candidate_entities=[entity])
                         gold_mentions.append(mention)
 
                 # Run func
@@ -253,4 +253,34 @@ class Evaluator:
         print("")
         print("Correct chosen ratio (among mentions where the correct entities for all mentions in the query are present): " + str(correctAllEntities/(correctAllEntities + notCorrectAllEntities)))
         print("Correct chosen ratio (among mentions where the correct entity is present): " + str(correctEntities/(correctEntities + notCorrectEntities)))
+
+    def evaluatePruner(self, spotter, annotator, similarity, scorer, pruner, queries_file):
+
+        def evaluateQuery(query_text, gold_mentions): 
+            # Step 1: Find mentions
+            mentions = spotter.spot(query)
+
+            # Step 2: Find candidates for the mentions (annotate the mentions)
+            annotator.annotate(mentions)
+
+            # Step 3: Choose the best candidates
+            similarity.load_similarities(get_all_entities(mentions))
+
+            scorer.score_candidates(mentions)
+            scorer.choose_candidates(mentions)
+
+            # Find out which mentions should be pruned
+            should_prune = []
+            for m in mentions:
+                # if it is not in gold, we should prune it
+                gold = [gm for gm in gold_mentions if gm.substring == m.substring]
+                if(m): # if not empty
+                    should_prune.append(m[0])
+
+            # Step 4: Prune
+            pruner.prune(mentions, 0.1, similarity.sim)
+
+            for m in mentions:
+                # Should this mention have been pruned?
+                should_be_pruned = len([m2 for m2 in should_prune if m2.substring == m.substring]) >= 0
 
