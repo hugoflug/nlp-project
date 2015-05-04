@@ -163,7 +163,6 @@ class Evaluator:
 
     def evaluateAnnotatorScorer(self, annotator, scorer, similarity, queries_file):
 
-
         presentEntities = 0
         nonPresentEntities = 0
         nonPresentSpot = 0
@@ -215,7 +214,7 @@ class Evaluator:
 
                 else:
                     nonPresentEntities += 1
-                    print("Entity unknown: " + str(gold_mentions[i].candidate_entities[0]))
+                    print("Entity unknown: " + str(str(gold_mentions[i].candidate_entities[0]).encode(errors='ignore')))
 
             #
             # Evaluate scoring
@@ -254,3 +253,4 @@ class Evaluator:
         print("")
         print("Correct chosen ratio (among mentions where the correct entities for all mentions in the query are present): " + str(correctAllEntities/(correctAllEntities + notCorrectAllEntities)))
         print("Correct chosen ratio (among mentions where the correct entity is present): " + str(correctEntities/(correctEntities + notCorrectEntities)))
+
