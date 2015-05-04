@@ -142,7 +142,7 @@ class Evaluator:
             correct = True
             for gold_mention in gold_mentions:
                 # Check if didn't found gold_mention
-                if(not [m for m in spots if m.substring == gold_mention.substring]):
+                if(not [m for m in spots if m.substring == gold_mention.substring.lower()]):
                     correct = False
                     break
 
@@ -156,7 +156,7 @@ class Evaluator:
                 print(s)
 
         # Evaluate each query
-        self.for_each_query(queries_file, evaluateSpot)
+        self.for_each_query(queries_file, evaluate_spot)
 
         # Pring final ratio
         print("Ratio: " + str(noCorrectSpotted/(noCorrectSpotted + noNotCorrectSpotted)))
@@ -196,14 +196,14 @@ class Evaluator:
             #
 
             noQueries += 1
-            mentions = [Mention(m.substring) for m in gold_mentions]
+            mentions = [Mention(m.substring.lower()) for m in gold_mentions]
 
             annotator.annotate(mentions)
 
             _mentions = []
             for i in range(len(gold_mentions)):
                 # If the spot was filtered out by annotator
-                m = [m for m in mentions if m.substring == gold_mentions[i].substring]
+                m = [m for m in mentions if m.substring.lower() == gold_mentions[i].substring.lower()]
                 if(not m):
                     nonPresentSpot += 1
                     print("Spot unknown: " + str(gold_mentions[i].substring))
@@ -236,7 +236,7 @@ class Evaluator:
                         notCorrectAllEntities += 1
 
             for m in _mentions: # For the mentions where the correct entity was pesent
-                gold = [gm for gm in gold_mentions if gm.substring == m.substring][0]
+                gold = [gm for gm in gold_mentions if gm.substring.lower() == m.substring.lower()][0]
                 if(m.candidate_entities[0] == gold.candidate_entities[0]): # Check if we chose the correct one
                     correctEntities += 1
                 else:

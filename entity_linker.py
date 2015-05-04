@@ -21,6 +21,8 @@ def main():
 
 def annotate(query, annotator = PriorProbabilityAnnotator(), debug = False):
 
+    query = query.lower()
+
     # Step 1: Find mentions
     tagme_spotter = TagMeSpotter()
     mentions = tagme_spotter.spot(query)
