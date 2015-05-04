@@ -142,7 +142,7 @@ class Evaluator:
             correct = True
             for gold_mention in gold_mentions:
                 # Check if didn't found gold_mention
-                if(not [m for m in spots if m.substring == gold_mention.substring.lower()]):
+                if(not [m for m in spots if m.substring == gold_mention.substring]):
                     correct = False
                     break
 
@@ -195,17 +195,17 @@ class Evaluator:
             #
 
             noQueries += 1
-            mentions = [Mention(m.substring.lower()) for m in gold_mentions]
+            mentions = [Mention(m.substring) for m in gold_mentions]
 
             annotator.annotate(mentions)
 
             _mentions = []
             for i in range(len(gold_mentions)):
                 # If the spot was filtered out by annotator
-                m = [m for m in mentions if m.substring.lower() == gold_mentions[i].substring.lower()]
+                m = [m for m in mentions if m.substring == gold_mentions[i].substring]
                 if(not m):
                     nonPresentSpot += 1
-                    print("Spot unknown: " + str(gold_mentions[i].substring))
+                    print("Spot unknown: " + str(gold_mentions[i].candidate_entities[0]) + "' for '" + gold_mentions[i].substring + "'")
 
                 elif(gold_mentions[i].candidate_entities[0] in m[0].candidate_entities):
                     # Entity is among candidates!
@@ -245,11 +245,11 @@ class Evaluator:
 
         # Print results
         print("")
-        print("Entity among candidates ratio: " + str(presentEntities/(presentEntities + nonPresentEntities + nonPresentSpot)))
-        print("No candidates at all ratio: " + str(nonPresentSpot/(presentEntities + nonPresentEntities + nonPresentSpot)))
-        print("Entity not among candidates ratio: " + str(nonPresentEntities/(presentEntities + nonPresentEntities + nonPresentSpot)))
+        print("Entity among candidates ratio: " + str(presentEntities/(presentEntities + nonPresentEntities + nonPresentSpot)) + " (" + str(presentEntities) + ")")
+        print("No candidates at all ratio: " + str(nonPresentSpot/(presentEntities + nonPresentEntities + nonPresentSpot)) + " (" + str(nonPresentSpot) + ")")
+        print("Entity not among candidates ratio: " + str(nonPresentEntities/(presentEntities + nonPresentEntities + nonPresentSpot)) + " (" + str(nonPresentEntities) + ")")
         print("")
-        print("All entities present ratio: " + str(allEntitiesPresent/noQueries))
+        print("All entities present ratio: " + str(allEntitiesPresent/noQueries) + " (" + str(allEntitiesPresent) + ")")
         print("")
         print("Correct chosen ratio (among mentions where the correct entities for all mentions in the query are present): " + str(correctAllEntities/(correctAllEntities + notCorrectAllEntities)))
         print("Correct chosen ratio (among mentions where the correct entity is present): " + str(correctEntities/(correctEntities + notCorrectEntities)))
