@@ -214,7 +214,11 @@ class Evaluator:
 
                 else:
                     nonPresentEntities += 1
+<<<<<<< HEAD
                     print("Entity unknown: " + str(str(gold_mentions[i].candidate_entities[0]).encode(errors='ignore')))
+=======
+                    print("Entity unknown: '" + str(gold_mentions[i].candidate_entities[0]) + "' for '" + gold_mentions[i].substring + "'")
+>>>>>>> annotator_scorer_test now gives information about for which spot the entity was unknown
 
             #
             # Evaluate scoring
