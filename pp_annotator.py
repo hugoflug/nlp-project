@@ -17,13 +17,20 @@ class PriorProbabilityAnnotator(object):
             rest = match[1].split(" ")
             prob = float(rest[1])
 
-            if prob < 0.01:
+            if prob < 0.01 and words in prior_probs:
                 continue
 
             entity = rest[0]
             if not words in prior_probs:
                 prior_probs[words] = []
             prior_probs[words].append(Entity(entity, float(prob)))
+
+        # if we only have one candidate and it has prior probability 0,
+        # set the prior probability to 1 instead
+        for entity_list in prior_probs.values():
+            if len(entity_list) == 1 and entity_list[0].prior_prob == 0.0:
+                entity_list[0].prior_prob = 1
+
         return prior_probs
 
     def annotate(self, mentions):

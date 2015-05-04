@@ -133,16 +133,18 @@ def main():
     #print("***********************\n")
     #annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
     #evaluator.evaluate(annot.annotate, "query-data-dev-set.xml")
+    """
+    print("\nOUR ANNOTATOR (TRAIN-SET):")
+    print("***********************\n")
+    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
+    evaluator.evaluate(annot.annotate, "query-data-train-set.xml")
+    """
 
-    #print("\nOUR ANNOTATOR (TRAIN-SET):")
-    #print("***********************\n")
-    #annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
-    #evaluator.evaluate(annot.annotate, "query-data-train-set.xml")
-
-    #print("\nNEW ANNOTATOR (DEV-SET):")
-    #print("***********************\n")
-    #evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml")
-
+    print("\nNEW ANNOTATOR (DEV-SET):")
+    print("***********************\n")
+    evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml")
+    
+    """
     print("\nTAGME ANNOTATOR (DEV-SET):")
     print("***********************\n")
     evaluator.evaluate(tagme_annotator.annotate, "query-data-dev-set.xml")
@@ -150,6 +152,6 @@ def main():
     print("\nTAGME ANNOTATOR (TRAIN-SET):")
     print("***********************\n")
     evaluator.evaluate(tagme_annotator.annotate, "query-data-train-set.xml")
-
+    """
 if __name__ == "__main__":
     main()
