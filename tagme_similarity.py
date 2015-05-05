@@ -14,7 +14,7 @@ class TagMeSimilarity(object):
         cache = {}
 
         def flush():
-            nonlocal buffer
+            nonlocal buffer, url_est_len
             # Build URL
             url = "http://tagme.di.unipi.it/rel?key=tagme-NLP-ETH-2015&lang=en"
             for pair in buffer:
@@ -32,17 +32,20 @@ class TagMeSimilarity(object):
 
             # Empty buffer
             buffer = []
+            url_est_len = 60
 
             return
 
         buffer = []
+        url_est_len = 60 # beginning of url: http://tagme......
 
         for e1 in entities:
             for e2 in entities:
                 buffer.append((e1.entity_id, e2.entity_id))
+                url_est_len += 5 + len(e1.entity_id) + len(e2.entity_id) # len(&tt=_) = 5
 
                 # Check if flush is needed
-                if len(buffer) == 80 :
+                if len(buffer) == 100 or url_est_len > 1850:
                     flush()
 
         if len(buffer) > 0:
