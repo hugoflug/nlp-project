@@ -6,7 +6,8 @@ from evaluator import Evaluator
 import annotator
 import tagme_annotator
 
-import entity_linker
+from entity_linker import EntityLinker
+from tagme_similarity import TagMeSimilarity
 
 def evaluate(annotator_func, test_set):
     """
@@ -142,7 +143,10 @@ def main():
 
     print("\nNEW ANNOTATOR (DEV-SET):")
     print("***********************\n")
+    sim = TagMeSimilarity()
+    entity_linker = EntityLinker(similarity=sim)
     evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml")
+    sim.save_cache() # save if we have any new similarities to cache on file
     
     """
     print("\nTAGME ANNOTATOR (DEV-SET):")

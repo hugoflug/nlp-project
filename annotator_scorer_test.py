@@ -13,3 +13,5 @@ similarity = TagMeSimilarity()
 scorer = CandidateScorer(similarity.sim)
 
 evaluator.evaluateAnnotatorScorer(annotator, scorer, similarity, "query-data-dev-set.xml")
+
+similarity.save_cache()

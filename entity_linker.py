@@ -5,10 +5,13 @@ from candidate_scorer import CandidateScorer
 from tagme_similarity import TagMeSimilarity
 from candidate_pruner import CandidatePruner
 from tagme_spotter import TagMeSpotter
+from wiki_annotator import WikipediaAnnotator
+from multi_annotator import MultiAnnotator
 
 def main():
     print("loading link probabilities...")
-    annotator = PriorProbabilityAnnotator()
+    sim = TagMeSimilarity()
+    entity_linker = EntityLinker(similarity=sim)
 
     while True:
 
@@ -16,63 +19,74 @@ def main():
         query = input().strip()
 
         # Annotate
-        annotate(query, annotator, True)
+        entity_linker.annotate(query, True)
 
 
-def annotate(query, annotator = PriorProbabilityAnnotator(), debug = False):
 
-    query = query.lower()
 
-    # Step 1: Find mentions
-    tagme_spotter = TagMeSpotter()
-    mentions = tagme_spotter.spot(query)
+class EntityLinker(object):
 
-    # Step 2: Find candidates for the mentions (annotate the mentions)
-    annotator.annotate(mentions)
+    def __init__(self, spotter = TagMeSpotter(), \
+                     annotator = MultiAnnotator(None, PriorProbabilityAnnotator(), WikipediaAnnotator()), \
+                     similarity = TagMeSimilarity(), \
+                     scorer = None, \
+                     pruner = CandidatePruner() ):
 
-    if debug:
-        print("\n ---- CANDIDATES FOR ALL MENTIONS -----\n")
-        print_candidates(mentions)
+        self.spotter = spotter
+        self.annotator = annotator
+        self.similarity = similarity
+        self.scorer = scorer if not scorer is None else CandidateScorer(similarity.sim)
+        self.pruner = pruner
 
-    # Step 3: Choose the best candidates
-    similarity = TagMeSimilarity()
+    def annotate(self, query, debug = False):
 
-    similarity.load_similarities(get_all_entities(mentions))
+        query = query.lower()
 
-    scorer = CandidateScorer(similarity.sim)
-    scorer.score_candidates(mentions)
-    scorer.choose_candidates(mentions)
+        # Step 1: Find mentions
+        mentions = self.spotter.spot(query)
 
-    if debug:
-        print(" ---- THE BEST CANDIDATES ------------\n")
-        print_candidates(mentions)
+        # Step 2: Find candidates for the mentions (annotate the mentions)
+        self.annotator.annotate(mentions)
 
-    # Step 4: Prune
-    pruner = CandidatePruner()
-    pruner.prune(mentions, 0.1, similarity.sim)
+        if debug:
+            print("\n ---- CANDIDATES FOR ALL MENTIONS -----\n")
+            self.print_candidates(mentions)
 
-    if debug:
-        print(" ---- AFTER PRUNING ENTITIES --------\n")
-        print_candidates(mentions)
+        # Step 3: Choose the best candidates
+        self.similarity.load_similarities(self.get_all_entities(mentions))
 
-    #dict = {}
-    #for m in mentions:
-    #    dict[m.substring] = m.candidate_entities[0].entity_id
+        self.scorer.score_candidates(mentions)
+        self.scorer.choose_candidates(mentions)
 
-    return mentions
+        if debug:
+            print(" ---- THE BEST CANDIDATES ------------\n")
+            self.print_candidates(mentions)
 
-def get_all_entities(mentions):
-    all_entities = []
-    for m in mentions:
-        all_entities.extend(m.candidate_entities)
-    return all_entities
+        # Step 4: Prune
+        self.pruner.prune(mentions, 0.1, self.similarity.sim)
 
-def print_candidates(mentions):
-    for m in mentions:
-        print(m.substring + ":")
-        for c in m.candidate_entities:
-            print(str(c))
-        print()
+        if debug:
+            print(" ---- AFTER PRUNING ENTITIES --------\n")
+            self.print_candidates(mentions)
+
+        #dict = {}
+        #for m in mentions:
+        #    dict[m.substring] = m.candidate_entities[0].entity_id
+
+        return mentions
+
+    def get_all_entities(self, mentions):
+        all_entities = []
+        for m in mentions:
+            all_entities.extend(m.candidate_entities)
+        return all_entities
+
+    def print_candidates(self, mentions):
+        for m in mentions:
+            print(m.substring + ":")
+            for c in m.candidate_entities:
+                print(str(c))
+            print()
 
 
 if __name__ == "__main__":

@@ -1,17 +1,27 @@
 import json
 import urllib.request
 import urllib.parse
+import pickle
 
 class TagMeSimilarity(object):
     """ Utializes the TAGME web api to get pairwise entity similarities"""
 
-    cache = {}
+    def __init__(self):
+        # Load file cache
+        self.cache = pickle.load(open('tagme_similarity_cache.pkl', 'rb'))
+        #file = open("tagme_similarities_cache.txt", encoding="utf8")
+        #self.cache = {}
+        #for line in file:
+        #    match = line.strip("\n").split("\t")
+        #    e1 = match[0]
+        #    e2 = match[0]
+        #    cache[(e1, e2)] = float(match[2])
 
     def load_similarities(self, entities):
         """ Loads all pairwise similarities between the given entities for fast access later.
             Takes a list of Entity objects. """
 
-        cache = {}
+        #cache = {}
 
         def flush():
             nonlocal buffer, url_est_len
@@ -41,18 +51,25 @@ class TagMeSimilarity(object):
 
         for e1 in entities:
             for e2 in entities:
-                buffer.append((e1.entity_id, e2.entity_id))
-                url_est_len += 5 + len(e1.entity_id) + len(e2.entity_id) # len(&tt=_) = 5
+                tuple = (e1.entity_id, e2.entity_id)
+                if (not (tuple in self.cache)):
+                    buffer.append(tuple)
+                    url_est_len += 5 + len(e1.entity_id) + len(e2.entity_id) # len(&tt=_) = 5
 
-                # Check if flush is needed
-                if len(buffer) == 100 or url_est_len > 1850:
-                    flush()
+                    # Check if flush is needed
+                    if len(buffer) == 100 or url_est_len > 1850:
+                        flush()
 
         if len(buffer) > 0:
             flush()
 
     def sim(self, e1, e2):
         return self.cache[(e1, e2)]
+
+    def save_cache(self):
+        output = open('tagme_similarity_cache.pkl', 'wb')
+        # Pickle dictionary using protocol 0.
+        pickle.dump(self.cache, output)
 
 if __name__ == "__main__":
     tagme_sim = tagme_similarity()

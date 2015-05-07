@@ -66,9 +66,11 @@ class Evaluator:
         tp_strict = tp_relaxed = tn_strict = tn_relaxed = 0
         fp_strict = fp_relaxed = fn_strict = fn_relaxed = 0
 
+        query_count = 1
+
         def evaluate_query(query_text, gold_mentions):
 
-            nonlocal tp_strict, tp_relaxed, fp_strict, fp_relaxed, fn_strict, fn_relaxed
+            nonlocal tp_strict, tp_relaxed, fp_strict, fp_relaxed, fn_strict, fn_relaxed, query_count
 
             # Annotate using our algorithm
             our_mentions = annotator_func(query_text)
@@ -94,6 +96,9 @@ class Evaluator:
             for m in our_mentions:
                 if len([gold_mention for gold_mention in gold_mentions if m.equalsStrict(gold_mention)]) == 0:
                     fp_strict += 1
+
+            print("Evaluated query: " + str(query_count))
+            query_count += 1
 
 
         # Loop through all queries in file
