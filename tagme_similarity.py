@@ -9,13 +9,7 @@ class TagMeSimilarity(object):
     def __init__(self):
         # Load file cache
         self.cache = pickle.load(open('tagme_similarity_cache.pkl', 'rb'))
-        #file = open("tagme_similarities_cache.txt", encoding="utf8")
-        #self.cache = {}
-        #for line in file:
-        #    match = line.strip("\n").split("\t")
-        #    e1 = match[0]
-        #    e2 = match[0]
-        #    cache[(e1, e2)] = float(match[2])
+        self.cache_changed = False
 
     def load_similarities(self, entities):
         """ Loads all pairwise similarities between the given entities for fast access later.
@@ -43,6 +37,7 @@ class TagMeSimilarity(object):
             # Empty buffer
             buffer = []
             url_est_len = 60
+            self.cache_changed = True
 
             return
 
@@ -67,9 +62,10 @@ class TagMeSimilarity(object):
         return self.cache[(e1, e2)]
 
     def save_cache(self):
-        output = open('tagme_similarity_cache.pkl', 'wb')
-        # Pickle dictionary using protocol 0.
-        pickle.dump(self.cache, output)
+        if(self.cache_changed):
+            output = open('tagme_similarity_cache.pkl', 'wb')
+            # Pickle dictionary using protocol 0.
+            pickle.dump(self.cache, output)
 
 if __name__ == "__main__":
     tagme_sim = tagme_similarity()
