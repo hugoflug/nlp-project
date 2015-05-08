@@ -148,7 +148,7 @@ def main():
     spotter = GoldSpotter()
     pruner = DumbPruner()
     entity_linker = EntityLinker(similarity=sim)
-    evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml", spotter)
+    evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml")
     sim.save_cache() # save if we have any new similarities to cache on file
     
     """
