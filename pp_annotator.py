@@ -27,9 +27,9 @@ class PriorProbabilityAnnotator(object):
 
         # if we only have one candidate and it has prior probability 0,
         # set the prior probability to 1 instead
-        for entity_list in prior_probs.values():
-            if len(entity_list) == 1 and entity_list[0].prior_prob == 0.0:
-                entity_list[0].prior_prob = 1
+        #for entity_list in prior_probs.values():
+        #    if len(entity_list) == 1 and entity_list[0].prior_prob == 0.0:
+        #        entity_list[0].prior_prob = 1
 
         return prior_probs
 

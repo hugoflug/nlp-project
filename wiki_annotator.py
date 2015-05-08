@@ -19,31 +19,31 @@ class WikipediaAnnotator(object):
         to_remove = []
 
         for mention in mentions:
+            if len(mention.candidate_entities) < 5:
+                url = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srinfo=totalhits%7Csuggestion&srprop=wordcount%7Credirecttitle&srlimit=10&"
+                url += urllib.parse.urlencode({"srsearch" : mention.substring})
 
-            url = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srinfo=totalhits%7Csuggestion&srprop=wordcount%7Credirecttitle&srlimit=10&"
-            url += urllib.parse.urlencode({"srsearch" : mention.substring})
+                response = urllib.request.urlopen(url)
+                res = json.loads(response.read().decode())
 
-            response = urllib.request.urlopen(url)
-            res = json.loads(response.read().decode())
+                # Look for suggestions
+                #if("suggestion" in res["query"]["searchinfo"]):
+                #    url2 = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srinfo=totalhits%7Csuggestion&srprop=wordcount%7Credirecttitle&srlimit=5&"
+                #    url2 += urllib.parse.urlencode({"srsearch" : res["query"]["searchinfo"]["suggestion"]})
+                #    response2 = urllib.request.urlopen(url2)
+                #    res2 = json.loads(response2.read().decode())
+                #    res["query"]["search"] = res2["query"]["search"] + res["query"]["search"]
 
-            # Look for suggestions
-            #if("suggestion" in res["query"]["searchinfo"]):
-            #    url2 = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srinfo=totalhits%7Csuggestion&srprop=wordcount%7Credirecttitle&srlimit=5&"
-            #    url2 += urllib.parse.urlencode({"srsearch" : res["query"]["searchinfo"]["suggestion"]})
-            #    response2 = urllib.request.urlopen(url2)
-            #    res2 = json.loads(response2.read().decode())
-            #    res["query"]["search"] = res2["query"]["search"] + res["query"]["search"]
+                mention.candidate_entities = []
+                Z = len(res["query"]["search"])*(1+len(res["query"]["search"]))/2 # Normalization constant (arithmetic sum)
 
-            mention.candidate_entities = []
-            Z = len(res["query"]["search"])*(1+len(res["query"]["search"]))/2 # Normalization constant (arithmetic sum)
+                i = len(res["query"]["search"])
+                for entity_json in res["query"]["search"]:   
+                    mention.candidate_entities.append(Entity(self.wikify(entity_json["title"]), i/Z))
+                    i -= 1
 
-            i = len(res["query"]["search"])
-            for entity_json in res["query"]["search"]:   
-                mention.candidate_entities.append(Entity(self.wikify(entity_json["title"]), i/Z))
-                i -= 1
-
-            if(not mention.candidate_entities): # If wikipedia didnt find anything, remove mention
-                to_remove.append(mention)
+                if(not mention.candidate_entities): # If wikipedia didnt find anything, remove mention
+                    to_remove.append(mention)
 
         for obj in to_remove:
             mentions.remove(obj)
