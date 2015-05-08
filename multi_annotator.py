@@ -35,6 +35,7 @@ class MultiAnnotator(object):
             # Add candidates to original mentions object, and check for duplicates
             for mention in mentions:
 
+                print(mention.substring)
                 mention_ = [m for m in mentions_ if m.substring == mention.substring]
                 if(len(mention_) > 0): # If any entities were found, otherwise the mention is removed
                     mention_ = mention_[0]

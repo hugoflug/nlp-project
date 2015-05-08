@@ -1,6 +1,9 @@
 
 from ngram_mention_extractor import ngram_mention_extractor
 from pp_annotator import PriorProbabilityAnnotator
+from multi_annotator import MultiAnnotator
+from wiki_annotator import WikipediaAnnotator
+from bing_annotator import BingAnnotator
 from candidate_scorer import CandidateScorer
 from tagme_similarity import TagMeSimilarity
 from candidate_pruner import CandidatePruner
@@ -22,12 +25,10 @@ def main():
         entity_linker.annotate(query, True)
 
 
-
-
 class EntityLinker(object):
 
     def __init__(self, spotter = TagMeSpotter(), \
-                     annotator = MultiAnnotator(None, PriorProbabilityAnnotator(), WikipediaAnnotator()), \
+                     annotator = MultiAnnotator(None, PriorProbabilityAnnotator(), WikipediaAnnotator(), BingAnnotator()), \
                      similarity = TagMeSimilarity(), \
                      scorer = None, \
                      pruner = CandidatePruner() ):

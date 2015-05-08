@@ -207,7 +207,9 @@ class Evaluator:
             _mentions = []
             for i in range(len(gold_mentions)):
                 # If the spot was filtered out by annotator
+                
                 m = [m for m in mentions if m.substring == gold_mentions[i].substring]
+                
                 if(not m):
                     nonPresentSpot += 1
                     print("Spot unknown: " + str(gold_mentions[i].candidate_entities[0]) + "' for '" + gold_mentions[i].substring + "'")
@@ -216,6 +218,7 @@ class Evaluator:
                     # Entity is among candidates!
                     presentEntities += 1
                     _mentions.append(m[0])
+                    print(str(gold_mentions[i].candidate_entities[0]) + " available.")
 
                 else:
                     nonPresentEntities += 1

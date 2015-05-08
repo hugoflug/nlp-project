@@ -5,10 +5,11 @@ from candidate_scorer import CandidateScorer
 from tagme_similarity import TagMeSimilarity
 from wiki_annotator import WikipediaAnnotator
 from multi_annotator import MultiAnnotator
+from bing_annotator import BingAnnotator
 
 evaluator = Evaluator()
 
-annotator = MultiAnnotator(None, PriorProbabilityAnnotator(), WikipediaAnnotator())
+annotator = MultiAnnotator(None, PriorProbabilityAnnotator(), WikipediaAnnotator(), BingAnnotator())
 similarity = TagMeSimilarity()
 scorer = CandidateScorer(similarity.sim)
 
