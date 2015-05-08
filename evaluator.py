@@ -51,7 +51,7 @@ class Evaluator:
                 # Run func
                 func(query_text, gold_mentions)
 
-    def evaluate(self, annotator_func, queries_file):
+    def evaluate(self, annotator_func, queries_file, gold_spotter = None):
         
         """
         evaluates how well the 'annotator_func' function annotates the given 'test_set'
@@ -71,6 +71,10 @@ class Evaluator:
         def evaluate_query(query_text, gold_mentions):
 
             nonlocal tp_strict, tp_relaxed, fp_strict, fp_relaxed, fn_strict, fn_relaxed, query_count
+
+            # HACK:
+            if(gold_spotter is not None):
+                gold_spotter.set_mentions(gold_mentions)
 
             # Annotate using our algorithm
             our_mentions = annotator_func(query_text)
@@ -291,4 +295,3 @@ class Evaluator:
             for m in mentions:
                 # Should this mention have been pruned?
                 should_be_pruned = len([m2 for m2 in should_prune if m2.substring == m.substring]) >= 0
-

@@ -8,6 +8,7 @@ import tagme_annotator
 
 from entity_linker import EntityLinker
 from tagme_similarity import TagMeSimilarity
+from mention import Mention
 
 def evaluate(annotator_func, test_set):
     """
@@ -144,8 +145,10 @@ def main():
     print("\nNEW ANNOTATOR (DEV-SET):")
     print("***********************\n")
     sim = TagMeSimilarity()
-    entity_linker = EntityLinker(similarity=sim)
-    evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml")
+    spotter = GoldSpotter()
+    pruner = DumbPruner()
+    entity_linker = EntityLinker(spotter=spotter, similarity=sim, pruner=pruner)
+    evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml", spotter)
     sim.save_cache() # save if we have any new similarities to cache on file
     
     """
@@ -157,5 +160,23 @@ def main():
     print("***********************\n")
     evaluator.evaluate(tagme_annotator.annotate, "query-data-train-set.xml")
     """
+
+class GoldSpotter(object):
+
+    # HACK
+    def set_mentions(self, mentions):
+        #for m in mentions:
+        #    m.candidate_entities = []
+
+        self.mentions_temp = [Mention(m.substring) for m in mentions]
+
+    def spot(self, mentions):
+        return self.mentions_temp
+
+class DumbPruner(object):
+
+    def prune(self, mentions, a, b):
+        return mentions
+
 if __name__ == "__main__":
     main()
