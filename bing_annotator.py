@@ -17,9 +17,10 @@ class BingAnnotator(object):
             
             mention.candidate_entries = []
             
+            Z = 10.5 # Normalization constant (arithmetic sum)
             i = 10
             for (letters) in p.findall(response.read().decode('utf-8')):
-                mention.candidate_entities.append(Entity(letters[63:-1], i))
+                mention.candidate_entities.append(Entity(letters[63:-1], i/Z))
                 i -= 1
             
     

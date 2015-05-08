@@ -31,7 +31,7 @@ class MultiAnnotator(object):
             for m in mentions_:
                 for c in m.candidate_entities:
                     c.prior_prob *= self.weights[i]
-
+                    
             # Add candidates to original mentions object, and check for duplicates
             for mention in mentions:
 

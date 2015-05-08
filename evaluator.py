@@ -22,7 +22,16 @@ class Evaluator:
 
         # Get all the sessions in the collection
         sessions = collection.getElementsByTagName("session")
-
+        
+        # Count queries
+        number_of_queries = 0
+        for session in sessions:
+            queries = session.getElementsByTagName("query")
+            for query in queries:
+                number_of_queries += 1
+                
+        query_number = 1
+                
         # For each session
         for session in sessions:
             queries = session.getElementsByTagName("query")
@@ -32,6 +41,8 @@ class Evaluator:
 
                 # Read out query-text
                 query_text = query.getElementsByTagName("text")[0].firstChild.nodeValue
+                print("Query " + str(query_number) + " of " + str(number_of_queries) + ": " + query_text)
+                query_number += 1
                 
                 # Read out the gold mentions and their annotations
                 gold_mentions = []
@@ -222,7 +233,6 @@ class Evaluator:
                     # Entity is among candidates!
                     presentEntities += 1
                     _mentions.append(m[0])
-                    print(str(gold_mentions[i].candidate_entities[0]) + " available.")
 
                 else:
                     nonPresentEntities += 1
