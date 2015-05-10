@@ -6,7 +6,7 @@ import sys
 
 class Evaluator:
 
-    def for_each_query(self, queries_file, func):
+    def for_each_query(self, queries_file, func, NoMain=False):
 
         """ Executes the function func for every query in queries_file
 
@@ -48,7 +48,7 @@ class Evaluator:
                 gold_mentions = []
                 annotations_xml = query.getElementsByTagName("annotation")
                 for annotation in annotations_xml:
-                    if annotation.getAttribute("main") == "true" and \
+                    if (annotation.getAttribute("main") == "true" or NoMain) and \
                         annotation.getElementsByTagName("span").length > 0 and \
                         annotation.getElementsByTagName("target").length > 0:
 
@@ -276,32 +276,65 @@ class Evaluator:
         print("Correct chosen ratio (among mentions where the correct entities for all mentions in the query are present): " + str(correctAllEntities/(correctAllEntities + notCorrectAllEntities)))
         print("Correct chosen ratio (among mentions where the correct entity is present): " + str(correctEntities/(correctEntities + notCorrectEntities)))
 
-    def evaluatePruner(self, spotter, annotator, similarity, scorer, pruner, queries_file):
+    def evaluatePruning(self,spotter, annotator, scorer, similarity, pruner, queries_file):
 
-        def evaluateQuery(query_text, gold_mentions): 
-            # Step 1: Find mentions
-            mentions = spotter.spot(query)
+        noWronglyTagged = 0
+        noMentions = 0
 
-            # Step 2: Find candidates for the mentions (annotate the mentions)
+        def get_all_entities(mentions):
+            all_entities = []
+            for m in mentions:
+                all_entities.extend(m.candidate_entities)
+            return all_entities
+
+        def falspos(query_text, gold_mentions):
+            nonlocal noWronglyTagged, noMentions
+
+            mentions = spotter.spot(query_text)
             annotator.annotate(mentions)
-
-            # Step 3: Choose the best candidates
             similarity.load_similarities(get_all_entities(mentions))
-
             scorer.score_candidates(mentions)
             scorer.choose_candidates(mentions)
+            #pruner.prune(mentions, 0.1, similarity.sim)
+            querytext_list = query_text.lower().split(" ")
+            goldstring = ""
+            # for m in mentions:
+            #      print("Mention: " + m.substring)
+            for g in gold_mentions:
+                goldstring += (g.substring + " ")
+            print("GS: " + goldstring)
+            not_tagged_string = ""
+            for t in querytext_list:
+                if t not in goldstring:
+                    not_tagged_string += (t + " ")
 
-            # Find out which mentions should be pruned
-            should_prune = []
             for m in mentions:
-                # if it is not in gold, we should prune it
-                gold = [gm for gm in gold_mentions if gm.substring == m.substring]
-                if(m): # if not empty
-                    should_prune.append(m[0])
+                noMentions += 1
+                if m.substring in not_tagged_string:
+                    print("Wrongly Tagged: " + m.substring)
+                    noWronglyTagged += 1
+            # fpmentions = [t for t in querytextlist if t not in goldstring]
+            # for fpm in fpmentions:
+            #     print("QT: " + query_text)
+            #     print("GS: " + goldstring)
+            #     print("FalsePositive: " + fpm)
+        self.for_each_query(queries_file, falspos, NoMain=True)
+        print("Number of wrongly tagged mentions: " + str(noWronglyTagged))
+        print("Wrongly tagged / all mentions: " + str(noWronglyTagged / noMentions))
 
-            # Step 4: Prune
-            pruner.prune(mentions, 0.1, similarity.sim)
+    def showFPs(self, queries_file):
 
-            for m in mentions:
-                # Should this mention have been pruned?
-                should_be_pruned = len([m2 for m2 in should_prune if m2.substring == m.substring]) >= 0
+        def showfalspos(query_text, gold_mentions):
+
+            querytextlist = query_text.lower().split(" ")
+            goldstring = ""
+            # for m in mentions:
+            #      print("Mention: " + m.substring)
+            for g in gold_mentions:
+                goldstring += (g.substring + " ")
+            print("GS: " + goldstring)
+            fpmentions = [t for t in querytextlist if t not in goldstring]
+            for fpm in fpmentions:
+                 print("Not tagged: " + fpm)
+
+        self.for_each_query(queries_file, showfalspos)
