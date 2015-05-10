@@ -2,18 +2,21 @@ from mention import Mention
 from entity import Entity
 import urllib.parse
 import urllib.request
+from urllib.request import Request
 import re
 import pickle
 import copy
+import os.path
 
 class BingAnnotator(object):
 
     MAX_RESULS = 5
 
-    def __init__(self):
+    def __init__(self, use_cache = True):
         # Load file cache
-        self.cache = pickle.load(open('bing_annotator_cache.pkl', 'rb'))
+        self.cache = pickle.load(open('bing_annotator_cache.pkl', 'rb')) if os.path.exists('bing_annotator_cache.pkl') and use_cache else {}
         self.cache_changed = False
+        self.use_cache = use_cache
 
     def urlify(self, title):
         return title.replace(" ", "%20")
@@ -32,18 +35,19 @@ class BingAnnotator(object):
 
                 # Else, go to bing
 
-                p = re.compile('<div class="b_title"><h2><a href="http://en.wikipedia.org/wiki/[^"]*"')
+                p = re.compile('<h2><a href="http://en.wikipedia.org/wiki/[^"]*"')
                 title = mention.substring
-                request = "http://www.bing.com/search?q=" + self.urlify(title) + "+site%3Aen.wikipedia.org"
+                request = Request("http://www.bing.com/search?q=" + self.urlify(title) + "+site%3Aen.wikipedia.org", headers={"Accept-Language": "en-US"})
                 response = urllib.request.urlopen(request)
+                response_text = response.read().decode('utf-8')
 
                 mention.candidate_entries = []
                 candidates = []
 
                 i = 0
-                for (letters) in p.findall(response.read().decode('utf-8')):
+                for (letters) in p.findall(response_text):
                     if(i<self.MAX_RESULS):
-                        candidates.append(letters[63:-1])
+                        candidates.append(letters[42:-1])
                         i += 1
                     else: break
 
@@ -63,6 +67,6 @@ class BingAnnotator(object):
 
 
     def save_cache(self):
-        if(self.cache_changed):
+        if(self.cache_changed and self.use_cache):
             output = open('bing_annotator_cache.pkl', 'wb')
             pickle.dump(self.cache, output)

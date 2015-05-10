@@ -86,7 +86,7 @@ class EntityLinker(object):
         for m in mentions:
             print(m.substring + ":")
             for c in m.candidate_entities:
-                print(str(c))
+                print(str(c) + " - " + str(c.prior_prob))
             print()
 
 

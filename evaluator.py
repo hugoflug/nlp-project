@@ -236,7 +236,7 @@ class Evaluator:
 
                 else:
                     nonPresentEntities += 1
-                    print("Entity unknown: '" + str(gold_mentions[i].candidate_entities[0]) + "' for '" + gold_mentions[i].substring + "'")
+                    print("Entity unknown: '" + str(str(gold_mentions[i].candidate_entities[0]).encode(errors='ignore')) + "' for '" + gold_mentions[i].substring + "'")
 
             #
             # Evaluate scoring

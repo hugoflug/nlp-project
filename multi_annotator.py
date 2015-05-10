@@ -44,7 +44,7 @@ class MultiAnnotator(object):
                         # If duplicate, just add on to prior_prob
                         if(c in mention.candidate_entities):
                             c2 = next(x for x in mention.candidate_entities if x == c)
-                            c.prior_prob += c2.prior_prob
+                            c2.prior_prob += c.prior_prob
                         else:
                             # Else just add the new candidate
                             mention.candidate_entities.append(c)

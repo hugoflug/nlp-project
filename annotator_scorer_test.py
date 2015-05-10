@@ -11,7 +11,7 @@ evaluator = Evaluator()
 
 wiki_annotator = WikipediaAnnotator()
 bing_annotator = BingAnnotator()
-annotator = MultiAnnotator(None, wiki_annotator, bing_annotator)
+annotator = MultiAnnotator(None, PriorProbabilityAnnotator(), wiki_annotator, bing_annotator)
 similarity = TagMeSimilarity()
 scorer = CandidateScorer(similarity.sim)
 
