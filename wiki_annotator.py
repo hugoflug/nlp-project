@@ -1,12 +1,21 @@
 from mention import Mention
 from entity import Entity
 import json
+import pickle
 import urllib.request
 import urllib.parse
+import copy
 
 class WikipediaAnnotator(object):
 
     """ Uses wikipedia API to come up with candidates to mentions """
+
+    MAX_RESULTS = 5
+
+    def __init__(self):
+        # Load file cache
+        self.cache = pickle.load(open('wikipedia_annotator_cache.pkl', 'rb'))
+        self.cache_changed = False
 
     def wikify(self, title):
         return title.replace(" ", "_")
@@ -19,8 +28,16 @@ class WikipediaAnnotator(object):
         to_remove = []
 
         for mention in mentions:
-            if len(mention.candidate_entities) < 5:
-                url = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srinfo=totalhits%7Csuggestion&srprop=wordcount%7Credirecttitle&srlimit=10&"
+
+            # If mention is in cache
+
+            if (mention.substring in self.cache):
+                mention.candidate_entities = copy.deepcopy(self.cache[mention.substring])
+            else:
+
+                # Else, go to wikipeda
+
+                url = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srinfo=totalhits%7Csuggestion&srprop=wordcount%7Credirecttitle&srlimit=" + str(self.MAX_RESULTS) + "&"
                 url += urllib.parse.urlencode({"srsearch" : mention.substring})
 
                 response = urllib.request.urlopen(url)
@@ -44,6 +61,14 @@ class WikipediaAnnotator(object):
 
                 if(not mention.candidate_entities): # If wikipedia didnt find anything, remove mention
                     to_remove.append(mention)
+                else:
+                    self.cache[mention.substring] = copy.deepcopy(mention.candidate_entities)
+                    self.cache_changed = True
 
         for obj in to_remove:
             mentions.remove(obj)
+
+    def save_cache(self):
+        if(self.cache_changed):
+            output = open('wikipedia_annotator_cache.pkl', 'wb')
+            pickle.dump(self.cache, output)

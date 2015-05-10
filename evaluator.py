@@ -41,7 +41,7 @@ class Evaluator:
 
                 # Read out query-text
                 query_text = query.getElementsByTagName("text")[0].firstChild.nodeValue
-                print("Query " + str(query_number) + " of " + str(number_of_queries) + ": " + query_text)
+                #print("Query " + str(query_number) + " of " + str(number_of_queries) + ": " + query_text)
                 query_number += 1
                 
                 # Read out the gold mentions and their annotations
@@ -168,11 +168,11 @@ class Evaluator:
 
             if(correct):
                 noCorrectSpotted += 1
-                s = "Correct:\t" + str(spots) + " <-> " + str(gold_mentions)
+                s = "Correct:\t" + str(spots) + " <-> " + str(gold_mentions) + "\t" + query_text
                 print(s)
             else:
                 noNotCorrectSpotted += 1
-                s = "Not correct:\t" + str(spots) + " <-> " + str(gold_mentions)
+                s = "Not correct:\t" + str(spots) + " <-> " + str(gold_mentions) + "\t" + query_text
                 print(s)
 
         # Evaluate each query
@@ -262,6 +262,8 @@ class Evaluator:
                     correctEntities += 1
                 else:
                     notCorrectEntities += 1
+
+            print("Evaluated query: " + str(noQueries))
 
         self.for_each_query(queries_file, evaluate_query)
 
