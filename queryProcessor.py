@@ -153,7 +153,7 @@ def main():
     sim = TagMeSimilarity()
     #spotter = GoldSpotter()
     #pruner = DumbPruner()
-    entity_linker = EntityLinker(similarity=sim, annotator=MultiAnnotator(None, wiki_annotator, bing_annotator))
+    entity_linker = EntityLinker(similarity=sim, annotator=MultiAnnotator(None, wiki_annotator))
     evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml")
     sim.save_cache() # save if we have any new similarities to cache on file
     bing_annotator.save_cache()

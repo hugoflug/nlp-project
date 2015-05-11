@@ -280,9 +280,36 @@ class Evaluator:
 
     def evaluatePruner(self, spotter, annotator, similarity, scorer, pruner, queries_file):
 
+        """ Only for queries where we spot "correct", that is, the queries where we spot AT LEAST the
+            spots that are in the GS """
+
+        def get_all_entities(mentions):
+            all_entities = []
+            for m in mentions:
+                all_entities.extend(m.candidate_entities)
+            return all_entities
+
+        def evaluate_spots(spots, gold_mentions):
+
+            # Check 
+            correct = True
+            for gold_mention in gold_mentions:
+                # Check if didn't found gold_mention
+                if(not [m for m in spots if m.substring == gold_mention.substring]):
+                    correct = False
+                    break
+
+            return correct
+
+        noQueries = 0
+
         def evaluateQuery(query_text, gold_mentions): 
             # Step 1: Find mentions
-            mentions = spotter.spot(query)
+            mentions = spotter.spot(query_text)
+
+            # If not "correctly spotted", skip this query
+            if not evaluate_spots(mentions, gold_mentions):
+               return
 
             # Step 2: Find candidates for the mentions (annotate the mentions)
             annotator.annotate(mentions)
@@ -294,16 +321,48 @@ class Evaluator:
             scorer.choose_candidates(mentions)
 
             # Find out which mentions should be pruned
+            mentions_before = mentions[:]
             should_prune = []
             for m in mentions:
                 # if it is not in gold, we should prune it
                 gold = [gm for gm in gold_mentions if gm.substring == m.substring]
-                if(m): # if not empty
-                    should_prune.append(m[0])
+                if(gold): # if not empty
+                    should_prune.append(m)
 
             # Step 4: Prune
-            pruner.prune(mentions, 0.1, similarity.sim)
+            pruner.prune(mentions, similarity.sim)
 
-            for m in mentions:
-                # Should this mention have been pruned?
-                should_be_pruned = len([m2 for m2 in should_prune if m2.substring == m.substring]) >= 0
+            nonlocal should_be_pruned, should_not_be_pruned, correctly_kept, correctly_pruned
+            
+            for m in mentions_before:
+                if m in mentions: # Did we keep it?
+                    if(m in should_prune): # Did we miss to prune it?
+                        should_be_pruned += 1
+                    else:
+                        correctly_kept += 1
+                else:
+                    if(m in should_prune): # Did we prune it correctly?
+                        correctly_pruned += 1
+                    else:
+                        should_not_be_pruned += 1
+
+            nonlocal noQueries
+            noQueries += 1
+            print("Evaluated query: " + str(noQueries))
+
+        should_be_pruned = 0            # Prunes we missed
+        should_not_be_pruned = 0        # Golds we shouldn't have pruned, but we did...
+        correctly_pruned = 0            # Correctly pruned
+        correctly_kept = 0              # Correctly not pruned
+
+        # Evaluate file
+        self.for_each_query(queries_file, evaluateQuery)
+
+        # Print results
+        tot = should_be_pruned + should_not_be_pruned + correctly_kept + correctly_pruned
+        print("Correctly pruned: " + str(correctly_pruned/tot) + " (" + str(correctly_pruned) + ")")
+        print("Correctly kept: " + str(correctly_kept/tot) + " (" + str(correctly_kept) + ")")
+        print("Should have been pruned: " + str(should_be_pruned/tot) + " (" + str(should_be_pruned) + ")")
+        print("Should not have been pruned: " + str(should_not_be_pruned/tot) + " (" + str(should_not_be_pruned) + ")")
+        print("")
+        print("Ratio: {0:.4f}".format((correctly_pruned+correctly_kept)/tot))

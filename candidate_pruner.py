@@ -2,7 +2,10 @@
 
 class CandidatePruner(object):
 
-    def prune(self, linked_mentions, theta, sim):
+    def __init__(self, theta = 0.1):
+        self.theta = theta
+
+    def prune(self, linked_mentions, sim):
         """Prunes entities that should be considered as general conceps rather than entities.
            Takes a list of Mention objects and prunes it.
            The first element in the candidate_entities list is counted as the chosen candidate.
@@ -20,6 +23,6 @@ class CandidatePruner(object):
 
             coherence /= len(mentions) -1
 
-            if coherence + m.link_prob/2 < theta:
+            if coherence + m.link_prob/2 < self.theta:
                 linked_mentions.remove(m)
 
