@@ -47,8 +47,8 @@ class Evaluator:
                 # Read out the gold mentions and their annotations
                 gold_mentions = []
                 annotations_xml = query.getElementsByTagName("annotation")
-                for annotation in annotations_xml:
-                    if annotation.getAttribute("main") == "true" and \
+                for annotation in annotations_xml:#annotation.getAttribute("main") == "true" and \
+                    if True and \
                         annotation.getElementsByTagName("span").length > 0 and \
                         annotation.getElementsByTagName("target").length > 0:
 
