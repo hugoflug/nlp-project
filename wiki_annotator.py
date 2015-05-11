@@ -13,10 +13,12 @@ class WikipediaAnnotator(object):
 
     MAX_RESULTS = 5
 
-    def __init__(self):
+    def __init__(self, r = 0.5):
         # Load file cache
         self.cache = pickle.load(open('wikipedia_annotator_cache.pkl', 'rb')) if os.path.exists('wikipedia_annotator_cache.pkl') else {}
         self.cache_changed = False
+
+        self.r = r # prior probability decay constant
 
     def wikify(self, title):
         return title.replace(" ", "_")
@@ -53,12 +55,12 @@ class WikipediaAnnotator(object):
                     res["query"]["search"] = res2["query"]["search"] + res["query"]["search"]
 
                 mention.candidate_entities = []
-                Z = len(res["query"]["search"])*(1+len(res["query"]["search"]))/2 # Normalization constant (arithmetic sum)
+                Z = (1 - self.r**len(res["query"]["search"]))/(1 - self.r) #  Normalization sum (Geometric sum)
 
-                i = len(res["query"]["search"])
+                i = 1
                 for entity_json in res["query"]["search"]:   
                     mention.candidate_entities.append(Entity(self.wikify(entity_json["title"]), i/Z))
-                    i -= 1
+                    i *= self.r
 
                 if(not mention.candidate_entities): # If wikipedia didnt find anything, remove mention
                     to_remove.append(mention)

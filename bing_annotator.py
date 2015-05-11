@@ -12,11 +12,13 @@ class BingAnnotator(object):
 
     MAX_RESULS = 5
 
-    def __init__(self, use_cache = True):
+    def __init__(self, use_cache = True, r = 0.5):
         # Load file cache
         self.cache = pickle.load(open('bing_annotator_cache.pkl', 'rb')) if os.path.exists('bing_annotator_cache.pkl') and use_cache else {}
         self.cache_changed = False
         self.use_cache = use_cache
+
+        self.r = r # prior probability decay ratio
 
     def urlify(self, title):
         return title.replace(" ", "%20")
@@ -51,10 +53,11 @@ class BingAnnotator(object):
                         i += 1
                     else: break
 
-                Z = len(candidates)*(1+len(candidates))/2 # Normalization constant (arithmetic sum)
+                Z = (1 - self.r**i)/(1 - self.r) #  Normalization sum (Geometric sum)
+                i = 1
                 for c in candidates:
                     mention.candidate_entities.append(Entity(c, i/Z))
-                    i -= 1
+                    i *= self.r
             
                 if(not mention.candidate_entities): # If bing didnt find anything, remove mention
                     to_remove.append(mention)
