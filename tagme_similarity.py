@@ -15,8 +15,6 @@ class TagMeSimilarity(object):
         """ Loads all pairwise similarities between the given entities for fast access later.
             Takes a list of Entity objects. """
 
-        #cache = {}
-
         def flush():
             nonlocal buffer, url_est_len
             # Build URL

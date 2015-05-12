@@ -22,7 +22,7 @@ class MultiAnnotator(object):
         empty_mentions = copy.deepcopy(mentions)
 
         for i in range(len(self.annotators)):
-            mentions_ = copy.deepcopy(mentions)
+            mentions_ = copy.deepcopy(empty_mentions)
 
             # Annotate all mentions using this annotator
             self.annotators[i].annotate(mentions_)
@@ -35,8 +35,6 @@ class MultiAnnotator(object):
             # Add candidates to original mentions object, and check for duplicates
             for mention in mentions:
 
-                print(mention.substring)
-                
                 mention_ = [m for m in mentions_ if m.substring == mention.substring]
                 if(len(mention_) > 0): # If any entities were found, otherwise the mention is removed
                     mention_ = mention_[0]
@@ -46,7 +44,7 @@ class MultiAnnotator(object):
                         # If duplicate, just add on to prior_prob
                         if(c in mention.candidate_entities):
                             c2 = next(x for x in mention.candidate_entities if x == c)
-                            c.prior_prob += c2.prior_prob
+                            c2.prior_prob += c.prior_prob
                         else:
                             # Else just add the new candidate
                             mention.candidate_entities.append(c)

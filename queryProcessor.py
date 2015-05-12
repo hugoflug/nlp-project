@@ -9,6 +9,10 @@ import tagme_annotator
 from entity_linker import EntityLinker
 from tagme_similarity import TagMeSimilarity
 from mention import Mention
+from bing_annotator import BingAnnotator
+from wiki_annotator import WikipediaAnnotator
+from multi_annotator import MultiAnnotator
+from pp_annotator import PriorProbabilityAnnotator
 
 def evaluate(annotator_func, test_set):
     """
@@ -144,12 +148,16 @@ def main():
 
     print("\nNEW ANNOTATOR (DEV-SET):")
     print("***********************\n")
+    bing_annotator = BingAnnotator()
+    wiki_annotator = WikipediaAnnotator()
     sim = TagMeSimilarity()
-    spotter = GoldSpotter()
-    pruner = DumbPruner()
-    entity_linker = EntityLinker(similarity=sim)
+    #spotter = GoldSpotter()
+    #pruner = DumbPruner()
+    entity_linker = EntityLinker(similarity=sim, annotator=MultiAnnotator(None, wiki_annotator))
     evaluator.evaluate(entity_linker.annotate, "query-data-dev-set.xml")
     sim.save_cache() # save if we have any new similarities to cache on file
+    bing_annotator.save_cache()
+    wiki_annotator.save_cache()
     
     """
     print("\nTAGME ANNOTATOR (DEV-SET):")

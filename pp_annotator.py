@@ -17,7 +17,7 @@ class PriorProbabilityAnnotator(object):
             rest = match[1].split(" ")
             prob = float(rest[1])
 
-            if prob < 0.01 and words in prior_probs:
+            if prob < 0.01: #and words in prior_probs:
                 continue
 
             entity = rest[0]
@@ -43,6 +43,12 @@ class PriorProbabilityAnnotator(object):
         for mention in mentions:
             if mention.substring in self.prior_probs:
                 mention.candidate_entities = self.prior_probs[mention.substring]
+
+                # Normalize pp to 1.0
+                s = sum([c.prior_prob for c in mention.candidate_entities])
+                if s > 0:
+                    for c in mention.candidate_entities:
+                        c.prior_prob /= s
             else:
                 to_remove.append(mention)
 

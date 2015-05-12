@@ -64,7 +64,7 @@ class EntityLinker(object):
             self.print_candidates(mentions)
 
         # Step 4: Prune
-        self.pruner.prune(mentions, 0.1, self.similarity.sim)
+        self.pruner.prune(mentions, self.similarity.sim)
 
         if debug:
             print(" ---- AFTER PRUNING ENTITIES --------\n")
@@ -86,7 +86,7 @@ class EntityLinker(object):
         for m in mentions:
             print(m.substring + ":")
             for c in m.candidate_entities:
-                print(str(c))
+                print(str(c) + " - " + str(c.prior_prob))
             print()
 
 

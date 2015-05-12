@@ -22,4 +22,9 @@ class TagMeSpotter:
         for spot_info in res["spots"]:
             spots.append(Mention(spot_info["spot"].lower(), float(spot_info["lp"])))
 
+        # TEMP HACK:
+        # if just one word => spot
+        if(not spots and len(query.split(" ")) == 1):
+            spots.append(Mention(query, 1.0))
+
         return spots
