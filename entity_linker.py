@@ -22,7 +22,7 @@ def main():
         query = input().strip()
 
         # Annotate
-        entity_linker.annotate(query, True)
+        print(entity_linker.annotate(query, False))
 
 
 class EntityLinker(object):
