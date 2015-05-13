@@ -1,530 +1,528 @@
-Correct:	['google'] <-> ['google']
-Correct:	['disneyland', 'special'] <-> ['disneyland']
-Correct:	['disneyland'] <-> ['disneyland']
-Correct:	['anchors', 'resign', 'on air', 'air'] <-> ['anchors']
-Correct:	['Anchors', 'resign', 'on air', 'air'] <-> ['Anchors']
-Correct:	['dirty jobs', 'canceled'] <-> []
-Correct:	['google'] <-> ['google']
-Correct:	['msn.com'] <-> []
-Correct:	['American girl dolls'] <-> []
-Not correct:	['New York', 'New York American', 'American Girl dolls', 'price'] <-> ['American Girl']
-Not correct:	['New York', 'New York American', 'American Girl dolls', 'cost'] <-> ['American Girl']
-Not correct:	['American Girl dolls', 'cost'] <-> ['American Girl']
-Not correct:	['American Girl doll', 'retail', 'retail price', 'price'] <-> ['American Girl']
-Not correct:	['American Girl doll', 'wiki'] <-> ['American Girl']
-Correct:	['American Girl', 'wiki'] <-> ['American Girl']
-Not correct:	['hunnington', 'ingalls'] <-> ['hunnington ingalls']
-Not correct:	['karl rove', 'bad', 'night'] <-> ["karl rove's"]
-Not correct:	['winter storm', 'athena'] <-> ['winter storm athena']
-Correct:	['jasper fforde', 'chronology'] <-> ['jasper fforde']
-Correct:	['jasper fforde', 'questions answers'] <-> ['jasper fforde']
-Not correct:	['jasper fforde', 'thursday next'] <-> ['"thursday next"']
-Correct:	['Irving Berlin', 'birthplace'] <-> ['Irving Berlin']
-Correct:	['Irving Berlin', 'list of songs'] <-> ['Irving Berlin']
-Correct:	['Irving Berlin', 'complete', 'list of songs'] <-> ['Irving Berlin']
-Correct:	['complete', 'list of songs', 'Irving Berlin'] <-> []
-Correct:	['langham creek high school'] <-> ['langham creek high school']
-Not correct:	['indexed annuity', 'pros cons', 'cons'] <-> ['indexed']
-Not correct:	['indexed annuity', 'rating'] <-> ['indexed']
-Correct:	['gun violence', 'USA'] <-> []
-Correct:	['gun violence', 'US college', 'college campus', 'campus'] <-> []
-Correct:	['gun violence', 'US', 'campus'] <-> ['gun violence']
-Correct:	['types', 'gun', 'violent', 'events'] <-> ['gun']
-Not correct:	['french lick', 'resort', 'casino'] <-> ['french lick resort and casino']
-Not correct:	['french lick', 'resort', 'casino', 'discounts'] <-> ['french lick resort and casino']
-Correct:	['effects', 'Eurozone', 'Eurozone crisis', 'national', 'economic indicators', 'unemployment', 'GDP', 'public debt', 'etc'] <-> []
-Correct:	['president of the united states', 'email'] <-> ['president of the united states']
-Correct:	['president of the united states', 'contact'] <-> ['president of the united states']
-Not correct:	['policies', 'addressing', 'economic', 'europe'] <-> ['Europe']
-Correct:	['EUROPEAN UNION', 'ECONOMIC CRISIS'] <-> []
-Correct:	['EUROPEAN UNION', 'ECONOMIC CRISIS" greece', 'greece'] <-> ['greece']
-Correct:	['EUROPEAN UNION', 'ECONOMIC CRISIS', 'portugal'] <-> ['portugal']
-Correct:	['EUROPEAN UNION', 'ECONOMIC CRISIS', 'spain'] <-> ['spain']
-Correct:	['pseudocyesis'] <-> ['pseudocyesis']
-Correct:	['pseudocyesis', 'psychology'] <-> ['pseudocyesis']
-Correct:	['student', 'mitchell college'] <-> ['mitchell college']
-Correct:	['mitchell college'] <-> ['mitchell college']
-Correct:	['Philadelphia', 'attractions'] <-> ['attractions']
-Correct:	['samsung'] <-> ['samsung']
-Correct:	['windows 2000', 'sp4'] <-> []
-Correct:	['pa', 'child support'] <-> []
-Correct:	['midwives'] <-> ['midwives']
-Correct:	['candidate', 'killed', 'storm'] <-> ['candidate']
-Correct:	['dinosaurs'] <-> ['dinosaurs']
-Correct:	['dinosaurs', 'pics'] <-> ['dinosaurs']
-Not correct:	['getting', 'office'] <-> ['organized', 'office']
-Correct:	['container store'] <-> ['container store']
-Correct:	['silicon', 'roof coating'] <-> ['roof coating']
-Correct:	['silicon', 'roof coating'] <-> []
-Correct:	['silicon', 'roof coating', 'tutorial'] <-> []
-Correct:	['roof coating', 'tutorial'] <-> ['tutorial']
-Correct:	['roof coating', 'solutions'] <-> []
-Correct:	['roof coating', 'lower', 'temperature'] <-> ['temperature']
-Correct:	['glock', 'green laser', 'laser'] <-> []
-Correct:	['new release', 'dvd'] <-> ['new release']
-Correct:	['amazon'] <-> ['amazon']
-Correct:	['sirius xm'] <-> ['sirius xm']
-Correct:	['pnc', 'online banking'] <-> ['pnc']
-Correct:	['paypal'] <-> ['paypal']
-Correct:	['burger king'] <-> ['burger king']
-Correct:	['victoria s secret'] <-> ['victoria s secret']
-Correct:	['lowes'] <-> ['lowes']
-Correct:	['kmart'] <-> ['kmart']
-Correct:	['big lots'] <-> ['big lots']
-Correct:	['gas', 'grills'] <-> ['grills']
-Correct:	['big kahuna', 'beach chair'] <-> ['beach chair']
-Correct:	['beach chair'] <-> ['beach chair']
-Correct:	['rio', 'beach chair'] <-> ['beach chair']
-Correct:	['hautelook'] <-> ['hautelook']
-Correct:	['expedia'] <-> ['expedia']
-Correct:	['bath and body works'] <-> ['bath and body works']
-Correct:	['disney store'] <-> ['disney store']
-Correct:	['sephora'] <-> ['sephora']
-Correct:	['ulta'] <-> ['ulta']
-Correct:	['power', 'bright', 'inverters'] <-> []
-Correct:	['natural gas', 'bbq', 'conversion'] <-> ['natural gas']
-Correct:	['heart attack'] <-> []
-Correct:	['heart attack', 'treatment'] <-> []
-Not correct:	['heart disease'] <-> ['heart']
-Correct:	['target stores'] <-> ['target stores']
-Correct:	['roku', 'remote', 'working'] <-> ['roku']
-Correct:	['amc', 'stubs', 'promo code'] <-> ['amc']
-Not correct:	['man of steel'] <-> ['man of steel 2013']
-Not correct:	['man of steel', 'shirtless'] <-> ['man of steel shirtless']
-Correct:	['google translate'] <-> ['google translate']
-Correct:	['facebook', 'facebook.com'] <-> []
-Correct:	['usc', 'shooting'] <-> []
-Correct:	['trendy', 'short', 'hairstyles'] <-> ['hairstyles']
-Correct:	['trendy', 'hairstyles'] <-> ['hairstyles']
-Correct:	['poker', 'poker tournaments'] <-> ['poker tournaments']
-Correct:	['texas hold em'] <-> ['texas hold em']
-Correct:	['mexican', 'mayor', 'killed'] <-> ['mayor']
-Correct:	['solar panels'] <-> ['solar panels']
-Correct:	['solar panels', 'nano-technology'] <-> ['solar panels', 'nano-technology']
-Correct:	['gun control', 'opinions'] <-> ['gun control']
-Correct:	['gun control', 'us government'] <-> ['gun control']
-Correct:	['gun control', 'current affairs'] <-> ['gun control']
-Correct:	['gun violence us'] <-> ['gun violence us']
-Not correct:	['law', 'law center', 'center', 'gun violence'] <-> ['law center to prevent gun violence']
-Not correct:	['rover', 'big', 'discovery'] <-> ["rover's"]
-Correct:	['fried rice', 'recipes'] <-> ['fried rice']
-Correct:	['rice', 'recipes'] <-> ['rice']
-Correct:	['history', 'crossword', 'crossword puzzles'] <-> ['crossword puzzles']
-Not correct:	['history', 'games'] <-> ['games', 'history games']
-Not correct:	['malaria', 'impact', 'economy africa'] <-> ['africa']
-Not correct:	['malaria', 'economy africa'] <-> ['africa']
-Correct:	['malaria', 'economy'] <-> ['malaria']
-Correct:	['malaria', 'donations'] <-> ['malaria']
-Correct:	['half price books'] <-> ['half price books']
-Correct:	['imdb'] <-> ['imdb']
-Correct:	['little', 'treasures', 'sale', 'louisville', 'louisville ky'] <-> []
-Correct:	['baby boy', 'names'] <-> []
-Correct:	['History', 'FISA'] <-> ['FISA']
-Correct:	['FISA', 'wiretap', 'applications'] <-> []
-Not correct:	['FISA', 'judges', 'term'] <-> ['FISA judges']
-Not correct:	['cal', 'dmv'] <-> ['cal dmv']
-Not correct:	['eden', 'edge'] <-> ["eden's edge"]
-Correct:	['yahoo! mail'] <-> ['yahoo! mail']
-Correct:	['nook'] <-> ['nook']
-Correct:	['nordstrom'] <-> ['nordstrom']
-Correct:	['yahoo! news'] <-> ['yahoo! news']
-Not correct:	['joseph', 'steffen'] <-> ['joseph steffen']
-Not correct:	['joseph', 'steffen'] <-> ['joseph steffen']
-Not correct:	['joseph', 'steffen', 'wikipedia'] <-> ['joseph steffen wikipedia']
-Not correct:	[] <-> ['menorraghia']
-Correct:	['heavy', 'periods', 'operation'] <-> ['operation']
-Correct:	['lung cancer'] <-> ['lung cancer']
-Correct:	['heidi klum'] <-> []
-Correct:	['home depot center'] <-> ['home depot center']
-Correct:	['head lice'] <-> ['head lice']
-Correct:	['bbt', 'on line banking'] <-> ['bbt']
-Correct:	['tea tree oil'] <-> ['tea tree oil']
-Correct:	['tea tree oil', 'shampoo'] <-> ['shampoo']
-Correct:	['tea tree oil', 'shampoo', 'lice'] <-> ['lice']
-Correct:	['youtube', 'video'] <-> ['youtube']
-Correct:	['innovation'] <-> ['innovation']
-Not correct:	['com'] <-> ['stagestores.com']
-Not correct:	['new york times', 'new york times square', 'times square church'] <-> ['new york times square church']
-Correct:	['google'] <-> []
-Correct:	['oovoo'] <-> []
-Correct:	['virginia', 'tattoos'] <-> ['tattoos']
-Correct:	['lance armstrong', 'effigy'] <-> ['lance armstrong']
-Correct:	['pocono mountains', 'region'] <-> ['pocono mountains']
-Correct:	['pocono mountains', 'region', 'things', 'do'] <-> ['pocono mountains']
-Correct:	['pocono mountains', 'region'] <-> ['pocono mountains']
-Correct:	['pocono mountains', 'region', 'national park'] <-> ['pocono mountains']
-Correct:	['genting', 'awana', 'hotel'] <-> []
-Correct:	['bus'] <-> ['bus']
-Correct:	['pdf', 'converter'] <-> ['converter']
-Correct:	['pdf', 'converter', 'online'] <-> ['converter']
-Correct:	['adobe pdf', 'converter'] <-> ['converter']
-Correct:	['adobe pdf', 'converter', 'printer'] <-> ['converter']
-Correct:	['adobe pdf', 'converter', 'downloads'] <-> ['converter']
-Correct:	['free', 'adobe pdf', 'converter'] <-> ['converter']
-Correct:	['free', 'adobe pdf', 'converter', 'downloads'] <-> ['converter']
-Correct:	['adobe pdf', 'converter', 'free', 'free download', 'download'] <-> ['converter']
-Correct:	['adobe pdf', 'converter', 'driver'] <-> ['converter']
-Correct:	['adobe pdf', 'converter', 'word'] <-> ['converter']
-Correct:	['google'] <-> ['google']
-Correct:	['google maps'] <-> ['google maps']
-Correct:	['google search'] <-> ['google search']
-Correct:	['google', 'google map'] <-> ['google map']
-Correct:	['paradigm', 'mall', 'kelana jaya'] <-> []
-Correct:	['paradigm', 'mall', 'facebook'] <-> []
-Correct:	['paradigm', 'mall', 'gsc'] <-> []
-Correct:	['paradigm', 'mall kuala lumpur'] <-> []
-Correct:	['paradigm', 'mall', 'malaysia'] <-> []
-Correct:	['gsc'] <-> ['gsc']
-Correct:	['free online games'] <-> []
-Correct:	['lunette', 'menstrual cup'] <-> []
-Correct:	['laxatives'] <-> ['laxatives']
-Correct:	['firefox'] <-> []
-Correct:	['dehumidifier', 'good'] <-> []
-Correct:	['dehumidifier', 'good', 'uk'] <-> []
-Not correct:	['www', 'cnn', 'cnn news'] <-> ['www.cnn news']
-Not correct:	['unsecured', 'no credit', 'credit check', 'loans'] <-> ['unsecured no credit check loans']
-Correct:	['Dulles airport'] <-> ['Dulles airport']
-Correct:	['toys r us'] <-> ['toys r us']
-Correct:	['new york state lottery'] <-> ['new york state lottery']
-Not correct:	['ny', 'ny state', 'state lottery'] <-> ['ny state lottery']
-Correct:	['notebook'] <-> ['notebook']
-Correct:	['google maps'] <-> ['google maps']
-Correct:	['injuries', 'forearm', 'pain'] <-> []
-Correct:	['forearm', 'pain'] <-> []
-Not correct:	[] <-> ['firfox']
-Correct:	['diet', 'exercise', 'fitness'] <-> ['fitness']
-Correct:	['fitness', 'wiki'] <-> ['fitness']
-Correct:	['wikipedia'] <-> ['wikipedia']
-Correct:	['paleo diet'] <-> ['paleo diet']
-Not correct:	['keto', 'diet'] <-> ['keto diet']
-Correct:	['keto', 'diet', 'wikipedia'] <-> []
-Correct:	['exercises', 'fitness'] <-> ['fitness']
-Not correct:	['how to', 'get fit', 'safely'] <-> ['fit']
-Correct:	['hugh grant'] <-> ['hugh grant']
-Correct:	['horse hooves'] <-> ['horse hooves']
-Correct:	['horse hooves', 'anatomy'] <-> ['horse hooves']
-Not correct:	['internet phone', 'services'] <-> ['internet phone services']
-Not correct:	['internet phone', 'services', 'review'] <-> ['internet phone services review']
-Not correct:	['guide', 'internet phone', 'services'] <-> ['guide', 'internet phone services']
-Correct:	['voip', 'providers'] <-> ['voip']
-Correct:	['how to', 'quit smoking', 'smoking'] <-> ['quit smoking']
-Not correct:	['smoking', 'side'] <-> ['side effecs']
-Correct:	['smoking', 'side effects'] <-> ['side effects']
-Not correct:	['smoking', 'hypnosis'] <-> ['quiting smoking', 'hypnosis']
-Not correct:	['smoking', 'help'] <-> ['quiting smoking']
-Correct:	['websters dictionary'] <-> ['websters dictionary']
-Correct:	['sales interview', 'questions'] <-> ['sales interview']
-Correct:	['gmail', 'login'] <-> ['gmail']
-Correct:	['monster.com'] <-> ['monster.com']
-Correct:	['google.com'] <-> ['google.com']
-Correct:	['purchasing'] <-> ['purchasing']
-Correct:	['yahoo', 'mexico'] <-> []
-Correct:	['twitter'] <-> ['twitter']
-Correct:	['twitter', 'twitter com', 'tweets'] <-> ['twitter']
-Correct:	['google search'] <-> []
-Not correct:	[] <-> ['thepost']
-Correct:	['cvs'] <-> ['cvs']
-Correct:	['linkedin'] <-> ['linkedin']
-Correct:	['sphinx', 'destruction'] <-> ['sphinx']
-Correct:	['recipes', 'swahili', 'cusine'] <-> ['recipes']
-Not correct:	['wikipedia', 'kenya'] <-> ['wikipedia kenya']
-Correct:	['billy scott', 'dies'] <-> ['billy scott']
-Correct:	['gun shop', 'myrtle beach sc'] <-> []
-Correct:	['gun shops', 'myrtle beach sc'] <-> []
-Correct:	['glock g21', 'for sale', 'sale'] <-> []
-Correct:	['captain', 'george', 'myrtle beach'] <-> []
-Correct:	['rye bread', 'wheat'] <-> ['rye bread']
-Correct:	['greenland', 'high school', 'new hampshire'] <-> ['high school']
-Correct:	['greenland', 'high school', 'new hampshire'] <-> ['high school']
-Correct:	['greenland', 'high school'] <-> ['high school']
-Not correct:	['US tax code', '403'] <-> ['403 (b)']
-Not correct:	['US tax code', '403', 'eligibility'] <-> ['403 (b)']
-Correct:	['purpose driven life', 'warren'] <-> ['purpose driven life']
-Correct:	['obama', 'mccain', 'debate'] <-> ['debate']
-Correct:	['romania'] <-> ['romania']
-Correct:	['youtube'] <-> ['youtube']
-Correct:	['red giant'] <-> ['red giant']
-Correct:	['jpac'] <-> ['jpac']
-Correct:	['best', 'us', 'destinations'] <-> ['us']
-Correct:	['distance', 'new york', 'boston'] <-> ['distance']
-Not correct:	['maps', 'bing.com'] <-> ['maps.bing.com']
-Correct:	['maps'] <-> ['maps']
-Correct:	['bing maps'] <-> ['bing maps']
-Correct:	['hartford', 'tourism'] <-> ['hartford']
-Correct:	['hartford', 'visitors'] <-> ['hartford']
-Not correct:	['hartford connecticut', 'tourism'] <-> ['hartford']
-Correct:	['hartford', 'boston', 'travel'] <-> ['travel']
-Correct:	['boston', 'tourism'] <-> ['boston']
-Correct:	['nyc', 'tourism'] <-> ['nyc']
-Correct:	['philadelphia', 'nyc', 'distance'] <-> ['distance']
-Correct:	['philadelphia', 'washington dc', 'distance'] <-> ['distance']
-Correct:	['philadelphia', 'tourism'] <-> []
-Correct:	['washington dc', 'tourism'] <-> []
-Correct:	['philadelphia', 'nyc', 'travel'] <-> ['travel']
-Correct:	['philadelphia', 'nyc', 'train'] <-> ['train']
-Correct:	['philadelphia', 'nyc', 'bus'] <-> ['bus']
-Correct:	['lolo jones', 'world cup'] <-> ['lolo jones']
-Correct:	['w.c.handy'] <-> ['w.c.handy']
-Not correct:	['town of williamstown', 'williamstown vt'] <-> ['williamstown']
-Not correct:	['pumpkin muffins', 'recipe'] <-> ['muffins']
-Correct:	['uitm', 'jengka'] <-> []
-Correct:	['water turbines'] <-> ['water turbines']
-Correct:	['water turbines', 'relation', 'newtons law'] <-> ['water turbines']
-Correct:	['water turbines', 'fossil', 'fossil fuels'] <-> ['water turbines']
-Correct:	['water turbines', 'electricity generation', 'cost', 'kWh'] <-> ['water turbines']
-Correct:	['water turbines', 'types'] <-> ['water turbines']
-Correct:	['comparison', 'water turbine', 'types'] <-> ['water turbine']
-Correct:	['highland', 'bakery', 'buckhead'] <-> []
-Correct:	['google'] <-> ['google']
-Not correct:	['espn', 'nba finals', 'highlights'] <-> ['nba finals', 'nba']
-Not correct:	['nba finals', 'highlights'] <-> ['nba finals', 'nba']
-Correct:	['Kursk', 'Kursk submarine', 'submarine'] <-> ['Kursk submarine']
-Correct:	['Kursk', 'Kursk submarine', 'submarine', 'politics'] <-> ['Kursk submarine']
-Correct:	['resting heart rate', 'heart rate'] <-> ['resting heart rate']
-Correct:	['heart rate', 'blood pressure', 'cholesterol'] <-> ['heart rate', 'blood pressure', 'cholesterol']
-Correct:	['earthquake', 'hits', 'japan'] <-> ['earthquake']
-Correct:	['yahoo mail'] <-> ['yahoo mail']
-Correct:	['iphone'] <-> ['iphone']
-Correct:	['iphone 5'] <-> ['iphone 5']
-Correct:	['jim mora'] <-> ['jim mora']
-Correct:	['yahoo! mail'] <-> ['yahoo! mail']
-Correct:	['Yahoo! Mail'] <-> ['Yahoo! Mail']
-Correct:	['yahoo', 'login'] <-> ['yahoo']
-Correct:	['yahoo mail', 'login'] <-> ['yahoo mail']
-Correct:	['check', 'my yahoo', 'yahoo mail'] <-> ['yahoo mail']
-Correct:	['yahoo', 'london'] <-> ['yahoo']
-Correct:	['yahoo', 'long distance'] <-> ['yahoo']
-Correct:	['yahoo'] <-> ['yahoo']
-Correct:	['fourth', 'wedding anniversary', 'anniversary gift'] <-> ['wedding anniversary']
-Not correct:	['travis'] <-> ['travis poter']
-Correct:	['google'] <-> []
-Correct:	['combat boots', 'women'] <-> []
-Correct:	['att.com'] <-> []
-Not correct:	['web hosting', 'hosting services', 'small business'] <-> ['web hosting services']
-Correct:	['web hosting'] <-> ['web hosting']
-Correct:	['google images'] <-> ['google images']
-Correct:	['google'] <-> ['google']
-Correct:	['moviefone'] <-> ['moviefone']
-Correct:	['soccer'] <-> []
-Correct:	['lowes.com'] <-> ['lowes.com']
-Correct:	['lowes'] <-> ['lowes']
-Correct:	['zero hedge'] <-> ['zero hedge']
-Correct:	['pacific', 'mailorder', 'christchurch'] <-> []
-Correct:	['sample tube', 'sealing'] <-> ['sealing']
-Correct:	['sample tube', 'sealing', 'services'] <-> ['services']
-Correct:	['sample tube', 'sealing', 'expert'] <-> ['expert']
-Correct:	['self-regulating', 'house', 'temperature'] <-> ['temperature']
-Not correct:	['passive solar', 'solar cooling'] <-> ['passive solar cooling']
-Correct:	['passive solar', 'solar cooling', 'uk'] <-> ['uk']
-Correct:	['radiant barrier'] <-> ['radiant barrier']
-Correct:	['radiant barrier', 'uk'] <-> ['uk']
-Correct:	['facebook', 'sign', 'up'] <-> ['facebook']
-Correct:	['obama', 'gun control'] <-> ['obama', 'gun control']
-Correct:	['gun control', 'laws', 'obama'] <-> ['gun control', 'obama']
-Correct:	['training', 'management'] <-> ['training']
-Correct:	['training', 'management', 'hotels'] <-> ['training']
-Correct:	['training', 'management', 'benefits'] <-> ['training']
-Correct:	['why', 'training', 'management', 'benefits'] <-> ['training']
-Not correct:	['why', 'management studies', 'benefits'] <-> ['management']
-Not correct:	['why', 'management studies', 'benefits'] <-> ['management']
-Correct:	['qualifications', 'management', 'degree'] <-> ['management']
-Correct:	['degree', 'hotel management'] <-> ['degree']
-Correct:	['why', 'internet phone service'] <-> []
-Correct:	['why', 'internet phone service'] <-> []
-Correct:	['2005 presidential election', 'Egypt'] <-> []
-Correct:	['2005 presidential election', 'Egypt', 'forgery'] <-> []
-Correct:	['2005 presidential election', 'Egypt', 'poster', 'cost'] <-> []
-Correct:	['us map'] <-> ['us map']
-Correct:	['us map', 'states', 'capitals'] <-> ['states', 'capitals']
-Correct:	['State university of new york', 'bioinformatics'] <-> ['State university of new york', 'bioinformatics']
-Correct:	['State university of new york'] <-> ['State university of new york']
-Correct:	['silicone', 'roof coating', 'alternatives', 'cooling'] <-> ['cooling']
-Correct:	['silicone', 'roof coating', 'alternatives'] <-> []
-Correct:	['bobby hebert', 'booted'] <-> ['bobby hebert']
-Correct:	['loretta swit', 'turns'] <-> ['loretta swit']
-Correct:	['mariano rivera', 'decision'] <-> ['mariano rivera']
-Correct:	['legality', 'alcohol', 'marijuana'] <-> ['alcohol', 'marijuana']
-Correct:	['legality', 'alcohol', 'marijuana', 'history'] <-> ['alcohol', 'marijuana']
-Correct:	['legality', 'alcohol', 'history'] <-> ['alcohol']
-Not correct:	['legality', 'alcohol', 'history'] <-> ['alcohol', 'maijuana']
-Correct:	['legality', 'alcohol', 'history', 'marijuana'] <-> ['alcohol', 'marijuana']
-Correct:	['why', 'marijuana', 'illegal'] <-> ['marijuana']
-Not correct:	['marijuana', 'your health', 'health', 'alcohol'] <-> ['marijuana', 'alcohol?']
-Correct:	['god', 'god does not exist'] <-> ['god']
-Correct:	['liverpool news'] <-> ['liverpool news']
-Correct:	['liverpool news', 'now'] <-> ['liverpool news']
-Correct:	['cate blanchett'] <-> ['cate blanchett']
-Correct:	['Cate Blanchett'] <-> ['Cate Blanchett']
-Correct:	['american', 'american standard', 'toilet'] <-> []
-Correct:	['toilet'] <-> ['toilet']
-Correct:	['texas', 'texas secession', 'secession'] <-> ['texas secession']
-Correct:	['fitness', 'regime'] <-> ['regime']
-Correct:	['running', 'half marathon'] <-> ['half marathon']
-Correct:	['orange county convention center'] <-> ['orange county convention center']
-Correct:	['orange county convention center', 'events'] <-> ['orange county convention center']
-Not correct:	['mitchell college', 'college athletics', 'athletics'] <-> ['mitchell college athletics']
-Correct:	['mitchell college', 'college admissions'] <-> ['mitchell college']
-Not correct:	['microsoft', 'tablet', 'surface'] <-> ['microsoft tablet', 'surface']
-Correct:	['black powder', 'ammunition'] <-> ['black powder']
-Correct:	['wikipedia', 'black powder'] <-> ['black powder']
-Correct:	['black powder', 'inventor'] <-> ['black powder']
-Correct:	['Kansas', 'attractions'] <-> ['Kansas']
-Correct:	['VOIP'] <-> ['VOIP']
-Correct:	['VOIP', 'lietuva'] <-> []
-Correct:	['VOIP', 'lietuva'] <-> []
-Correct:	['ip'] <-> []
-Correct:	['ip'] <-> []
-Correct:	['ip', 'kaunas'] <-> []
-Correct:	['ip'] <-> []
-Correct:	['ip'] <-> []
-Correct:	['voip'] <-> []
-Correct:	['honda pilot'] <-> ['honda pilot']
-Correct:	['future', 'honda pilot'] <-> ['honda pilot']
-Correct:	['future', 'honda pilot'] <-> ['honda pilot']
-Correct:	['dwts', 'elimination'] <-> ['dwts']
-Correct:	['asthma'] <-> ['asthma']
-Correct:	['hotmail'] <-> ['hotmail']
-Correct:	['hot'] <-> ['hot']
-Correct:	['merrill'] <-> ['merrill']
-Correct:	['merrill lynch', 'online'] <-> ['merrill lynch']
-Correct:	['designer dogs'] <-> ['designer dogs']
-Correct:	['designer dogs', 'types'] <-> []
-Correct:	['employee', 'fraud', 'recession'] <-> ['fraud']
-Correct:	['recession', 'employee', 'fraud'] <-> ['fraud']
-Correct:	['employee', 'fraud', 'best practice'] <-> ['fraud']
-Correct:	['employee', 'fraud', 'best practice'] <-> ['fraud']
-Correct:	['fabric', 'glue'] <-> ['glue']
-Correct:	['fabric', 'adhesive'] <-> ['adhesive']
-Correct:	['portland'] <-> ['portland']
-Not correct:	['infinity', 'dish'] <-> ['infinity dish']
-Correct:	['flame', 'pics'] <-> ['flame']
-Correct:	['flames', 'decals'] <-> ['decals']
-Correct:	['best', 'penpal'] <-> ['penpal']
-Correct:	['anne hathaway'] <-> ['anne hathaway']
-Correct:	['Anne Hathaway'] <-> ['Anne Hathaway']
-Correct:	['dooney and bourke', 'imitations'] <-> ['dooney and bourke']
-Correct:	['dooney and bourke', 'replicas'] <-> ['dooney and bourke']
-Correct:	['dooney and bourke', 'replicas', 'makers'] <-> ['dooney and bourke']
-Not correct:	['solo', 'husband', 'jail'] <-> ["solo's"]
-Correct:	['facebook'] <-> []
-Correct:	['craigslist'] <-> ['craigslist']
-Correct:	['lakers', 'rumors'] <-> ['lakers']
-Not correct:	['cal', 'lottery'] <-> ['cal lottery']
-Correct:	['workplace diversity'] <-> ['workplace diversity']
-Correct:	['diversity training'] <-> ['diversity training']
-Correct:	['zig ziglar', 'dies'] <-> ['zig ziglar']
-Correct:	['patent application'] <-> ['patent application']
-Correct:	['the current'] <-> ['the current']
-Correct:	['the current', 'jersey'] <-> ['the current']
-Correct:	['facebook'] <-> ['facebook']
-Correct:	['freshman', 'player', 'dies'] <-> ['player']
-Correct:	['philippine daily inquirer'] <-> ['philippine daily inquirer']
-Correct:	['cinque terre', 'accommodation'] <-> ['cinque terre']
-Correct:	['women', 'minorities', 'percentage', 'setting'] <-> ['minorities']
-Correct:	['numbers', 'women', 'minorities', 'workplace'] <-> ['minorities']
-Correct:	['nicholas hoult'] <-> ['nicholas hoult']
-Correct:	['trust'] <-> ['trust']
-Correct:	['attorney at law'] <-> ['attorney at law']
-Correct:	['st joseph university', 'philadelphia', 'philadelphia pa'] <-> ['st joseph university']
-Correct:	['amazon', 'black friday'] <-> ['amazon']
-Correct:	['sheen'] <-> ['sheen']
-Correct:	['Sheen'] <-> ['Sheen']
-Correct:	['camacho', 'funeral', 'brawl'] <-> ['camacho']
-Correct:	['reserve', 'orange county convention center'] <-> ['orange county convention center']
-Correct:	['orange county convention center', 'events'] <-> ['orange county convention center']
-Correct:	['rockets', 'james harden'] <-> ['james harden']
-Not correct:	['shoes'] <-> ['rocketdog shoes']
-Correct:	['dicks'] <-> ['dicks']
-Correct:	['womens', 'adidas', 'bounce'] <-> []
-Correct:	['macys'] <-> ['macys']
-Not correct:	['Red Bull', 'health'] <-> ['Red Bull AND health']
-Correct:	['Red Bull'] <-> ['Red Bull']
-Correct:	['red bull'] <-> ['red bull']
-Correct:	['red bull', 'effects'] <-> ['red bull']
-Not correct:	['red bull', 'drink'] <-> ['red bull drink']
-Correct:	['red bull'] <-> ['red bull']
-Correct:	['red bull', 'ingredients'] <-> ['red bull']
-Not correct:	['red bull', 'in US'] <-> ['red bull', 'US']
-Correct:	['apple', "apple's", 'insane'] <-> ["apple's"]
-Correct:	['girl', 'slept'] <-> ['girl']
-Correct:	['history of music'] <-> ['history of music']
-Not correct:	['who', 'invented', 'radio'] <-> ['the radio']
-Not correct:	['adopting a dog'] <-> ['adopting']
-Correct:	['humane society'] <-> ['humane society']
-Correct:	['black powder', 'ammunition', 'wiki'] <-> ['black powder']
-Correct:	['gun powder', 'wiki'] <-> ['gun powder']
-Correct:	['inventor', 'gunpowder'] <-> ['gunpowder']
-Correct:	['usage', 'gunpowder'] <-> ['gunpowder']
-Not correct:	['history of gunpowder'] <-> ['gunpowder']
-Correct:	['french', 'test', 'online'] <-> ['french']
-Correct:	['french', 'test', 'beginners'] <-> ['french']
-Correct:	['jim mora'] <-> ['jim mora']
-Correct:	['cambridge'] <-> ['cambridge']
-Not correct:	['cambridge', 'engineering'] <-> ['cambridge engineering']
-Correct:	['cambridge', 'english', 'test'] <-> ['cambridge']
-Not correct:	['chain link', 'wood fence', 'material'] <-> ['chain link wood fence']
-Correct:	['fence', 'material'] <-> ['fence']
-Correct:	['long-term care insurance'] <-> []
-Correct:	['long-term care insurance', 'wiki'] <-> ['long-term care insurance']
-Correct:	['long-term care insurance'] <-> ['long-term care insurance']
-Correct:	['long-term care insurance'] <-> ['long-term care insurance']
-Correct:	['long-term care insurance', 'review'] <-> ['long-term care insurance']
-Correct:	['long-term care insurance', 'comparisons', 'job'] <-> ['long-term care insurance']
-Correct:	['long-term care', 'vs', 'life insurance'] <-> ['long-term care']
-Correct:	['long-term care', 'vs', 'life insurance', 'job'] <-> ['long-term care']
-Correct:	['walmart', 'black friday'] <-> []
-Correct:	['black friday'] <-> ['black friday']
-Correct:	['glassblowing', 'history'] <-> ['history']
-Correct:	['scientific', 'glassblowing', 'history'] <-> ['history']
-Correct:	['scientific', 'glassblowing', 'history', 'Edison'] <-> ['Edison']
-Correct:	['atari', 'consoles', 'history'] <-> ['atari', 'consoles']
-Correct:	['atari', 'consoles'] <-> ['atari', 'consoles']
-Correct:	['jenner', 'divorce', 'rumors'] <-> ['jenner']
-Correct:	['Jenner', 'divorce', 'rumors'] <-> ['Jenner']
-Correct:	['john mccain'] <-> ['john mccain']
-Correct:	['india', 'government', 'government policy', 'miss universe'] <-> ['miss universe']
-Correct:	['indian government', 'government" policy', 'miss universe'] <-> ['miss universe']
-Correct:	['craigslist', 'dfw', 'classifieds'] <-> ['craigslist']
-Correct:	['craigslist'] <-> ['craigslist']
-Correct:	['yahoo! calendar'] <-> ['yahoo! calendar']
-Correct:	['jim durham', 'dies'] <-> ['jim durham']
-Correct:	['luxembourg', 'wedding'] <-> ['luxembourg']
-Correct:	['yahoo! mail'] <-> ['yahoo! mail']
-Not correct:	['recipes'] <-> ['healty']
-Correct:	['healthy', 'meals'] <-> ['healthy']
-Not correct:	['healthy', 'nutrition', 'infants'] <-> ['healthy nutrition', 'infants']
-Not correct:	[] <-> ['site']
-Correct:	['sheen'] <-> ['sheen']
-Correct:	['dog', 'anal glands'] <-> ['dog']
-Correct:	['origami', 'instructions'] <-> ['origami']
-Correct:	['origami', 'dollar'] <-> ['origami']
-Correct:	['kelly carlson'] <-> ['kelly carlson']
-Correct:	['computer'] <-> ['computer']
-Correct:	["complete idiot's guide", 'idiot'] <-> ["complete idiot's guide"]
-Not correct:	['complete', 'idiot'] <-> ['complete idiot']
-Correct:	['swahili', 'recipes'] <-> ['recipes']
-Correct:	['traditional', 'swahili', 'recipes'] <-> ['recipes']
-Correct:	['google'] <-> ['google']
-Correct:	['century theaters'] <-> ['century theaters']
-Correct:	['century theaters', 'san francisco'] <-> ['century theaters']
-Correct:	['century', 'san francisco'] <-> []
-Correct:	['google maps'] <-> ['google maps']
-Correct:	['yahoo mail'] <-> ['yahoo mail']
-Correct:	['aol'] <-> ['aol']
-Not correct:	['buffalo', 'wild wing'] <-> ['buffalo wild wing']
-Correct:	['yahoo mail'] <-> ['yahoo mail']
-Correct:	['youtube'] <-> []
-Not correct:	['suny', 'colleges', 'names'] <-> ['suny colleges']
-Not correct:	['number', 'suny', 'colleges'] <-> ['number of suny colleges']
-Correct:	['suny', 'college', 'bioinformatics', 'degree'] <-> ['bioinformatics', 'degree']
-Correct:	['map', 'suny albany', 'hospital'] <-> ['map']
-Correct:	['map', 'albany', 'hospital'] <-> ['map']
-Correct:	['france', 'world cup 98', 'reaction', 'stock market'] <-> ['stock market']
-Correct:	['france', 'world cup 98', 'reaction'] <-> ['world cup 98']
-Correct:	['france', 'world cup 98'] <-> ['world cup 98']
-Correct:	['reverbnation'] <-> ['reverbnation']
-Correct:	['Connecticut', 'Fire', 'Academy'] <-> []
-Correct:	['Connecticut', 'Fire', 'Academy'] <-> []
-Correct:	['Connecticut', 'Fire', 'Academy'] <-> []
-
-ratio: 
+Correct:	['google'] <-> ['google'] : google
+Correct:	['disneyland', 'special'] <-> ['disneyland'] : disneyland special offers
+Correct:	['disneyland'] <-> ['disneyland'] : disneyland 
+Correct:	['anchors', 'resign', 'on air'] <-> ['anchors'] : anchors resign on air
+Not correct:	['anchors', 'resign', 'on air'] <-> ['Anchors'] : Anchors resign on air
+Correct:	['dirty jobs', 'canceled'] <-> [] : dirty jobs canceled
+Correct:	['google'] <-> ['google'] : google
+Correct:	['msn.com'] <-> [] : msn.com
+Correct:	['american girl dolls'] <-> [] : American girl dolls
+Not correct:	['american girl dolls', 'price'] <-> ['American Girl'] : New York American Girl dolls price
+Not correct:	['american girl dolls', 'cost'] <-> ['American Girl'] : New York American Girl dolls cost
+Not correct:	['american girl dolls', 'cost'] <-> ['American Girl'] : American Girl dolls cost $
+Not correct:	['american girl doll', 'retail price'] <-> ['American Girl'] : American Girl doll retail price
+Not correct:	['american girl doll', 'wiki'] <-> ['American Girl'] : American Girl doll wiki
+Not correct:	['american girl', 'wiki'] <-> ['American Girl'] : American Girl wiki
+Not correct:	['hunnington', 'ingalls'] <-> ['hunnington ingalls'] : hunnington ingalls
+Not correct:	['karl rove', 'bad', 'night'] <-> ["karl rove's"] : karl rove's bad night
+Not correct:	['winter storm', 'athena'] <-> ['winter storm athena'] : winter storm athena
+Correct:	['jasper fforde', 'chronology'] <-> ['jasper fforde'] : "jasper fforde" chronology
+Correct:	['jasper fforde', 'questions answers'] <-> ['jasper fforde'] : "jasper fforde" questions answers contents
+Not correct:	['jasper fforde', 'thursday next'] <-> ['"thursday next"'] : "jasper fforde" "thursday next" site
+Not correct:	['irving berlin', 'birthplace'] <-> ['Irving Berlin'] : Irving Berlin birthplace
+Not correct:	['irving berlin', 'list of songs'] <-> ['Irving Berlin'] : Irving Berlin list of songs
+Not correct:	['irving berlin', 'complete', 'list of songs'] <-> ['Irving Berlin'] : Irving Berlin complete list of songs
+Correct:	['complete', 'list of songs', 'irving berlin'] <-> [] : complete list of songs of Irving Berlin
+Correct:	['langham creek high school'] <-> ['langham creek high school'] : langham creek high school
+Not correct:	['indexed annuity', 'pros cons'] <-> ['indexed'] : indexed annuity pros cons
+Not correct:	['indexed annuity', 'rating'] <-> ['indexed'] : indexed annuity rating 
+Correct:	['gun violence', 'usa'] <-> [] : gun violence in USA
+Correct:	['gun violence', 'college campus'] <-> [] : gun violence on US college campus
+Correct:	['gun violence', 'us', 'campus'] <-> ['gun violence'] : gun violence on US campus
+Correct:	['types', 'gun', 'violent', 'events'] <-> ['gun'] : types of gun used in violent events
+Not correct:	['french lick', 'resort', 'casino'] <-> ['french lick resort and casino'] : french lick resort and casino
+Not correct:	['french lick', 'resort', 'casino', 'discounts'] <-> ['french lick resort and casino'] : french lick resort and casino discounts 
+Correct:	['effects', 'eurozone crisis', 'national', 'economic indicators', 'unemployment', 'gdp', 'public debt', 'etc'] <-> [] : What are the effects of the ongoing Eurozone crisis on national economic indicators such as unemployment, GDP, public debt, etc
+Correct:	['president of the united states', 'email'] <-> ['president of the united states'] : president of the united states email
+Correct:	['president of the united states', 'contact'] <-> ['president of the united states'] : president of the united states contact 
+Not correct:	['policies', 'addressing', 'economic', 'europe'] <-> ['Europe'] : policies for addressing economic problems in europe
+Correct:	['european union', 'economic crisis'] <-> [] : 'EUROPEAN UNION" "ECONOMIC CRISIS"
+Not correct:	['european union', 'economic crisis" greece'] <-> ['greece'] : 'EUROPEAN UNION" "ECONOMIC CRISIS" greece
+Correct:	['european union', 'economic crisis', 'portugal'] <-> ['portugal'] : 'EUROPEAN UNION" "ECONOMIC CRISIS" portugal
+Correct:	['european union', 'economic crisis', 'spain'] <-> ['spain'] : 'EUROPEAN UNION" "ECONOMIC CRISIS" spain
+Correct:	['pseudocyesis'] <-> ['pseudocyesis'] : pseudocyesis
+Correct:	['pseudocyesis', 'psychology'] <-> ['pseudocyesis'] : pseudocyesis psychology
+Correct:	['student', 'mitchell college'] <-> ['mitchell college'] : student at mitchell college
+Correct:	['mitchell college'] <-> ['mitchell college'] : mitchell college 
+Correct:	['philadelphia', 'attractions'] <-> ['attractions'] : Philadelphia attractions
+Correct:	['samsung'] <-> ['samsung'] : samsung
+Correct:	['windows 2000', 'sp4'] <-> [] : windows 2000 sp4
+Correct:	['pa', 'child support'] <-> [] : pa child support
+Correct:	['midwives'] <-> ['midwives'] : midwives
+Correct:	['candidate', 'killed', 'storm'] <-> ['candidate'] : candidate killed in storm
+Correct:	['dinosaurs'] <-> ['dinosaurs'] : dinosaurs
+Correct:	['dinosaurs', 'pics'] <-> ['dinosaurs'] : dinosaurs pics 
+Not correct:	['getting', 'office'] <-> ['organized', 'office'] : getting organized office
+Correct:	['container store'] <-> ['container store'] : container store 
+Correct:	['silicon', 'roof coating'] <-> ['roof coating'] : silicon roof coating
+Correct:	['silicon', 'roof coating'] <-> [] : silicon roof coating use
+Correct:	['silicon', 'roof coating', 'tutorial'] <-> [] : silicon roof coating tutorial
+Correct:	['roof coating', 'tutorial'] <-> ['tutorial'] : roof coating tutorial
+Correct:	['roof coating', 'solutions'] <-> [] : roof coating solutions
+Correct:	['roof coating', 'lower', 'temperature'] <-> ['temperature'] : roof coating lower temperature
+Correct:	['glock', 'green laser'] <-> [] : glock green laser
+Correct:	['new release', 'dvd'] <-> ['new release'] : new release dvd
+Correct:	['amazon'] <-> ['amazon'] : amazon
+Correct:	['sirius xm'] <-> ['sirius xm'] : sirius xm
+Correct:	['pnc', 'online banking'] <-> ['pnc'] : pnc online banking
+Correct:	['paypal'] <-> ['paypal'] : paypal
+Correct:	['burger king'] <-> ['burger king'] : burger king
+Correct:	['victoria s secret'] <-> ['victoria s secret'] : victoria s secret
+Correct:	['lowes'] <-> ['lowes'] : lowes
+Correct:	['kmart'] <-> ['kmart'] : kmart
+Correct:	['big lots'] <-> ['big lots'] : big lots
+Correct:	['gas', 'grills'] <-> ['grills'] : gas grills
+Correct:	['big kahuna', 'beach chair'] <-> ['beach chair'] : big kahuna beach chair
+Correct:	['beach chair'] <-> ['beach chair'] : beach chair
+Correct:	['rio', 'beach chair'] <-> ['beach chair'] : rio beach chair
+Correct:	['hautelook'] <-> ['hautelook'] : hautelook
+Correct:	['expedia'] <-> ['expedia'] : expedia
+Correct:	['bath and body works'] <-> ['bath and body works'] : bath and body works
+Correct:	['disney store'] <-> ['disney store'] : disney store
+Correct:	['sephora'] <-> ['sephora'] : sephora
+Correct:	['ulta'] <-> ['ulta'] : ulta
+Correct:	['power', 'bright', 'inverters'] <-> [] : power bright inverters
+Correct:	['natural gas', 'bbq', 'conversion'] <-> ['natural gas'] : natural gas bbq conversion
+Correct:	['heart attack'] <-> [] : heart attack
+Correct:	['heart attack', 'treatment'] <-> [] : heart attack treatment
+Not correct:	['heart disease'] <-> ['heart'] : heart disease
+Correct:	['target stores'] <-> ['target stores'] : target stores
+Correct:	['roku', 'remote', 'working'] <-> ['roku'] : roku remote not working
+Correct:	['amc', 'stubs', 'promo code'] <-> ['amc'] : amc stubs promo code
+Not correct:	['man of steel'] <-> ['man of steel 2013'] : man of steel 2013
+Not correct:	['man of steel', 'shirtless'] <-> ['man of steel shirtless'] : man of steel shirtless
+Correct:	['google translate'] <-> ['google translate'] : google translate
+Correct:	['facebook.com'] <-> [] : facebook.com
+Correct:	['usc', 'shooting'] <-> [] : usc shooting
+Correct:	['trendy', 'short', 'hairstyles'] <-> ['hairstyles'] : trendy short hairstyles 2012
+Correct:	['trendy', 'hairstyles'] <-> ['hairstyles'] : trendy hairstyles 2012
+Correct:	['poker tournaments'] <-> ['poker tournaments'] : poker tournaments
+Correct:	['texas hold em'] <-> ['texas hold em'] : texas hold em 
+Correct:	['mexican', 'mayor', 'killed'] <-> ['mayor'] : mexican mayor killed
+Correct:	['solar panels'] <-> ['solar panels'] : solar panels
+Correct:	['solar panels', 'nano-technology'] <-> ['solar panels', 'nano-technology'] : solar panels nano-technology 
+Correct:	['gun control', 'opinions'] <-> ['gun control'] : gun control opinions
+Correct:	['gun control', 'us government'] <-> ['gun control'] : gun control us government
+Correct:	['gun control', 'current affairs'] <-> ['gun control'] : gun control current affairs
+Correct:	['gun violence us'] <-> ['gun violence us'] : gun violence us
+Not correct:	['law center', 'gun violence'] <-> ['law center to prevent gun violence'] : law center to prevent gun violence
+Not correct:	['rover', 'big', 'discovery'] <-> ["rover's"] : rover's big discovery
+Correct:	['fried rice', 'recipes'] <-> ['fried rice'] : fried rice recipes
+Correct:	['rice', 'recipes'] <-> ['rice'] : rice recipes 
+Correct:	['history', 'crossword puzzles'] <-> ['crossword puzzles'] : history crossword puzzles
+Not correct:	['history', 'games'] <-> ['games', 'history games'] : history games 
+Not correct:	['malaria', 'impact', 'economy africa'] <-> ['africa'] : malaria impact on economy africa
+Not correct:	['malaria', 'economy africa'] <-> ['africa'] : malaria economy africa
+Correct:	['malaria', 'economy'] <-> ['malaria'] : malaria economy 
+Correct:	['malaria', 'donations'] <-> ['malaria'] : malaria donations 
+Correct:	['half price books'] <-> ['half price books'] : half price books
+Correct:	['imdb'] <-> ['imdb'] : imdb
+Correct:	['little', 'treasures', 'sale', 'louisville ky'] <-> [] : little treasures sale louisville ky
+Correct:	['baby boy', 'names'] <-> [] : baby boy names
+Not correct:	['history', 'fisa'] <-> ['FISA'] : History of FISA
+Correct:	['fisa', 'wiretap', 'applications'] <-> [] : FISA wiretap applications
+Not correct:	['fisa', 'judges', 'term'] <-> ['FISA judges'] : FISA judges serving term
+Not correct:	['cal', 'dmv'] <-> ['cal dmv'] : cal dmv
+Not correct:	['eden', 'edge'] <-> ["eden's edge"] : eden's edge
+Correct:	['yahoo! mail'] <-> ['yahoo! mail'] : yahoo! mail
+Correct:	['nook'] <-> ['nook'] : nook
+Correct:	['nordstrom'] <-> ['nordstrom'] : nordstrom
+Correct:	['yahoo! news'] <-> ['yahoo! news'] : yahoo! news
+Not correct:	['joseph', 'steffen'] <-> ['joseph steffen'] : joseph steffen
+Not correct:	['joseph', 'steffen'] <-> ['joseph steffen'] : "joseph steffen"
+Not correct:	['joseph', 'steffen', 'wikipedia'] <-> ['joseph steffen wikipedia'] : "joseph steffen" wikipedia
+Not correct:	[] <-> ['menorraghia'] : define: menorraghia
+Correct:	['heavy', 'periods', 'operation'] <-> ['operation'] : heavy periods operation
+Correct:	['lung cancer'] <-> ['lung cancer'] : lung cancer
+Correct:	['heidi klum'] <-> [] : heidi klum
+Correct:	['home depot center'] <-> ['home depot center'] : home depot center
+Correct:	['head lice'] <-> ['head lice'] : head lice
+Correct:	['bbt', 'on line banking'] <-> ['bbt'] : bbt on line banking
+Correct:	['tea tree oil'] <-> ['tea tree oil'] : tea tree oil
+Correct:	['tea tree oil', 'shampoo'] <-> ['shampoo'] : tea tree oil shampoo
+Correct:	['tea tree oil', 'shampoo', 'lice'] <-> ['lice'] : tea tree oil shampoo lice
+Correct:	['youtube', 'video'] <-> ['youtube'] : youtube video
+Correct:	['innovation'] <-> ['innovation'] : innovation
+Not correct:	['com'] <-> ['stagestores.com'] : stagestores.com
+Not correct:	['new york times square'] <-> ['new york times square church'] : new york times square church
+Correct:	['google'] <-> [] : google
+Correct:	['oovoo'] <-> [] : oovoo
+Correct:	['virginia', 'tattoos'] <-> ['tattoos'] : virginia tattoos
+Correct:	['lance armstrong', 'effigy'] <-> ['lance armstrong'] : lance armstrong in effigy
+Correct:	['pocono mountains', 'region'] <-> ['pocono mountains'] : pocono mountains region
+Correct:	['pocono mountains', 'region', 'things', 'do'] <-> ['pocono mountains'] : pocono mountains region things to do
+Correct:	['pocono mountains', 'region'] <-> ['pocono mountains'] : pocono mountains region activities
+Correct:	['pocono mountains', 'region', 'national park'] <-> ['pocono mountains'] : pocono mountains region national park
+Correct:	['genting', 'awana', 'hotel'] <-> [] : genting awana hotel
+Correct:	['bus'] <-> ['bus'] : bus
+Correct:	['pdf', 'converter'] <-> ['converter'] : pdf converter
+Correct:	['pdf', 'converter', 'online'] <-> ['converter'] : pdf converter online
+Correct:	['adobe pdf', 'converter'] <-> ['converter'] : adobe pdf converter
+Correct:	['adobe pdf', 'converter', 'printer'] <-> ['converter'] : adobe pdf converter printer
+Correct:	['adobe pdf', 'converter', 'downloads'] <-> ['converter'] : adobe pdf converter downloads
+Correct:	['free', 'adobe pdf', 'converter'] <-> ['converter'] : free adobe pdf converter
+Correct:	['free', 'adobe pdf', 'converter', 'downloads'] <-> ['converter'] : free adobe pdf converter downloads
+Correct:	['adobe pdf', 'converter', 'free download'] <-> ['converter'] : adobe pdf converter free download
+Correct:	['adobe pdf', 'converter', 'driver'] <-> ['converter'] : adobe pdf converter driver
+Correct:	['adobe pdf', 'converter', 'word'] <-> ['converter'] : adobe pdf converter to word
+Correct:	['google'] <-> ['google'] : google
+Correct:	['google maps'] <-> ['google maps'] : google maps
+Correct:	['google search'] <-> ['google search'] : google search
+Correct:	['google map'] <-> ['google map'] : google map
+Correct:	['paradigm', 'mall', 'kelana jaya'] <-> [] : paradigm mall kelana jaya
+Correct:	['paradigm', 'mall', 'facebook'] <-> [] : paradigm mall facebook
+Correct:	['paradigm', 'mall', 'gsc'] <-> [] : paradigm mall gsc
+Correct:	['paradigm', 'mall kuala lumpur'] <-> [] : paradigm mall kuala lumpur
+Correct:	['paradigm', 'mall', 'malaysia'] <-> [] : paradigm mall malaysia
+Correct:	['gsc'] <-> ['gsc'] : gsc
+Correct:	['free online games'] <-> [] : free online games
+Correct:	['lunette', 'menstrual cup'] <-> [] : lunette menstrual cup
+Correct:	['laxatives'] <-> ['laxatives'] : laxatives
+Correct:	['firefox'] <-> [] : firefox
+Correct:	['dehumidifier', 'good'] <-> [] : dehumidifier any good?
+Correct:	['dehumidifier', 'good', 'uk'] <-> [] : dehumidifier any good? uk
+Not correct:	['www', 'cnn news'] <-> ['www.cnn news'] : www.cnn news
+Not correct:	['unsecured', 'credit check', 'loans'] <-> ['unsecured no credit check loans'] : unsecured no credit check loans
+Not correct:	['dulles airport'] <-> ['Dulles airport'] : Dulles airport
+Correct:	['toys r us'] <-> ['toys r us'] : toys r us
+Correct:	['new york state lottery'] <-> ['new york state lottery'] : new york state lottery
+Not correct:	['state lottery'] <-> ['ny state lottery'] : ny state lottery
+Correct:	['notebook'] <-> ['notebook'] : notebook
+Correct:	['google maps'] <-> ['google maps'] : google maps
+Correct:	['injuries', 'forearm', 'pain'] <-> [] : injuries forearm pain
+Correct:	['forearm', 'pain'] <-> [] : forearm pain 
+Correct:	['firfox'] <-> ['firfox'] : firfox
+Correct:	['diet', 'exercise', 'fitness'] <-> ['fitness'] : diet exercise for fitness
+Correct:	['fitness', 'wiki'] <-> ['fitness'] : fitness wiki
+Correct:	['wikipedia'] <-> ['wikipedia'] : wikipedia
+Correct:	['paleo diet'] <-> ['paleo diet'] : paleo diet
+Not correct:	['keto', 'diet'] <-> ['keto diet'] : keto diet
+Correct:	['keto', 'diet', 'wikipedia'] <-> [] : keto diet wikipedia
+Correct:	['exercises', 'fitness'] <-> ['fitness'] : exercises for fitness
+Not correct:	['how to', 'get fit', 'safely'] <-> ['fit'] : how to get fit safely
+Correct:	['hugh grant'] <-> ['hugh grant'] : hugh grant
+Correct:	['horse hooves'] <-> ['horse hooves'] : horse hooves
+Correct:	['horse hooves', 'anatomy'] <-> ['horse hooves'] : horse hooves anatomy 
+Not correct:	['internet phone', 'services'] <-> ['internet phone services'] : internet phone services
+Not correct:	['internet phone', 'services', 'review'] <-> ['internet phone services review'] : internet phone services review
+Not correct:	['guide', 'internet phone', 'services'] <-> ['guide', 'internet phone services'] : guide internet phone services
+Correct:	['voip', 'providers'] <-> ['voip'] : voip providers
+Correct:	['how to', 'quit smoking'] <-> ['quit smoking'] : how to quit smoking 
+Not correct:	['smoking', 'side'] <-> ['side effecs'] : quiting smoking side effecs
+Correct:	['smoking', 'side effects'] <-> ['side effects'] : quiting smoking side effects
+Not correct:	['smoking', 'hypnosis'] <-> ['quiting smoking', 'hypnosis'] : quiting smoking using hypnosis
+Not correct:	['smoking', 'help'] <-> ['quiting smoking'] : quiting smoking help
+Correct:	['websters dictionary'] <-> ['websters dictionary'] : websters dictionary
+Correct:	['sales interview', 'questions'] <-> ['sales interview'] : sales interview questions
+Correct:	['gmail', 'login'] <-> ['gmail'] : gmail login
+Correct:	['monster.com'] <-> ['monster.com'] : monster.com
+Correct:	['google.com'] <-> ['google.com'] : google.com
+Correct:	['purchasing'] <-> ['purchasing'] : purchasing
+Correct:	['yahoo', 'mexico'] <-> [] : yahoo mexico
+Correct:	['twitter'] <-> ['twitter'] : twitter
+Not correct:	['twitter com', 'tweets'] <-> ['twitter'] : twitter com tweets
+Correct:	['google search'] <-> [] : google search
+Correct:	['thepost'] <-> ['thepost'] : thepost
+Correct:	['cvs'] <-> ['cvs'] : cvs
+Correct:	['linkedin'] <-> ['linkedin'] : linkedin
+Correct:	['sphinx', 'destruction'] <-> ['sphinx'] : sphinx destruction
+Correct:	['recipes', 'swahili', 'cusine'] <-> ['recipes'] : recipes swahili cusine
+Not correct:	['wikipedia', 'kenya'] <-> ['wikipedia kenya'] : wikipedia kenya
+Correct:	['billy scott', 'dies'] <-> ['billy scott'] : billy scott dies
+Correct:	['gun shop', 'myrtle beach sc'] <-> [] : 707 gun shop myrtle beach sc
+Correct:	['gun shops', 'myrtle beach sc'] <-> [] : gun shops in myrtle beach sc
+Correct:	['glock g21', 'for sale'] <-> [] : glock g21 for sale
+Correct:	['captain', 'george', 'myrtle beach'] <-> [] : captain george's myrtle beach
+Correct:	['rye bread', 'wheat'] <-> ['rye bread'] : does rye bread have wheat in it
+Correct:	['greenland', 'high school', 'new hampshire'] <-> ['high school'] : "greenland high school" new hampshire
+Correct:	['greenland', 'high school', 'new hampshire'] <-> ['high school'] : greenland high school new hampshire
+Correct:	['greenland', 'high school'] <-> ['high school'] : "greenland high school"
+Not correct:	['us tax code', '403'] <-> ['403 (b)'] : US tax code 403 (b)
+Not correct:	['us tax code', '403', 'eligibility'] <-> ['403 (b)'] : US tax code 403 (b) eligibility
+Correct:	['purpose driven life', 'warren'] <-> ['purpose driven life'] : purpose driven life warren
+Correct:	['obama', 'mccain', 'debate'] <-> ['debate'] : obama mccain debate 
+Correct:	['romania'] <-> ['romania'] : romania
+Correct:	['youtube'] <-> ['youtube'] : youtube
+Correct:	['red giant'] <-> ['red giant'] : red giant
+Correct:	['jpac'] <-> ['jpac'] : jpac
+Correct:	['best', 'us', 'destinations'] <-> ['us'] : best us destinations
+Correct:	['distance', 'new york', 'boston'] <-> ['distance'] : distance new york boston
+Not correct:	['maps', 'bing.com'] <-> ['maps.bing.com'] : maps.bing.com
+Correct:	['maps'] <-> ['maps'] : maps
+Correct:	['bing maps'] <-> ['bing maps'] : bing maps
+Correct:	['hartford', 'tourism'] <-> ['hartford'] : hartford tourism
+Correct:	['hartford', 'visitors'] <-> ['hartford'] : hartford visitors
+Not correct:	['hartford connecticut', 'tourism'] <-> ['hartford'] : hartford connecticut tourism
+Correct:	['hartford', 'boston', 'travel'] <-> ['travel'] : hartford boston travel
+Correct:	['boston', 'tourism'] <-> ['boston'] : boston tourism
+Correct:	['nyc', 'tourism'] <-> ['nyc'] : nyc tourism
+Correct:	['philadelphia', 'nyc', 'distance'] <-> ['distance'] : philadelphia nyc distance
+Correct:	['philadelphia', 'washington dc', 'distance'] <-> ['distance'] : philadelphia washington dc distance
+Correct:	['philadelphia', 'tourism'] <-> [] : philadelphia tourism
+Correct:	['washington dc', 'tourism'] <-> [] : washington dc tourism
+Correct:	['philadelphia', 'nyc', 'travel'] <-> ['travel'] : philadelphia nyc travel
+Correct:	['philadelphia', 'nyc', 'train'] <-> ['train'] : philadelphia nyc train
+Correct:	['philadelphia', 'nyc', 'bus'] <-> ['bus'] : philadelphia nyc bus
+Correct:	['lolo jones', 'world cup'] <-> ['lolo jones'] : lolo jones world cup
+Correct:	['w.c.handy'] <-> ['w.c.handy'] : w.c.handy
+Not correct:	['town of williamstown'] <-> ['williamstown'] : town of williamstown vt
+Not correct:	['pumpkin muffins', 'recipe'] <-> ['muffins'] : pumpkin muffins recipe
+Correct:	['uitm', 'jengka'] <-> [] : uitm jengka
+Correct:	['water turbines'] <-> ['water turbines'] : water turbines
+Correct:	['water turbines', 'relation', 'newtons law'] <-> ['water turbines'] : water turbines relation to newtons law
+Correct:	['water turbines', 'fossil fuels'] <-> ['water turbines'] : water turbines replace fossil fuels
+Correct:	['water turbines', 'electricity generation', 'cost', 'kwh'] <-> ['water turbines'] : water turbines electricity generation cost per kWh 
+Correct:	['water turbines', 'types'] <-> ['water turbines'] : effective water turbines types
+Correct:	['comparison', 'water turbine', 'types'] <-> ['water turbine'] : comparison of water turbine types
+Correct:	['highland', 'bakery', 'buckhead'] <-> [] : highland bakery buckhead
+Correct:	['google'] <-> ['google'] : google
+Not correct:	['espn', 'nba finals', 'highlights'] <-> ['nba finals', 'nba'] : espn nba finals highlights
+Not correct:	['nba finals', 'highlights'] <-> ['nba finals', 'nba'] : nba finals highlights 
+Not correct:	['kursk submarine'] <-> ['Kursk submarine'] : Kursk submarine 2000
+Not correct:	['kursk submarine', 'politics'] <-> ['Kursk submarine'] : Kursk submarine 2000 politics
+Correct:	['resting heart rate'] <-> ['resting heart rate'] : resting heart rate
+Correct:	['heart rate', 'blood pressure', 'cholesterol'] <-> ['heart rate', 'blood pressure', 'cholesterol'] : heart rate blood pressure cholesterol 
+Correct:	['earthquake', 'hits', 'japan'] <-> ['earthquake'] : earthquake hits japan
+Correct:	['yahoo mail'] <-> ['yahoo mail'] : yahoo mail
+Correct:	['iphone'] <-> ['iphone'] : iphone
+Correct:	['iphone 5'] <-> ['iphone 5'] : iphone 5
+Correct:	['jim mora'] <-> ['jim mora'] : jim mora
+Correct:	['yahoo! mail'] <-> ['yahoo! mail'] : yahoo! mail
+Not correct:	['yahoo! mail'] <-> ['Yahoo! Mail'] : Yahoo! Mail
+Correct:	['yahoo', 'login'] <-> ['yahoo'] : yahoo login
+Correct:	['yahoo mail', 'login'] <-> ['yahoo mail'] : yahoo mail login
+Correct:	['check', 'yahoo mail'] <-> ['yahoo mail'] : check my yahoo mail
+Correct:	['yahoo', 'london'] <-> ['yahoo'] : yahoo london
+Correct:	['yahoo', 'long distance'] <-> ['yahoo'] : yahoo long distance
+Correct:	['yahoo'] <-> ['yahoo'] : yahoo
+Correct:	['fourth', 'wedding anniversary'] <-> ['wedding anniversary'] : fourth wedding anniversary gift
+Not correct:	['travis'] <-> ['travis poter'] : travis poter
+Correct:	['google'] <-> [] : google
+Correct:	['combat boots', 'women'] <-> [] : combat boots for women
+Correct:	['att.com'] <-> [] : att.com
+Not correct:	['hosting services', 'small business'] <-> ['web hosting services'] : web hosting services small business
+Correct:	['web hosting'] <-> ['web hosting'] : web hosting 
+Correct:	['google images'] <-> ['google images'] : google images
+Correct:	['google'] <-> ['google'] : google
+Correct:	['moviefone'] <-> ['moviefone'] : moviefone
+Correct:	['soccer'] <-> [] : papaqui soccer
+Correct:	['lowes.com'] <-> ['lowes.com'] : lowes.com
+Correct:	['lowes'] <-> ['lowes'] : lowes
+Correct:	['zero hedge'] <-> ['zero hedge'] : zero hedge
+Correct:	['pacific', 'mailorder', 'christchurch'] <-> [] : pacific mailorder christchurch
+Correct:	['sample tube', 'sealing'] <-> ['sealing'] : sample tube sealing
+Correct:	['sample tube', 'sealing', 'services'] <-> ['services'] : sample tube sealing services
+Correct:	['sample tube', 'sealing', 'expert'] <-> ['expert'] : sample tube sealing expert
+Correct:	['self-regulating', 'house', 'temperature'] <-> ['temperature'] : self-regulating house temperature
+Not correct:	['passive solar'] <-> ['passive solar cooling'] : passive solar cooling
+Correct:	['passive solar', 'uk'] <-> ['uk'] : passive solar cooling :uk
+Correct:	['radiant barrier'] <-> ['radiant barrier'] : radiant barrier
+Correct:	['radiant barrier', 'uk'] <-> ['uk'] : radiant barrier :uk
+Correct:	['facebook', 'sign', 'up'] <-> ['facebook'] : facebook sign up
+Correct:	['obama', 'gun control'] <-> ['obama', 'gun control'] : obama gun control
+Correct:	['gun control', 'laws', 'obama'] <-> ['gun control', 'obama'] : gun control laws obama
+Correct:	['training', 'management'] <-> ['training'] : training   management
+Correct:	['training', 'management', 'hotels'] <-> ['training'] : training   management   hotels?
+Correct:	['training', 'management', 'benefits'] <-> ['training'] : training   management    benefits?
+Correct:	['why', 'training', 'management', 'benefits'] <-> ['training'] : why   training   management    benefits?
+Not correct:	['why', 'management studies', 'benefits'] <-> ['management'] : why  management studies   benefits?
+Not correct:	['why', 'management studies', 'benefits'] <-> ['management'] : why  management studies  benefits?
+Correct:	['qualifications', 'management', 'degree'] <-> ['management'] : qualifications   management degree?
+Correct:	['degree', 'hotel management'] <-> ['degree'] : degree    hotel management?
+Correct:	['why', 'internet phone service'] <-> [] : why is internet phone service great
+Correct:	['why', 'internet phone service'] <-> [] : why internet phone service great
+Correct:	['2005 presidential election', 'egypt'] <-> [] : 2005 presidential election in Egypt
+Correct:	['2005 presidential election', 'egypt', 'forgery'] <-> [] : 2005 presidential election in Egypt, forgery
+Correct:	['2005 presidential election', 'egypt', 'poster', 'cost'] <-> [] : 2005 presidential election, Egypt, poster cost
+Correct:	['us map'] <-> ['us map'] : us map
+Correct:	['us map', 'states', 'capitals'] <-> ['states', 'capitals'] : us map states and capitals 
+Not correct:	['state university of new york', 'bioinformatics'] <-> ['State university of new york', 'bioinformatics'] : "State university of new york" bioinformatics
+Not correct:	['state university of new york'] <-> ['State university of new york'] : "State university of new york" 
+Correct:	['silicone', 'roof coating', 'alternatives', 'cooling'] <-> ['cooling'] : "silicone roof coating" alternatives cooling
+Correct:	['silicone', 'roof coating', 'alternatives'] <-> [] : "silicone roof coating" alternatives
+Correct:	['bobby hebert', 'booted'] <-> ['bobby hebert'] : bobby hebert booted
+Correct:	['loretta swit', 'turns'] <-> ['loretta swit'] : loretta swit turns 75
+Correct:	['mariano rivera', 'decision'] <-> ['mariano rivera'] : mariano rivera decision
+Correct:	['legality', 'alcohol', 'marijuana'] <-> ['alcohol', 'marijuana'] : legality alcohol marijuana
+Correct:	['legality', 'alcohol', 'marijuana', 'history'] <-> ['alcohol', 'marijuana'] : legality alcohol marijuana history
+Correct:	['legality', 'alcohol', 'history'] <-> ['alcohol'] : legality alcohol history
+Not correct:	['legality', 'alcohol', 'history'] <-> ['alcohol', 'maijuana'] : legality alcohol history maijuana
+Correct:	['legality', 'alcohol', 'history', 'marijuana'] <-> ['alcohol', 'marijuana'] : legality alcohol history marijuana
+Correct:	['why', 'marijuana', 'illegal'] <-> ['marijuana'] : why is marijuana illegal?
+Not correct:	['marijuana', 'your health', 'alcohol'] <-> ['marijuana', 'alcohol?'] : is marijuana worse for your health than alcohol?
+Not correct:	['god does not exist'] <-> ['god'] : god does not exist
+Correct:	['liverpool news'] <-> ['liverpool news'] : liverpool news
+Correct:	['liverpool news', 'now'] <-> ['liverpool news'] : liverpool news now
+Correct:	['cate blanchett'] <-> ['cate blanchett'] : cate blanchett role
+Not correct:	['cate blanchett'] <-> ['Cate Blanchett'] : Cate Blanchett role
+Correct:	['american standard', 'toilet'] <-> [] : american standard toilet
+Correct:	['toilet'] <-> ['toilet'] : toilet 
+Correct:	['texas secession'] <-> ['texas secession'] : texas secession
+Correct:	['fitness', 'regime'] <-> ['regime'] : fitness regime
+Correct:	['running', 'half marathon'] <-> ['half marathon'] : running a half marathon
+Correct:	['orange county convention center'] <-> ['orange county convention center'] : orange county convention center
+Correct:	['orange county convention center', 'events'] <-> ['orange county convention center'] : orange county convention center events 
+Not correct:	['college athletics'] <-> ['mitchell college athletics'] : mitchell college athletics
+Not correct:	['college admissions'] <-> ['mitchell college'] : mitchell college admissions 
+Not correct:	['microsoft', 'tablet', 'surface'] <-> ['microsoft tablet', 'surface'] : microsoft tablet surface
+Correct:	['black powder', 'ammunition'] <-> ['black powder'] : black powder ammunition
+Correct:	['wikipedia', 'black powder'] <-> ['black powder'] : wikipedia black powder
+Correct:	['black powder', 'inventor'] <-> ['black powder'] : black powder inventor
+Not correct:	['kansas', 'attractions'] <-> ['Kansas'] : Kansas attractions
+Not correct:	['voip'] <-> ['VOIP'] : VOIP
+Correct:	['voip', 'lietuva'] <-> [] : VOIP lietuva
+Correct:	['voip', 'lietuva'] <-> [] : VOIP paslaugos lietuva
+Correct:	['ip'] <-> [] : ip telefonijos paslaugos
+Correct:	['ip'] <-> [] : ip telefonija
+Correct:	['ip', 'kaunas'] <-> [] : ip telefonija kaunas
+Correct:	['ip'] <-> [] : ip telefonas
+Correct:	['ip'] <-> [] : ip balso telefonija
+Correct:	['voip'] <-> [] : voip telefonas
+Correct:	['honda pilot'] <-> ['honda pilot'] : honda pilot 2014
+Correct:	['future', 'honda pilot'] <-> ['honda pilot'] : future honda pilot 2014
+Correct:	['future', 'honda pilot'] <-> ['honda pilot'] : future honda pilot
+Correct:	['dwts', 'elimination'] <-> ['dwts'] : dwts elimination
+Correct:	['asthma'] <-> ['asthma'] : asthma
+Correct:	['hotmail'] <-> ['hotmail'] : hotmail
+Correct:	['hot'] <-> ['hot'] : hot
+Correct:	['merrill'] <-> ['merrill'] : merrill
+Correct:	['merrill lynch', 'online'] <-> ['merrill lynch'] : merrill lynch online
+Correct:	['designer dogs'] <-> ['designer dogs'] : designer dogs
+Correct:	['designer dogs', 'types'] <-> [] : designer dogs types
+Correct:	['employee', 'fraud', 'recession'] <-> ['fraud'] : preventing employee fraud in recession
+Correct:	['recession', 'employee', 'fraud'] <-> ['fraud'] : recession employee fraud
+Correct:	['employee', 'fraud', 'best practice'] <-> ['fraud'] : employee fraud best practice
+Correct:	['employee', 'fraud', 'best practice'] <-> ['fraud'] : "employee fraud" "best practice"
+Correct:	['fabric', 'glue'] <-> ['glue'] : fabric glue
+Correct:	['fabric', 'adhesive'] <-> ['adhesive'] : fabric adhesive 
+Correct:	['portland'] <-> ['portland'] : portland
+Not correct:	['infinity', 'dish'] <-> ['infinity dish'] : infinity dish
+Correct:	['flame', 'pics'] <-> ['flame'] : flame pics
+Correct:	['flames', 'decals'] <-> ['decals'] : flames decals 
+Correct:	['best', 'penpal'] <-> ['penpal'] : best penpal sites
+Correct:	['anne hathaway'] <-> ['anne hathaway'] : anne hathaway
+Not correct:	['anne hathaway'] <-> ['Anne Hathaway'] : Anne Hathaway
+Correct:	['dooney and bourke', 'imitations'] <-> ['dooney and bourke'] : dooney and bourke imitations
+Correct:	['dooney and bourke', 'replicas'] <-> ['dooney and bourke'] : dooney and bourke replicas
+Correct:	['dooney and bourke', 'replicas', 'makers'] <-> ['dooney and bourke'] : dooney and bourke replicas makers
+Not correct:	['solo', 'husband', 'jail'] <-> ["solo's"] : solo's husband in jail
+Correct:	['facebook'] <-> [] : facebook
+Correct:	['craigslist'] <-> ['craigslist'] : craigslist
+Correct:	['lakers', 'rumors'] <-> ['lakers'] : latest lakers rumors
+Not correct:	['cal', 'lottery'] <-> ['cal lottery'] : cal lottery
+Correct:	['workplace diversity'] <-> ['workplace diversity'] : workplace diversity
+Correct:	['diversity training'] <-> ['diversity training'] : diversity training 
+Correct:	['zig ziglar', 'dies'] <-> ['zig ziglar'] : zig ziglar dies
+Correct:	['patent application'] <-> ['patent application'] : patent application
+Correct:	['the current'] <-> ['the current'] : the current
+Correct:	['the current', 'jersey'] <-> ['the current'] : the current jersey 
+Correct:	['facebook'] <-> ['facebook'] : facebook
+Correct:	['freshman', 'player', 'dies'] <-> ['player'] : freshman player dies
+Correct:	['philippine daily inquirer'] <-> ['philippine daily inquirer'] : philippine daily inquirer
+Correct:	['cinque terre', 'accommodation'] <-> ['cinque terre'] : cinque terre accommodation
+Correct:	['women', 'minorities', 'percentage', 'setting'] <-> ['minorities'] : women  and minorities percentage setting 
+Correct:	['numbers', 'women', 'minorities', 'workplace'] <-> ['minorities'] : should numbers of women and minorities in workplace be contolled
+Correct:	['nicholas hoult'] <-> ['nicholas hoult'] : nicholas hoult
+Correct:	['trust'] <-> ['trust'] : trust
+Correct:	['attorney at law'] <-> ['attorney at law'] : attorney at law
+Correct:	['st joseph university', 'philadelphia pa'] <-> ['st joseph university'] : st joseph university philadelphia pa
+Correct:	['amazon', 'black friday'] <-> ['amazon'] : amazon black friday 2012
+Correct:	['sheen'] <-> ['sheen'] : sheen offers role
+Not correct:	['sheen'] <-> ['Sheen'] : Sheen offers role
+Correct:	['camacho', 'funeral', 'brawl'] <-> ['camacho'] : camacho funeral brawl
+Correct:	['reserve', 'orange county convention center'] <-> ['orange county convention center'] : reserve orange county convention center
+Correct:	['orange county convention center', 'events'] <-> ['orange county convention center'] : orange county convention center events 
+Correct:	['rockets', 'james harden'] <-> ['james harden'] : rockets james harden
+Not correct:	['shoes'] <-> ['rocketdog shoes'] : rocketdog shoes
+Correct:	['dicks'] <-> ['dicks'] : dicks
+Correct:	['womens', 'adidas', 'bounce'] <-> [] : womens adidas bounce
+Correct:	['macys'] <-> ['macys'] : macys
+Not correct:	['red bull', 'health'] <-> ['Red Bull AND health'] : Red Bull AND health
+Not correct:	['red bull'] <-> ['Red Bull'] : Red Bull
+Correct:	['red bull'] <-> ['red bull'] : red bull
+Correct:	['red bull', 'effects'] <-> ['red bull'] : red bull effects
+Not correct:	['red bull', 'drink'] <-> ['red bull drink'] : red bull drink
+Correct:	['red bull'] <-> ['red bull'] : red bull ingridients
+Correct:	['red bull', 'ingredients'] <-> ['red bull'] : red bull ingredients
+Not correct:	['red bull', 'in us'] <-> ['red bull', 'US'] : red bull in US
+Correct:	["apple's", 'insane'] <-> ["apple's"] : apple's insane sell-off
+Correct:	['girl', 'slept'] <-> ['girl'] : girl slept for 64 days
+Correct:	['history of music'] <-> ['history of music'] : history of music
+Not correct:	['who', 'invented', 'radio'] <-> ['the radio'] : who invented the radio 
+Not correct:	['adopting a dog'] <-> ['adopting'] : adopting a dog
+Correct:	['humane society'] <-> ['humane society'] : humane society 
+Correct:	['black powder', 'ammunition', 'wiki'] <-> ['black powder'] : black powder ammunition wiki
+Correct:	['gun powder', 'wiki'] <-> ['gun powder'] : gun powder wiki
+Correct:	['inventor', 'gunpowder'] <-> ['gunpowder'] : inventor of gunpowder
+Correct:	['usage', 'gunpowder'] <-> ['gunpowder'] : usage of gunpowder
+Not correct:	['history of gunpowder'] <-> ['gunpowder'] : history of gunpowder use
+Correct:	['french', 'test', 'online'] <-> ['french'] : french test online
+Correct:	['french', 'test', 'beginners'] <-> ['french'] : french test for beginners
+Correct:	['jim mora'] <-> ['jim mora'] : jim mora
+Correct:	['cambridge'] <-> ['cambridge'] : cambridge
+Not correct:	['cambridge', 'engineering'] <-> ['cambridge engineering'] : cambridge engineering
+Correct:	['cambridge', 'english', 'test'] <-> ['cambridge'] : cambridge english test
+Not correct:	['chain link', 'wood fence', 'material'] <-> ['chain link wood fence'] : chain link wood fence material
+Correct:	['fence', 'material'] <-> ['fence'] : fence material 
+Correct:	['long-term care insurance'] <-> [] : long-term care insurance
+Correct:	['long-term care insurance', 'wiki'] <-> ['long-term care insurance'] : long-term care insurance wiki
+Correct:	['long-term care insurance'] <-> ['long-term care insurance'] : define: long-term care insurance
+Correct:	['long-term care insurance'] <-> ['long-term care insurance'] : define: "long-term care insurance"
+Correct:	['long-term care insurance', 'review'] <-> ['long-term care insurance'] : long-term care insurance review
+Correct:	['long-term care insurance', 'comparisons', 'job'] <-> ['long-term care insurance'] : long-term care insurance comparisons -job
+Correct:	['long-term care', 'vs', 'life insurance'] <-> ['long-term care'] : long-term care vs life insurance
+Correct:	['long-term care', 'vs', 'life insurance', 'job'] <-> ['long-term care'] : long-term care vs life insurance -job
+Correct:	['walmart', 'black friday'] <-> [] : walmart black friday 2012
+Correct:	['black friday'] <-> ['black friday'] : black friday 2012
+Correct:	['glassblowing', 'history'] <-> ['history'] : glassblowing history
+Correct:	['scientific', 'glassblowing', 'history'] <-> ['history'] : scientific glassblowing history
+Not correct:	['scientific', 'glassblowing', 'history', 'edison'] <-> ['Edison'] : scientific glassblowing history Edison
+Correct:	['atari', 'consoles', 'history'] <-> ['atari', 'consoles'] : atari consoles history
+Correct:	['atari', 'consoles'] <-> ['atari', 'consoles'] : atari consoles 
+Correct:	['jenner', 'divorce', 'rumors'] <-> ['jenner'] : jenner divorce rumors
+Not correct:	['jenner', 'divorce', 'rumors'] <-> ['Jenner'] : Jenner divorce rumors
+Correct:	['john mccain'] <-> ['john mccain'] : john mccain
+Correct:	['india', 'government policy', 'miss universe'] <-> ['miss universe'] : india government policy miss universe
+Correct:	['government" policy', 'miss universe'] <-> ['miss universe'] : "indian government" policy miss universe
+Correct:	['craigslist', 'dfw', 'classifieds'] <-> ['craigslist'] : craigslist dfw classifieds
+Correct:	['craigslist'] <-> ['craigslist'] : craigslist
+Correct:	['yahoo! calendar'] <-> ['yahoo! calendar'] : yahoo! calendar
+Correct:	['jim durham', 'dies'] <-> ['jim durham'] : jim durham dies
+Correct:	['luxembourg', 'wedding'] <-> ['luxembourg'] : luxembourg wedding
+Correct:	['yahoo! mail'] <-> ['yahoo! mail'] : yahoo! mail
+Not correct:	['recipes'] <-> ['healty'] : healty recipes
+Correct:	['healthy', 'meals'] <-> ['healthy'] : healthy meals
+Not correct:	['healthy', 'nutrition', 'infants'] <-> ['healthy nutrition', 'infants'] : healthy nutrition for infants
+Correct:	['site'] <-> ['site'] : site
+Correct:	['sheen'] <-> ['sheen'] : sheen offers role
+Correct:	['dog', 'anal glands'] <-> ['dog'] : dog anal glands
+Correct:	['origami', 'instructions'] <-> ['origami'] : origami instructions
+Correct:	['origami', 'dollar'] <-> ['origami'] : origami dollar
+Correct:	['kelly carlson'] <-> ['kelly carlson'] : kelly carlson
+Correct:	['computer'] <-> ['computer'] : computer
+Correct:	["complete idiot's guide"] <-> ["complete idiot's guide"] : complete idiot's guide
+Not correct:	['complete', 'idiot'] <-> ['complete idiot'] : complete idiot
+Correct:	['swahili', 'recipes'] <-> ['recipes'] : swahili recipes
+Correct:	['traditional', 'swahili', 'recipes'] <-> ['recipes'] : traditional swahili recipes
+Correct:	['google'] <-> ['google'] : google
+Correct:	['century theaters'] <-> ['century theaters'] : century theaters
+Correct:	['century theaters', 'san francisco'] <-> ['century theaters'] : century theaters san francisco
+Correct:	['century', 'san francisco'] <-> [] : century 9 san francisco
+Correct:	['google maps'] <-> ['google maps'] : google maps
+Correct:	['yahoo mail'] <-> ['yahoo mail'] : yahoo mail
+Correct:	['aol'] <-> ['aol'] : aol
+Not correct:	['buffalo', 'wild wing'] <-> ['buffalo wild wing'] : buffalo wild wing
+Correct:	['yahoo mail'] <-> ['yahoo mail'] : yahoo mail
+Correct:	['youtube'] <-> [] : youtube
+Not correct:	['suny', 'colleges', 'names'] <-> ['suny colleges'] : suny colleges names
+Not correct:	['number', 'suny', 'colleges'] <-> ['number of suny colleges'] : number of suny colleges
+Correct:	['suny', 'college', 'bioinformatics', 'degree'] <-> ['bioinformatics', 'degree'] : suny college bioinformatics degree
+Correct:	['map', 'suny albany', 'hospital'] <-> ['map'] : map suny albany hospital
+Correct:	['map', 'albany', 'hospital'] <-> ['map'] : map "albany hospital" ny
+Correct:	['france', 'world cup 98', 'reaction', 'stock market'] <-> ['stock market'] : france world cup 98 reaction stock market
+Correct:	['france', 'world cup 98', 'reaction'] <-> ['world cup 98'] : france world cup 98 reaction
+Correct:	['france', 'world cup 98'] <-> ['world cup 98'] : france world cup 98
+Correct:	['reverbnation'] <-> ['reverbnation'] : reverbnation
+Correct:	['connecticut', 'fire', 'academy'] <-> [] : Connecticut Fire Academy  
+Correct:	['connecticut', 'fire', 'academy'] <-> [] : what is the Connecticut Fire Academy?  
+Correct:	['connecticut', 'fire', 'academy'] <-> [] : where is the Connecticut Fire Academy?  

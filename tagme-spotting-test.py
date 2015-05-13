@@ -4,6 +4,7 @@ import sys
 import json
 import urllib.request
 import urllib.parse
+from tagme_spotter import TagMeSpotter
 
 def parseQueryDataset(filepath, fun):
     # read out query-set
@@ -48,18 +49,22 @@ def evaluateTagmeSpotting(query, trueAnnotations):
     global noCorrectSpotted
     global noNotCorrectSpotted
 
-    url = "http://tagme.di.unipi.it/spot?key=tagme-NLP-ETH-2015&lang=en&" + urllib.parse.urlencode({"text" : query})
+#    url = "http://tagme.di.unipi.it/spot?key=tagme-NLP-ETH-2015&lang=en&" + urllib.parse.urlencode({"text" : query})
 
-    response = urllib.request.urlopen(url)
-    res = json.loads(response.read().decode())
-    tagmeSpots = [spot["spot"] for spot in res["spots"]]
+#    response = urllib.request.urlopen(url)
+#    res = json.loads(response.read().decode())
+#    tagmeSpots = [spot["spot"] for spot in res["spots"]]
+
+    spotter = TagMeSpotter()
+
+    tagmeSpots = [m.substring for m in spotter.spot(query)]
 
     trueMentions = [a[0] for a in trueAnnotations]
 
     correct = True
     for a in trueMentions:
         # Check if tage also found a
-        if(a not in tagmeSpots):
+        if a not in tagmeSpots:
             correct = False
             break
     #for a in tagmeSpots:
@@ -67,14 +72,14 @@ def evaluateTagmeSpotting(query, trueAnnotations):
     #        correct = False
     #        break
 
-    if(correct):
+    if correct:
         noCorrectSpotted += 1
-        s = "Correct:\t" + str(tagmeSpots) + " <-> " + str(trueMentions)
+        s = "Correct:\t" + str(tagmeSpots) + " <-> " + str(trueMentions) + " : " + query
         print(s)
         f.write(s + "\n")
     else:
         noNotCorrectSpotted += 1
-        s = "Not correct:\t" + str(tagmeSpots) + " <-> " + str(trueMentions)
+        s = "Not correct:\t" + str(tagmeSpots) + " <-> " + str(trueMentions) + " : " + query
         print(s)
         f.write(s + "\n")
 
