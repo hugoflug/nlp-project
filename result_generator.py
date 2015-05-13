@@ -1,11 +1,11 @@
 from entity_linker import EntityLinker
 from xml.dom.minidom import parse
 import xml.dom.minidom
-from xml.etree.ElementTree import Element, SubElement, tostring
+from xml.etree.ElementTree import ElementTree, Element, SubElement, tostring
 
 def main():
     entity_linker = EntityLinker()
-    gen_result_file(entity_linker.annotate, "query-data-dev-set.xml", "results.xml")
+    gen_result_file(entity_linker.annotate, "test-set.xml", "results.xml")
 
 def gen_result_file(annotate_func, queries_file, output_filename):
     """
@@ -25,13 +25,23 @@ def gen_result_file(annotate_func, queries_file, output_filename):
         for query in queries:
             out_query = SubElement(out_session, "query", {"starttime": query.getAttribute("starttime")})
 
-            in_text = "![CDATA[" + query.getElementsByTagName("text")[0].firstChild.nodeValue + "]]"
+            in_text = query.getElementsByTagName("text")[0].firstChild.nodeValue
             out_text = SubElement(out_query, "text")
-            out_text.text = in_text
+            out_text.text = "![CDATA[" + in_text + "]]"
+
+            annotations = annotate_func(in_text)
+
+            for annotation in annotations:
+                out_annotation = SubElement(out_query, "annotation")
+                
+                out_span = SubElement(out_annotation, "span")
+                out_span.text = "![CDATA[" + annotation.substring + "]]"
+
+                out_target = SubElement(out_annotation, "target")
+                out_target.text = "![CDATA[http://en.wikipedia.org/wiki/" + annotation.candidate_entities[0].entity_id + "]]"
 
 
-
-    print(tostring(out_webscope))
+    ElementTree(out_webscope).write(output_filename)
 
 
 if __name__ == "__main__":
