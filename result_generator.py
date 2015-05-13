@@ -21,6 +21,16 @@ def gen_result_file(annotate_func, queries_file, output_filename):
     for session in sessions:
         out_session = SubElement(out_webscope, "session", {"id": session.getAttribute("id")})
 
+        queries = session.getElementsByTagName("query")
+        for query in queries:
+            out_query = SubElement(out_session, "query", {"starttime": query.getAttribute("starttime")})
+
+            in_text = "![CDATA[" + query.getElementsByTagName("text")[0].firstChild.nodeValue + "]]"
+            out_text = SubElement(out_query, "text")
+            out_text.text = in_text
+
+
+
     print(tostring(out_webscope))
 
 

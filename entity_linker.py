@@ -22,7 +22,9 @@ def main():
         query = input().strip()
 
         # Annotate
-        print(entity_linker.annotate(query, False))
+        mentions = entity_linker.annotate(query, False)
+        for mention in mentions:
+            print(mention.substring, mention.candidate_entities[0])
 
 
 class EntityLinker(object):
