@@ -6,7 +6,7 @@ import sys
 
 class Evaluator:
 
-    def for_each_query(self, queries_file, func, NoMain=False):
+    def for_each_query(self, queries_file, func, NoMain=True):
 
         """ Executes the function func for every query in queries_file
 
@@ -112,7 +112,7 @@ class Evaluator:
                 if len([gold_mention for gold_mention in gold_mentions if m.equalsStrict(gold_mention)]) == 0:
                     fp_strict += 1
 
-            print("Evaluated query: " + str(query_count))
+            #print("Evaluated query: " + str(query_count))
             query_count += 1
 
 
@@ -128,10 +128,11 @@ class Evaluator:
 
         recall = tp_relaxed/float(tp_relaxed+fn_relaxed)
         precision = tp_relaxed/float(tp_relaxed+fp_relaxed)
+        f1_relaxed = 2*precision*recall/(precision + recall)
 
         print("recall: {0:.4f}".format(recall))
         print("precision: {0:.4f}".format(precision)) 
-        print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))      
+        print("f1: {0:.4f}".format(f1_relaxed))      
 
         print("\nSTRICT EVALUATION:")
 
@@ -145,6 +146,8 @@ class Evaluator:
         print("recall: {0:.4f}".format(recall))
         print("precision: {0:.4f}".format(precision)) 
         print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))
+
+        return f1_relaxed
 
     def evaluateSpotting(self, spotter, queries_file):
         
@@ -350,7 +353,7 @@ class Evaluator:
         print("")
         print("Ratio: {0:.4f}".format((correctly_pruned+correctly_kept)/tot))
 
-   def evaluatePruning2(self,spotter, annotator, scorer, similarity, pruner, queries_file):
+    def evaluatePruning2(self,spotter, annotator, scorer, similarity, pruner, queries_file):
 
         noWronglyTagged = 0
         noMentions = 0
@@ -395,6 +398,7 @@ class Evaluator:
         self.for_each_query(queries_file, falspos, NoMain=True)
         print("Number of wrongly tagged mentions: " + str(noWronglyTagged))
         print("Wrongly tagged / all mentions: " + str(noWronglyTagged / noMentions))
+    
     def showFPs(self, queries_file):
 
         def showfalspos(query_text, gold_mentions):

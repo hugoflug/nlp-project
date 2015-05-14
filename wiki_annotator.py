@@ -36,6 +36,13 @@ class WikipediaAnnotator(object):
 
             if (mention.substring in self.cache):
                 mention.candidate_entities = copy.deepcopy(self.cache[mention.substring])
+
+                # Re-calculate the prior-probabilities
+                Z = (1 - self.r**len(mention.candidate_entities))/(1 - self.r) #  Normalization sum (Geometric sum)
+                i = 1
+                for c in mention.candidate_entities:
+                    c.prior_probability = i/Z
+                    i *= self.r
             else:
 
                 # Else, go to wikipeda
@@ -55,8 +62,8 @@ class WikipediaAnnotator(object):
                     res["query"]["search"] = res2["query"]["search"] + res["query"]["search"]
 
                 mention.candidate_entities = []
+                
                 Z = (1 - self.r**len(res["query"]["search"]))/(1 - self.r) #  Normalization sum (Geometric sum)
-
                 i = 1
                 for entity_json in res["query"]["search"]:   
                     mention.candidate_entities.append(Entity(self.wikify(entity_json["title"]), i/Z))
