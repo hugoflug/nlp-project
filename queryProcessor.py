@@ -19,10 +19,10 @@ def main():
     # Create evaluator
     evaluator = Evaluator()
 
-    #print("\nOUR ANNOTATOR (DEV-SET):")
-    #print("***********************\n")
-    #annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
-    #evaluator.evaluate(annot.annotate, "query-data-dev-set.xml")
+    print("\nOUR ANNOTATOR (DEV-SET):")
+    print("***********************\n")
+    annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
+    evaluator.evaluate(annot.annotate, "query-data-dev-set.xml")
     """
     print("\nOUR ANNOTATOR (TRAIN-SET):")
     print("***********************\n")

@@ -1,3 +1,5 @@
+from mention import Mention
+from entity import Entity
 
 def main():
     #file not in git repo due to GitHub size restrictions
@@ -28,9 +30,9 @@ class Annotator:
         """
         query_words = query.split(" ")
 
-        annotations = {}
+        annotations = []
         self.annotate_with_lp(self.link_probs, query_words, len(query_words), annotations)
-        return list(annotations)
+        return annotations
 
     def get_link_probs(self, file):
         link_probs = {}
@@ -58,11 +60,10 @@ class Annotator:
 
                 if potential_match in link_probs:
                     most_likely_match = link_probs[potential_match][0]
-                    if most_likely_match[1] > 0.77:
-                        annotations[potential_match] = most_likely_match[0]
-                        self.annotate_with_lp(link_probs, words[:start_index], length, annotations)
-                        self.annotate_with_lp(link_probs, words[start_index+length:], length, annotations)
-                        return
+                    annotations.append(Mention(potential_match, candidate_entities=[Entity(most_likely_match[0])]))
+                    self.annotate_with_lp(link_probs, words[:start_index], length, annotations)
+                    self.annotate_with_lp(link_probs, words[start_index+length:], length, annotations)
+                    return
 
 if __name__ == "__main__":
     main()
