@@ -74,17 +74,23 @@ class Evaluator:
         
         verbose = True if len(sys.argv) > 1 and sys.argv[1] == "-v" else False
 
-        tp_strict = tp_relaxed = tn_strict = tn_relaxed = 0
-        fp_strict = fp_relaxed = fn_strict = fn_relaxed = 0
+        relaxed_f1s = []
+        relaxed_recalls = []
+        relaxed_precisions = []
 
-        query_count = 1
+        strict_f1s = []
+        strict_recalls = []
+        strict_precisions = []
 
         def evaluate_query(query_text, gold_mentions):
 
-            nonlocal tp_strict, tp_relaxed, fp_strict, fp_relaxed, fn_strict, fn_relaxed, query_count
+            nonlocal relaxed_f1s, strict_f1s, relaxed_recalls, relaxed_precisions, strict_recalls, strict_precisions
+
+            tp_strict = tp_relaxed = tn_strict = tn_relaxed = 0
+            fp_strict = fp_relaxed = fn_strict = fn_relaxed = 0
 
             # HACK:
-            if(gold_spotter is not None):
+            if gold_spotter is not None:
                 gold_spotter.set_mentions(gold_mentions)
 
             # Annotate using our algorithm
@@ -112,43 +118,71 @@ class Evaluator:
                 if len([gold_mention for gold_mention in gold_mentions if m.equalsStrict(gold_mention)]) == 0:
                     fp_strict += 1
 
-            #print("Evaluated query: " + str(query_count))
-            query_count += 1
+
+            total_true = tp_relaxed + fn_relaxed
+            if total_true == 0:
+                recall = 0
+            else:
+                recall = tp_relaxed/float(total_true)
+
+            total_annotated = tp_relaxed + fp_relaxed
+            if total_annotated == 0:
+                precision = 0
+            else:
+                precision = tp_relaxed/float(total_annotated)
+
+            relaxed_recalls.append(recall)
+            relaxed_precisions.append(precision)
+
+            if precision + recall == 0:
+                relaxed_f1s.append(0)
+            else:
+                relaxed_f1s.append(2*precision*recall/(precision + recall))
+
+
+
+            total_true = tp_strict + fn_strict
+            if total_true == 0:
+                recall = 0
+            else:
+                recall = tp_strict/float(total_true)
+
+            total_annotated = tp_strict + fp_strict
+            if total_annotated == 0:
+                precision = 0
+            else:
+                precision = tp_strict/float(total_annotated)
+
+            strict_recalls.append(recall)
+            strict_precisions.append(precision)
+
+            if precision + recall == 0:
+                strict_f1s.append(0)
+            else:
+                strict_f1s.append(2*precision*recall/(precision + recall))
+
 
 
         # Loop through all queries in file
         self.for_each_query(queries_file, evaluate_query)
 
+        def avg(l):
+            return sum(l) / float(len(l))
+
         # Print results
         print("RELAXED EVALUATION:")
 
-        print("tp: {}".format(tp_relaxed))
-        print("fp: {}".format(fp_relaxed))
-        print("fn: {}".format(fn_relaxed))
-
-        recall = tp_relaxed/float(tp_relaxed+fn_relaxed)
-        precision = tp_relaxed/float(tp_relaxed+fp_relaxed)
-        f1_relaxed = 2*precision*recall/(precision + recall)
-
-        print("recall: {0:.4f}".format(recall))
-        print("precision: {0:.4f}".format(precision)) 
-        print("f1: {0:.4f}".format(f1_relaxed))      
+        print("recall: {0:.4f}".format(avg(relaxed_recalls)))
+        print("precision: {0:.4f}".format(avg(relaxed_precisions))) 
+        print("f1: {0:.4f}".format(avg(relaxed_f1s)))      
 
         print("\nSTRICT EVALUATION:")
 
-        print("tp: {}".format(tp_strict))
-        print("fp: {}".format(fp_strict))
-        print("fn: {}".format(fn_strict))
+        print("recall: {0:.4f}".format(avg(strict_recalls)))
+        print("precision: {0:.4f}".format(avg(strict_precisions))) 
+        print("f1: {0:.4f}".format(avg(strict_f1s)))  
 
-        recall = tp_strict/float(tp_strict+fn_strict)
-        precision = tp_strict/float(tp_strict+fp_strict)
-
-        print("recall: {0:.4f}".format(recall))
-        print("precision: {0:.4f}".format(precision)) 
-        print("f1: {0:.4f}".format(2*precision*recall/(precision + recall)))
-
-        return f1_relaxed
-
+        return avg(relaxed_f1s)
     def evaluateSpotting(self, spotter, queries_file):
         
         noCorrectSpotted = 0
