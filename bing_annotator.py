@@ -12,7 +12,7 @@ class BingAnnotator(object):
 
     MAX_RESULS = 5
 
-    def __init__(self, use_cache = True, r = 0.5):
+    def __init__(self, use_cache = True, r = 0.3):
         # Load file cache
         self.cache = pickle.load(open('bing_annotator_cache.pkl', 'rb')) if os.path.exists('bing_annotator_cache.pkl') and use_cache else {}
         self.cache_changed = False

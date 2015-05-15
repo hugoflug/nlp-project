@@ -3,7 +3,7 @@ class CandidateScorer(object):
     """ Score the entity candidates for each mention and chose the ones that score the best"""
 
     """ Initializes the candidate scorer with link probabilities (dict) and a similarity function"""
-    def __init__(self, sim, epsilon = 0.2):
+    def __init__(self, sim, epsilon = 0.1):
 
         self.sim = sim
         self.scores = {}

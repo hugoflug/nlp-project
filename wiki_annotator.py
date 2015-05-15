@@ -13,7 +13,7 @@ class WikipediaAnnotator(object):
 
     MAX_RESULTS = 5
 
-    def __init__(self, r = 0.5):
+    def __init__(self, r = 0.3):
         # Load file cache
         self.cache = pickle.load(open('wikipedia_annotator_cache.pkl', 'rb')) if os.path.exists('wikipedia_annotator_cache.pkl') else {}
         self.cache_changed = False

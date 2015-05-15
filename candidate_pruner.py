@@ -2,7 +2,7 @@
 
 class CandidatePruner(object):
 
-    def __init__(self, theta = 0.1):
+    def __init__(self, theta = 0):
         self.theta = theta
 
     def prune(self, linked_mentions, sim):
