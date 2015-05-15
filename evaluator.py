@@ -95,7 +95,7 @@ class Evaluator:
 
             # Annotate using our algorithm
             our_mentions = annotator_func(query_text)
-            
+
             # Relaxed evaluation
             for gold_mention in gold_mentions:
                 if len([m for m in our_mentions if gold_mention.equalsRelaxed(m)]) > 0: # If gold entity is also in our set
@@ -127,7 +127,7 @@ class Evaluator:
 
             total_annotated = tp_relaxed + fp_relaxed
             if total_annotated == 0:
-                precision = 0
+                precision = 1
             else:
                 precision = tp_relaxed/float(total_annotated)
 
