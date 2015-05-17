@@ -5,6 +5,7 @@ from mention import Mention
 import os
 import copy
 import pickle
+import time
 
 class TagMeSpotter:
 
@@ -34,7 +35,12 @@ class TagMeSpotter:
             url = "http://tagme.di.unipi.it/spot?key=tagme-NLP-ETH-2015&lang=en&"
             url += urllib.parse.urlencode({"text" : query})
 
-            response = urllib.request.urlopen(url)
+            while True:
+                try:
+                    response = urllib.request.urlopen(url)
+                    break
+                except:
+                    time.sleep(1000)
 
             res = json.loads(response.read().decode())
 

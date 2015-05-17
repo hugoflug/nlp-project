@@ -29,7 +29,6 @@ def main():
     print("***********************\n")
     annot = annotator.Annotator(open("crosswikis-dict-preprocessed-2", encoding="utf-8"))
     evaluator.evaluate(annot.annotate, "query-data-train-set.xml")
-    
 
     print("\nNEW ANNOTATOR (DEV-SET):")
     print("***********************\n")
@@ -45,7 +44,7 @@ def main():
     bing_annotator.save_cache()
     wiki_annotator.save_cache()
     spotter.save_cache()
-    """
+    
     print("\nNEW ANNOTATOR (TRAIN-SET):")
     print("***********************\n")
     bing_annotator = BingAnnotator()
@@ -59,7 +58,6 @@ def main():
     bing_annotator.save_cache()
     wiki_annotator.save_cache()
     spotter.save_cache()
-    """
     
     print("\nTAGME ANNOTATOR (DEV-SET):")
     print("***********************\n")
@@ -69,6 +67,7 @@ def main():
     print("***********************\n")
     evaluator.evaluate(tagme_annotator.annotate, "query-data-train-set.xml")
 
+    
 class GoldSpotter(object):
 
     # HACK

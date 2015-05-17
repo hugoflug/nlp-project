@@ -50,7 +50,12 @@ class WikipediaAnnotator(object):
                 url = "http://en.wikipedia.org/w/api.php?action=query&list=search&format=json&srinfo=totalhits%7Csuggestion&srprop=wordcount%7Credirecttitle&srlimit=" + str(self.MAX_RESULTS) + "&"
                 url += urllib.parse.urlencode({"srsearch" : mention.substring})
 
-                response = urllib.request.urlopen(url)
+                while True:
+                    try:
+                        response = urllib.request.urlopen(url)
+                        break
+                    except:
+                        time.sleep(1000)
                 res = json.loads(response.read().decode())
 
                 # Look for suggestions

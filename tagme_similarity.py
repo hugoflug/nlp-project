@@ -2,6 +2,7 @@ import json
 import urllib.request
 import urllib.parse
 import pickle
+import time
 
 class TagMeSimilarity(object):
     """ Utializes the TAGME web api to get pairwise entity similarities"""
@@ -23,7 +24,13 @@ class TagMeSimilarity(object):
                 tt = {"tt": pair[0] + " " + pair[1]}
                 url += "&" + urllib.parse.urlencode(tt) 
             
-            response = urllib.request.urlopen(url)
+            while True:
+                try:
+                    response = urllib.request.urlopen(url)
+                    break
+                except:
+                    time.sleep(1000)
+
             res = json.loads(response.read().decode())["result"]
 
             for i in range(len(buffer)):

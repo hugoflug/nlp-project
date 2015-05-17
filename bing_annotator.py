@@ -7,6 +7,7 @@ import re
 import pickle
 import copy
 import os.path
+import time
 
 class BingAnnotator(object):
 
@@ -48,7 +49,12 @@ class BingAnnotator(object):
                 p = re.compile('<h2><a href="http://en.wikipedia.org/wiki/[^"]*"')
                 title = mention.substring
                 request = Request("http://www.bing.com/search?q=" + self.urlify(title) + "+site%3Aen.wikipedia.org", headers={"Accept-Language": "en-US"})
-                response = urllib.request.urlopen(request)
+                while True:
+                    try:
+                        response = urllib.request.urlopen(request)
+                        break
+                    except:
+                        time.sleep(1000)
                 response_text = response.read().decode('utf-8')
 
                 mention.candidate_entries = []
